@@ -11,13 +11,23 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] InputActionReference moveInputAction;
+    [SerializeField] RSO_MainCamera mainCamera;
     
     //[Header("Output")]
 
     private void FixedUpdate()
     {
-        Vector2 moveInput = moveInputAction.action.ReadValue<Vector2>();
+        HandleMovement();
+    }
 
-        movement.Value.Move(new Vector3(moveInput.x, 0f, moveInput.y));
+    void HandleMovement()
+    {
+        Vector2 moveInput = moveInputAction.action.ReadValue<Vector2>();
+        if (moveInput.sqrMagnitude <= .1f) return;
+
+        float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg + (mainCamera.Get().transform.eulerAngles.y);
+        Vector3 moveDir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+
+        movement.Value.Move(moveDir);
     }
 }
