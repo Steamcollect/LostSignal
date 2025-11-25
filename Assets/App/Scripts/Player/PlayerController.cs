@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] InterfaceReference<IMovement> movement;
+    [SerializeField] Transform rotationPivot;
 
     [Header("Input")]
     [SerializeField] RSO_MainCamera cam;
@@ -19,12 +20,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InputActionReference moveIA;
     [SerializeField] InputActionReference mousePositionIA;
 
-    //[Header("Output")]
+    [Header("Output")]
+    [SerializeField] RSE_SetCameraTarget setCameraTarget;
+
+    private void Start()
+    {
+        setCameraTarget.Call(transform);
+    }
 
     private void FixedUpdate()
     {
         HandleMovement();
-        //HandleRotation();
+        HandleRotation();
     }
 
     void HandleMovement()
@@ -41,9 +48,11 @@ public class PlayerController : MonoBehaviour
     void HandleRotation()
     {
         Vector3 targetPos = GetMouseWorldPos();
-        float targetAngle = Mathf.Atan2(targetPos.x, targetPos.z) * Mathf.Rad2Deg + (cam.Get().transform.eulerAngles.y) + angleOffset;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-        transform.rotation = Quaternion.Euler(0, angle, 0);
+        Vector3 dir = (targetPos - transform.position).normalized;
+
+        float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + (cam.Get().transform.eulerAngles.y) + angleOffset;
+        float angle = Mathf.SmoothDampAngle(rotationPivot.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+        rotationPivot.rotation = Quaternion.Euler(0, angle, 0);
     }
 
     Vector3 GetMouseWorldPos()
