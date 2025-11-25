@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
-        HandleRotation();
+        //HandleRotation();
     }
 
     void HandleMovement()
