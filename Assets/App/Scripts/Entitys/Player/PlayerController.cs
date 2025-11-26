@@ -17,10 +17,12 @@ public class PlayerController : EntityController
 
     [Header("Output")]
     [SerializeField] RSE_SetCameraTarget setCameraTarget;
+    [SerializeField] RSO_PlayerTransform playerTransform;
 
     private void Start()
     {
         setCameraTarget.Call(transform);
+        playerTransform.Set(transform);
     }
 
     private void FixedUpdate()

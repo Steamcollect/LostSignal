@@ -150,5 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c61643c50e8dc64db197175b65c99ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  timeOffset: 0.2
+  useStartPositionAsOffset: 1
+  posOffset: {x: 0, y: 0, z: 0}
   cam: {fileID: 1749466380857972792}
+  setTarget: {fileID: 11400000, guid: e13a30c934dbcf84bbf62c6bb411c300, type: 2}
   rso_MainCamera: {fileID: 11400000, guid: 70cd5213f1bae7344a3e3bf0871f82e4, type: 2}
