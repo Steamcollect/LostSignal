@@ -1,0 +1,208 @@
+{
+  "main": {
+    "id": "24223be34de9afb5",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec6066d0d5e208ba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1be329b8a7480d52",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Health System.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Health System"
+            }
+          },
+          {
+            "id": "791fcf70a7294a12",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Health System.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Health System"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "44f90b5db2fca1b7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "28ab2354dea06b21",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a60bd992af7eef0a",
+    "type": "split",
+    "children": [
+      {
+        "id": "1c4fdb07da07e1c6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4921d70a1e20546c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5dcdc57c741ea9d6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "96caffc736965419",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "dc1db4f015634b50",
+    "type": "split",
+    "children": [
+      {
+        "id": "09b5863e5d192085",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a767412c1b3d42ae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Health System.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Health System"
+            }
+          },
+          {
+            "id": "ecd208ba512c6cc4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Health System.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Health System"
+            }
+          },
+          {
+            "id": "da051aa9aeb1e832",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "742a78c5435f5567",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Health System.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Health System"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "791fcf70a7294a12",
+  "lastOpenFiles": [
+    "Shield System.md",
+    "Health System.md",
+    "Untitled"
+  ]
+}
