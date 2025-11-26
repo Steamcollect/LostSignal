@@ -13,6 +13,7 @@ public class StepManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Transform mainBody;
+    [SerializeField] Rigidbody mainRb;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class StepManager : MonoBehaviour
         foreach (StepHandler stepHandler in handlers)
         {
             if (stepHandler != null)
-                stepHandler.Setup(mainBody, this);
+                stepHandler.Setup(mainBody, mainRb, this);
         }
     }
 

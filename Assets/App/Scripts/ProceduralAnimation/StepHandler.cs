@@ -11,6 +11,9 @@ public class StepHandler : MonoBehaviour
     [SerializeField] float stepHeight = 0.1f;
     [SerializeField] AnimationCurve stepCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
+    [Space(10)]
+    [SerializeField, Range(0, 1)] float anticipationMultiplier;
+
     Vector3 startLocalPosition;
     Vector3 currentIkPosition;
 
@@ -24,17 +27,16 @@ public class StepHandler : MonoBehaviour
 
     Transform bodyPivot;
     StepManager stepManager;
+    Rigidbody bodyRb;
 
-    private void Awake()
+    public void Setup(Transform bodyPivot, Rigidbody bodyRb, StepManager stepManager)
     {
+        this.stepManager = stepManager;
+        this.bodyPivot = bodyPivot;
+
         startLocalPosition = ikTarget.position - bodyPivot.position;
+        this.bodyRb = bodyRb;
         currentIkPosition = ikTarget.position;
-    }
-
-    public void Setup(Transform mainBody, StepManager bodyPivot)
-    {
-        this.stepManager = bodyPivot;
-        this.bodyPivot = mainBody;
     }
 
     public void HandleIkPosition()
@@ -77,7 +79,8 @@ public class StepHandler : MonoBehaviour
 
         Vector3 startPos = ikTarget.position;
 
-        Vector3 endPos = bodyPivot.TransformPoint(startLocalPosition);
+        Vector3 endPos = bodyPivot.TransformPoint(startLocalPosition)
+            + bodyRb.linearVelocity.normalized * stepLength * anticipationMultiplier;
 
         while (elapsed < stepDuration)
         {

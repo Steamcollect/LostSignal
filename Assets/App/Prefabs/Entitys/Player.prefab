@@ -495,6 +495,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anticipationMultiplier: 0.8
   ikTarget: {fileID: 7900345101596981476}
 --- !u!1 &3957568691679967729 stripped
 GameObject:
@@ -549,6 +550,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anticipationMultiplier: 0.8
   ikTarget: {fileID: 8089663756219096676}
 --- !u!1 &3957772626600460249 stripped
 GameObject:
@@ -603,6 +605,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anticipationMultiplier: 0.8
   ikTarget: {fileID: 1962505145336352954}
 --- !u!1 &3958069902178656711 stripped
 GameObject:
@@ -657,6 +660,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anticipationMultiplier: 0.8
   ikTarget: {fileID: 6509563215566193098}
 --- !u!1 &3958072763094814889 stripped
 GameObject:
@@ -682,6 +686,7 @@ MonoBehaviour:
   - {fileID: 1606120945689651117}
   - {fileID: 3635424217406013477}
   mainBody: {fileID: 1409431294601431814}
+  mainRb: {fileID: 7817365298629724350}
 --- !u!4 &3961243753088296385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4989476675865270, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
