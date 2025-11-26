@@ -1,6 +1,8 @@
 using MVsToolkit.Dev;
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class RadioAntennaTrigger : MonoBehaviour
 {
@@ -9,15 +11,32 @@ public class RadioAntennaTrigger : MonoBehaviour
     [SerializeField] string interactInput = "E";
     [SerializeField, Handle(TransformLocationType.Local)] Vector3 pointerPosition;
 
+    [Space(10)]
+    [SerializeField] float bumpScaleValue;
+    [SerializeField] float bumpScaleTime;
+
+    bool canPlayerInteract = false;
     bool isPlayerDetected = false;
 
     //[Header("References")]
     PointerUI currentPointer;
 
     [Header("Input")]
+    [SerializeField] InputActionReference interactIA;
     [SerializeField] RSO_MainCamera cam;
 
     //[Header("Output")]
+    public Action OnPlayerInteract;
+
+    private void OnEnable()
+    {
+        interactIA.action.started += OnInteractInput;
+    }
+
+    private void OnDisable()
+    {
+        interactIA.action.started -= OnInteractInput;
+    }
 
     private void Update()
     {
@@ -27,13 +46,27 @@ public class RadioAntennaTrigger : MonoBehaviour
         }
     }
 
+    void OnInteractInput(InputAction.CallbackContext ctx)
+    {
+        if (!isPlayerDetected) return;
+
+        OnPlayerInteract?.Invoke();
+    }
+
+    public void SetCanPlayerInteract(bool canPlayerInteract) { this.canPlayerInteract = canPlayerInteract; }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!canPlayerInteract) return;
+
         if (!isPlayerDetected && other.CompareTag(playerTag))
         {
             isPlayerDetected = true;
-            currentPointer = InteractionUIManager.Instance.CreatePointerUI();
+            currentPointer = InteractionUIManager.Instance.GetPointer();
             currentPointer.SetText(interactInput);
+
+            currentPointer.transform.DOKill();
+            currentPointer.transform.DOScale(bumpScaleValue, bumpScaleTime).SetLoops(2, LoopType.Yoyo);
         }
     }
 
@@ -42,7 +75,7 @@ public class RadioAntennaTrigger : MonoBehaviour
         if (isPlayerDetected && other.CompareTag(playerTag))
         {
             isPlayerDetected = false;
-            Destroy(currentPointer.gameObject);
+            InteractionUIManager.Instance.ReturnPointer(currentPointer);
         }
     }
 }

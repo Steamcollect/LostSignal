@@ -19,7 +19,6 @@ namespace MVsToolkit.Wrappers
             OnChanged?.Invoke(value);
         }
 
-
         public static implicit operator T(RuntimeScriptableObject<T> runtimeScriptableObject)
         {
             return runtimeScriptableObject.value;
