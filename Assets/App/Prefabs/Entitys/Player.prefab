@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135eba6dc3255e44a8dd62d801c88833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_HorizontalLinearMovement
-  moveSpeed: 60
+  moveSpeed: 40
   rb: {fileID: 7817365298629724350}
 --- !u!1001 &3956574809834483575
 PrefabInstance:
