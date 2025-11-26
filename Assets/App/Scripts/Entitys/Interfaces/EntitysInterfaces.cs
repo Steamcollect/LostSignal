@@ -4,3 +4,19 @@ public interface IMovement
 {
     void Move(Vector3 input);
 }
+
+public interface ILookAtTarget
+{
+    void LookAt(Vector3 target);
+}
+
+public interface IHealth
+{
+    void TakeDamage(int damage);
+}
+
+public interface IShield
+{
+    int TakeDamage(int damage);
+    bool IsDestroy();
+}
