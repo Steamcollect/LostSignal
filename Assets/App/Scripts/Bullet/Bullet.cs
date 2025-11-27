@@ -30,9 +30,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out IHealth health))
+        if(other.TryGetComponent(out EntityTrigger trigger))
         {
-            health.TakeDamage(damage);
+            trigger.GetController().GetHealth().TakeDamage(damage);
         }
 
         if (other.isTrigger) return;

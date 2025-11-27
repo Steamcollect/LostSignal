@@ -18,6 +18,11 @@ public class EntityController : MonoBehaviour, ITargetable
     //[Header("Input")]
     //[Header("Output")]
 
+    void Awake()
+    {
+        trigger.SetController(this);
+    }
+
     public Vector3 GetTargetPosition()
     {
         return transform.position + targetPos;
