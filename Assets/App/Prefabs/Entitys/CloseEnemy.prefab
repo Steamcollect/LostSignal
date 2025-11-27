@@ -266,6 +266,7 @@ MonoBehaviour:
     _object: {fileID: 9046917041710665271}
   combat: {fileID: 7315905735496179703}
   rb: {fileID: 847507863784800633}
+  m_OnFightStarted: {fileID: 11400000, guid: ea956defac7656f4a833ee2b31c389b7, type: 2}
   detectionRange: 14
   attackRange: 3
   detectionMask:

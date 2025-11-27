@@ -289,6 +289,7 @@ MonoBehaviour:
     _object: {fileID: 3792154612909385463}
   combat: {fileID: 5776865996334268924}
   rb: {fileID: 5549819574549777667}
+  m_OnFightStarted: {fileID: 11400000, guid: ea956defac7656f4a833ee2b31c389b7, type: 2}
   detectionRange: 10
   rotationTime: 5
   damage: 10
