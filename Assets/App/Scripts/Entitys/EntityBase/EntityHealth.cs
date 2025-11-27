@@ -20,6 +20,8 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(int damage)
     {
+        Debug.Log(damage);
+
         if (shield != null && !shield.Value.IsDestroy())
         {
             int remainingDmg = shield.Value.TakeDamage(damage);
