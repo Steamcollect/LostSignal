@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     int damage;
 
     [Header("References")]
-    [SerializeField] RSO_PlayerRigidbody playerTransform;
+    [SerializeField] RSO_PlayerController playerTransform;
     [SerializeField] Rigidbody rb;
 
     //[Header("Input")]
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
 
     IEnumerator CheckDistanceFromPlayer()
     {
-        if(Vector3.Distance(playerTransform.Get().position, transform.position) > 50)
+        if(Vector3.Distance(playerTransform.Get().GetTargetPosition(), transform.position) > 50)
         {
             BulletManager.Instance.ReturnBullet(this);
             yield break;

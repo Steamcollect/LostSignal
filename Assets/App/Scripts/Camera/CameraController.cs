@@ -53,25 +53,19 @@ public class CameraController : MonoBehaviour
         Vector3 basePos = target.position + posOffset;
         Vector3 mousePos = GetMouseWorldPos();
 
-        // Direction depuis le joueur → souris
         Vector3 dir = (mousePos - target.position).normalized;
 
-        // Distance normalisée 0–1
         float dist01 = Mathf.Clamp(
             Vector3.Distance(target.position, mousePos),
             0, maxExplorationDistance
         ) / maxExplorationDistance;
 
-        // Atténuation via ton AnimationCurve
         float mult = multPerDist.Evaluate(dist01);
 
-        // Décalage final d’exploration
         Vector3 explorationOffset = dir * maxExplorationDistance * mult;
 
-        // Position finale (comme Death’s Door)
         Vector3 finalPos = basePos + explorationOffset;
 
-        // Smooth
         transform.position = Vector3.SmoothDamp(
             transform.position,
             finalPos,

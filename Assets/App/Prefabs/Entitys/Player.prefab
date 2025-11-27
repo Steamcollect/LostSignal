@@ -448,7 +448,7 @@ MonoBehaviour:
   moveIA: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   mousePositionIA: {fileID: 3186695138886981126, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   setCameraTarget: {fileID: 11400000, guid: e13a30c934dbcf84bbf62c6bb411c300, type: 2}
-  playerRb: {fileID: 11400000, guid: 889c55170c3d485408a368282da46058, type: 2}
+  controller: {fileID: 11400000, guid: 889c55170c3d485408a368282da46058, type: 2}
 --- !u!114 &4332319120167915156
 MonoBehaviour:
   m_ObjectHideFlags: 0
