@@ -23,6 +23,9 @@ public class PlayerController : EntityController
     {
         setCameraTarget.Call(transform);
         playerTransform.Set(transform);
+
+        moveIA.action.Enable();
+        mousePositionIA.action.Enable();
     }
 
     private void FixedUpdate()
