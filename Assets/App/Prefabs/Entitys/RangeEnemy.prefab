@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5551087309863362175}
   - component: {fileID: 7335103353945310771}
+  - component: {fileID: 6023625709644627158}
   m_Layer: 0
   m_Name: DefaultCombatStyle
   m_TagString: Untagged
@@ -50,6 +51,36 @@ MonoBehaviour:
   attackCooldown: 0.3
   reloadCooldown: 0.8
   attackPoint: {fileID: 5309297015634064110}
+  m_SFXManager: {fileID: 6023625709644627158}
+--- !u!114 &6023625709644627158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564910455790308429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4f536c8d61aa246aa0df0e338e4ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSFXManager
+  m_FireSFX:
+    Guid:
+      Data1: 344776424
+      Data2: 1330948824
+      Data3: -895585402
+      Data4: 1304699698
+    Path: event:/Player/Blaster/Fire
+  m_ReloadSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_FirePitchVariance: 0.2
+  m_ReloadVolume: 1
+  m_FireVolume: 0.5
 --- !u!1 &892956433902385093
 GameObject:
   m_ObjectHideFlags: 0

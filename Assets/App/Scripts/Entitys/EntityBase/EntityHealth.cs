@@ -10,7 +10,8 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     [Header("References")]
     [SerializeField] InterfaceReference<IShield> shield;
-
+    [SerializeField] private DamageSFXManager m_DamageSFXManager;
+    
     public Action OnTakeDamage, OnDeath;
 
     //[Header("Input")]
@@ -27,7 +28,7 @@ public class EntityHealth : MonoBehaviour, IHealth
         {
             int remainingDmg = shield.Value.TakeDamage(damage);
             if(remainingDmg > 0) TakeDamage(remainingDmg);
-
+            
             return;
         }
 
@@ -39,12 +40,14 @@ public class EntityHealth : MonoBehaviour, IHealth
         }
         else
         {
+            m_DamageSFXManager.PlayDamageSFX();
             OnTakeDamage?.Invoke();
         }
     }
 
     void Die()
     {
+        m_DamageSFXManager.PlayDeathSFX();
         OnDeath.Invoke();
     }
 }

@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{148cdee8-aad8-4f54-8673-9eca3223c44d}">
 		<property name="name">
-			<value>BlasterFire</value>
+			<value>Fire</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{5110fde0-7bf3-4399-80d6-7b92897225db}</destination>
+			<destination>{0e291816-01c8-4e9e-9fff-c453483461ff}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{c6c543af-f366-4375-811d-3361879e5544}</destination>
@@ -53,7 +53,7 @@
 			<destination>{1afe6ab7-21c6-4df0-815b-6e2eaea7ecc7}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{c9d08f80-63ab-4160-9756-3f7031629942}</destination>
+			<destination>{52028b13-6db7-4504-a421-063f560a752f}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{1ba4ba06-b9db-42c0-85af-c1d46f012e8f}" />

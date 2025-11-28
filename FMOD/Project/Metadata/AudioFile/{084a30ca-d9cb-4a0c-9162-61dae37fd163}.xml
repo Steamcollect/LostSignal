@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{084a30ca-d9cb-4a0c-9162-61dae37fd163}">
+		<property name="assetPath">
+			<value>BlasterHitWall.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>32</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.3310312500000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d73eacdb-3d0c-47f6-823f-52d4e4746cd2}</destination>
+		</relationship>
+	</object>
+</objects>
