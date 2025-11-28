@@ -31,6 +31,7 @@ public class PlayerController : EntityController
 
     private void Awake()
     {
+        base.Awake();
         controller.Set(this);
 
         dashIA.action.Enable();
@@ -49,7 +50,7 @@ public class PlayerController : EntityController
         float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg
                       + m_CamController.Get().GetCamera().transform.eulerAngles.y;
 
-        // Direction brute par rapport à la caméra
+        // Direction brute par rapport ï¿½ la camï¿½ra
         Vector3 rawDir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
 
         // Raycast vers le sol pour obtenir la normale
@@ -60,7 +61,7 @@ public class PlayerController : EntityController
         }
         else
         {
-            // Si pas de sol détecté, on garde la direction brute
+            // Si pas de sol dï¿½tectï¿½, on garde la direction brute
             moveDir = rawDir;
         }
 

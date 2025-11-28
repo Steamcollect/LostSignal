@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2074092412787055408}
   - component: {fileID: 1149920520322700606}
+  - component: {fileID: 658399684848975888}
   m_Layer: 0
   m_Name: Combat
   m_TagString: Untagged
@@ -286,6 +287,35 @@ MonoBehaviour:
   horizontalPivot: {fileID: 8508021338843581821}
   attackIA: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_AimTarget: {fileID: 11400000, guid: 09f66405bedce16448f02f1b689a9c4a, type: 2}
+--- !u!114 &658399684848975888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2502887800849172274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4f536c8d61aa246aa0df0e338e4ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSFXManager
+  m_FireSFX:
+    Guid:
+      Data1: 344776424
+      Data2: 1330948824
+      Data3: -895585402
+      Data4: 1304699698
+    Path: event:/BlasterFire
+  m_ReloadSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_FirePitchVariance: 0.2
+  m_ReloadVolume: 1
+  m_FireVolume: 1
 --- !u!1 &2528724873083000088
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +472,6 @@ MonoBehaviour:
     _object: {fileID: 4600652507870665905}
   combat: {fileID: 1149920520322700606}
   rb: {fileID: 7817365298629724350}
-  m_OnFightStarted: {fileID: 11400000, guid: ea956defac7656f4a833ee2b31c389b7, type: 2}
   moveIA: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_CamController: {fileID: 11400000, guid: 452bdeba678d33f45929b40fb180f382, type: 2}
   m_RotationVisual: {fileID: 2954271060133509083}
@@ -487,6 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003742095360013401}
   - component: {fileID: 8231817660637434609}
+  - component: {fileID: 1866026752504187138}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -525,6 +555,36 @@ MonoBehaviour:
   maxHealth: 100
   shield:
     _object: {fileID: 3413903002902243344}
+  m_DamageSFXManager: {fileID: 1866026752504187138}
+--- !u!114 &1866026752504187138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233522183667764025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7605808726bcb4c9486433f7d84cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageSFXManager
+  m_DamageSFX:
+    Guid:
+      Data1: -1966077749
+      Data2: 1227109518
+      Data3: 1227274895
+      Data4: 2118779043
+    Path: event:/Player/TakeDamage
+  m_DeathSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_DamageVolume: 1
+  m_DeathVolume: 1
+  m_DamagePitchVariance: 0.2
 --- !u!1 &3829805100793322867
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2497293611321796718}
   - component: {fileID: 2704835463185484815}
+  - component: {fileID: 3515853690559759183}
   m_Layer: 0
   m_Name: DefaultCombatStyle
   m_TagString: Untagged
@@ -882,6 +943,36 @@ MonoBehaviour:
   attackCooldown: 0.3
   reloadCooldown: 0.8
   attackPoint: {fileID: 874208509811087154}
+  m_SFXManager: {fileID: 3515853690559759183}
+--- !u!114 &3515853690559759183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396382280707165853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4f536c8d61aa246aa0df0e338e4ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSFXManager
+  m_FireSFX:
+    Guid:
+      Data1: 344776424
+      Data2: 1330948824
+      Data3: -895585402
+      Data4: 1304699698
+    Path: event:/Player/Blaster/Fire
+  m_ReloadSFX:
+    Guid:
+      Data1: -1660106770
+      Data2: 1083784041
+      Data3: 721724083
+      Data4: 667032653
+    Path: event:/Player/Blaster/Reload
+  m_FirePitchVariance: 0.2
+  m_ReloadVolume: 1
+  m_FireVolume: 1
 --- !u!1001 &3956574809834483575
 PrefabInstance:
   m_ObjectHideFlags: 0

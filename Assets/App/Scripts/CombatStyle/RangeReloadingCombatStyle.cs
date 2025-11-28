@@ -21,6 +21,8 @@ public class RangeReloadingCombatStyle : CombatStyle
     [Header("References")]
     [SerializeField] Transform attackPoint;
 
+    [SerializeField] private RangeReloadingWeaponSFXManager m_SFXManager;
+
     //[Header("Input")]
     //[Header("Output")]
 
@@ -44,6 +46,9 @@ public class RangeReloadingCombatStyle : CombatStyle
                 bullet.Setup(bulletDamage, bulletSpeed);
 
                 StartCoroutine(AttackCooldown());
+                
+                if(m_SFXManager)
+                    m_SFXManager.PlayAttackSFX();
             }
             else
             {
@@ -56,6 +61,8 @@ public class RangeReloadingCombatStyle : CombatStyle
     {
         if (!isReloading)
         {
+            if(m_SFXManager)
+                m_SFXManager.PlayReloadSFX();
             StartCoroutine(ReloadCooldown());
         }
     }

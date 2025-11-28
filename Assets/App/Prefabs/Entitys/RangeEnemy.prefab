@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5551087309863362175}
   - component: {fileID: 7335103353945310771}
+  - component: {fileID: 6023625709644627158}
   m_Layer: 0
   m_Name: DefaultCombatStyle
   m_TagString: Untagged
@@ -50,6 +51,36 @@ MonoBehaviour:
   attackCooldown: 0.3
   reloadCooldown: 0.8
   attackPoint: {fileID: 5309297015634064110}
+  m_SFXManager: {fileID: 6023625709644627158}
+--- !u!114 &6023625709644627158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564910455790308429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba4f536c8d61aa246aa0df0e338e4ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSFXManager
+  m_FireSFX:
+    Guid:
+      Data1: -1616155931
+      Data2: 1204140417
+      Data3: -330558554
+      Data4: 722538238
+    Path: event:/EnemyFire
+  m_ReloadSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  m_FirePitchVariance: 0.2
+  m_ReloadVolume: 1
+  m_FireVolume: 0.5
 --- !u!1 &892956433902385093
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7013517476833380996}
   - component: {fileID: 5167803564463502938}
+  - component: {fileID: 449631955636452469}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -97,6 +129,36 @@ MonoBehaviour:
   maxHealth: 30
   shield:
     _object: {fileID: 0}
+  m_DamageSFXManager: {fileID: 449631955636452469}
+--- !u!114 &449631955636452469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892956433902385093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7605808726bcb4c9486433f7d84cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageSFXManager
+  m_DamageSFX:
+    Guid:
+      Data1: -260134075
+      Data2: 1168716630
+      Data3: -2039845967
+      Data4: -922633430
+    Path: event:/Player/Blaster/EnemyHit
+  m_DeathSFX:
+    Guid:
+      Data1: 1487547990
+      Data2: 1177124610
+      Data3: 1681320836
+      Data4: 1193930256
+    Path: event:/EnemyDeath
+  m_DamageVolume: 1
+  m_DeathVolume: 1
+  m_DamagePitchVariance: 0.2
 --- !u!1 &3004979328398178934
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +662,6 @@ MonoBehaviour:
     _object: {fileID: 5011621857055892473}
   combat: {fileID: 3283483463715396580}
   rb: {fileID: 5189926587359084582}
-  m_OnFightStarted: {fileID: 11400000, guid: ea956defac7656f4a833ee2b31c389b7, type: 2}
   detectionRange: 12
   closeRange: 5
   detectionMask:
