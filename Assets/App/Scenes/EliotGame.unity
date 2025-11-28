@@ -1066,6 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0835dc6b5dd87c49b5ced659b1d4795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSystem
+  timeBetweenWaves: 1
   spawners:
   - spawnPoint: {fileID: 778810869}
     entitiesPerWave:
@@ -1077,6 +1078,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 3012650132007359930, guid: 6acd86d938899b64a8729d5f90e804a2, type: 3}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  currentEntitiesAlive: []
 --- !u!1 &1525000076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1400,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadioAntenna
       objectReference: {fileID: 0}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1337716387}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnWave
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WaveSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532927521816519968, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
+      propertyPath: _OnPlayerInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6689999428837330713, guid: 0ad6e063a76f7b148829e5a9c10c2e96, type: 3}
       propertyPath: playerTag
       value: Player
@@ -1499,9 +1529,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2790283750333397784, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+    - target: {fileID: 3829805100793322867, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067575283797751824, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
