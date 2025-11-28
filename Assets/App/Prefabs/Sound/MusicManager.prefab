@@ -50,6 +50,6 @@ MonoBehaviour:
       Data2: 1108662441
       Data3: -760135552
       Data4: -1162147042
-    Path: event:/Music
+    Path: event:/Music/Music
   m_FightStarted: {fileID: 11400000, guid: ea956defac7656f4a833ee2b31c389b7, type: 2}
   m_FightEnded: {fileID: 11400000, guid: eb28ed08b10d860419e996f9f2cfeab1, type: 2}

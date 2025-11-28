@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{715cdb44-d8a9-4214-8040-b1d21e0bbbba}">
+		<property name="note" />
 		<property name="name">
 			<value>Music</value>
 		</property>
@@ -306,7 +307,6 @@
 	<object class="MixerBusEffectChain" id="{ce06bfdd-ff9c-4225-a50d-f328e9fa9bc3}">
 		<relationship name="effects">
 			<destination>{fa66c315-7746-461c-b88f-27870a1cbadd}</destination>
-			<destination>{065d4fef-86b4-46e1-874f-3a60b4eaa855}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{3287a6ef-ed20-4336-86a4-d0ee05af3dbb}" />
@@ -383,7 +383,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{fa66c315-7746-461c-b88f-27870a1cbadd}" />
-	<object class="Sidechain" id="{065d4fef-86b4-46e1-874f-3a60b4eaa855}" />
 	<object class="AutomationPoint" id="{2867c8f4-48a6-4f09-b162-066fb5216dba}">
 		<property name="position">
 			<value>0</value>
