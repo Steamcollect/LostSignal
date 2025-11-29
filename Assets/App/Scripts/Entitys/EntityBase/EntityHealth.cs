@@ -1,22 +1,21 @@
 using System;
-using MVsToolkit.Dev;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour, IHealth
 {
     [Header("Settings")]
-    [SerializeField] int maxHealth;
-    int currentHealth;
+    [SerializeField] protected int maxHealth;
+    protected int currentHealth;
 
     [Header("References")]
-    [SerializeField] private DamageSFXManager m_DamageSFXManager;
+    [SerializeField] protected DamageSFXManager m_DamageSFXManager;
     
     public Action OnTakeDamage, OnDeath;
 
     //[Header("Input")]
     //[Header("Output")]
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
     }
@@ -41,4 +40,7 @@ public class EntityHealth : MonoBehaviour, IHealth
         m_DamageSFXManager.PlayDeathSFX();
         OnDeath.Invoke();
     }
+
+    public int GetMaxHealth() => maxHealth;
+    public int GetCurrentHealth() => currentHealth;
 }

@@ -29,9 +29,8 @@ public class PlayerController : EntityController
         dashIA.action.started -= Dash;
     }
 
-    private void Awake()
+    public override void OnAwake()
     {
-        base.Awake();
         controller.Set(this);
 
         dashIA.action.Enable();

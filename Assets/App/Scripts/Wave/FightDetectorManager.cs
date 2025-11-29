@@ -48,7 +48,6 @@ public class FightDetectorManager : MonoBehaviour
     {
         if(waveSystems.Count <= 0 && enemys.Count <= 0)
         {
-            print("Fight Start");
             onFightStart.Call();
         }
     }
@@ -57,7 +56,6 @@ public class FightDetectorManager : MonoBehaviour
     {
         if (waveSystems.Count <= 0 && enemys.Count <= 0)
         {
-            print("Fight End");
             onFightEnd.Call();
         }
     }
