@@ -9,7 +9,6 @@ public class EntityHealth : MonoBehaviour, IHealth
     int currentHealth;
 
     [Header("References")]
-    [SerializeField] InterfaceReference<IShield> shield;
     [SerializeField] private DamageSFXManager m_DamageSFXManager;
     
     public Action OnTakeDamage, OnDeath;
@@ -24,14 +23,6 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(int damage)
     {
-        if (shield.Value != null && !shield.Value.IsDestroy())
-        {
-            int remainingDmg = shield.Value.TakeDamage(damage);
-            if(remainingDmg > 0) TakeDamage(remainingDmg);
-            
-            return;
-        }
-
         currentHealth -= damage;
         
         if(currentHealth <= 0)

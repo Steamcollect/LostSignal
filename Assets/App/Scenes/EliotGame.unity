@@ -1417,6 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSystem
   timeBetweenWaves: 1
+  IsInFight: 0
   spawners:
   - spawnPoint: {fileID: 778810869}
     entitiesPerWave:
@@ -2109,8 +2110,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7784260504962584145, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

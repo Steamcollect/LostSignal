@@ -316,51 +316,6 @@ MonoBehaviour:
   m_FirePitchVariance: 0.2
   m_ReloadVolume: 1
   m_FireVolume: 1
---- !u!1 &2528724873083000088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5386248972719623195}
-  - component: {fileID: 3413903002902243344}
-  m_Layer: 0
-  m_Name: Shield
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5386248972719623195
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2528724873083000088}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1003742095360013401}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3413903002902243344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2528724873083000088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535abbb2feda753419a7ede80a94244b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityShield
-  maxShield: 100
 --- !u!1 &2790283750333397784
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +329,6 @@ GameObject:
   - component: {fileID: 4710385784493003900}
   - component: {fileID: 384362440837574710}
   - component: {fileID: 4332319120167915156}
-  - component: {fileID: 7784260504962584145}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -490,22 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a45729c946d4c347ae5a141e95849c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityTrigger
---- !u!208 &7784260504962584145
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2790283750333397784}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &3233522183667764025
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,8 +474,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5386248972719623195}
+  m_Children: []
   m_Father: {fileID: 1409431294601431814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8231817660637434609
@@ -553,8 +490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
   maxHealth: 100
-  shield:
-    _object: {fileID: 3413903002902243344}
   m_DamageSFXManager: {fileID: 1866026752504187138}
 --- !u!114 &1866026752504187138
 MonoBehaviour:
