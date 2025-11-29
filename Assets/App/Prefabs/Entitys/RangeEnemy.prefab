@@ -52,7 +52,7 @@ MonoBehaviour:
   attackCooldown: 0.3
   reloadCooldown: 0.8
   attackPoint: {fileID: 5309297015634064110}
-  m_MuzzleFlashPrefab: {fileID: 0}
+  m_MuzzleFlashPrefab: {fileID: 4186470608034871016, guid: e1532b720bdc5ad4cb310a851a0a304a, type: 3}
   m_SFXManager: {fileID: 6023625709644627158}
 --- !u!114 &6023625709644627158
 MonoBehaviour:

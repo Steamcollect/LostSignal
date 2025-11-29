@@ -667,6 +667,7 @@ MonoBehaviour:
   bulletSpeed: 30
   knockBackForce: 0
   attackPoint: {fileID: 874208509811087154}
+  m_MuzzleFlashPrefab: {fileID: 4186470608034871016, guid: e1532b720bdc5ad4cb310a851a0a304a, type: 3}
   m_SFXManager: {fileID: 658399684848975888}
 --- !u!114 &968097293021133466
 MonoBehaviour:

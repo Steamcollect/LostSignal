@@ -27,6 +27,7 @@ public class RangeOverloadCombatStyle : CombatStyle
 
     [Header("References")]
     [SerializeField] Transform attackPoint;
+    [SerializeField] private GameObject m_MuzzleFlashPrefab;
 
     [SerializeField] private RangeReloadingWeaponSFXManager m_SFXManager;
 
@@ -53,7 +54,8 @@ public class RangeOverloadCombatStyle : CombatStyle
             Bullet bullet = BulletManager.Instance.GetBullet();
             bullet.transform.position = attackPoint.position;
             bullet.transform.up = attackPoint.forward;
-
+            var muzzleVFX = Instantiate(m_MuzzleFlashPrefab, attackPoint);
+            Destroy(muzzleVFX, muzzleVFX.GetComponent<ParticleSystem>().main.duration);
             bullet.Setup(bulletDamage, bulletSpeed)
                 .SetKnockback(knockBackForce);
 
