@@ -37,24 +37,28 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("Bullet") || !other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("Bullet hit: " + other.gameObject.tag);
             ContactPoint contact = other.contacts[0];
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point;
 
-            if (m_HitPrefab)
+            if (m_HitPrefab && (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("Player")))
             {
                 GameObject hitVFX = Instantiate(m_HitPrefab, pos, rot);
 
                 Destroy(hitVFX, hitVFX.GetComponent<ParticleSystem>().main.duration);
             }
-        }
+
             if (other.gameObject.TryGetComponent(out EntityTrigger trigger))
-        {
-            if(knockback > 0) trigger.GetController().GetRigidbody().AddForce(transform.up * knockback);
-            trigger.GetController()?.GetHealth().TakeDamage(damage);
+            {
+                if (knockback > 0)
+                {
+                    trigger.GetController().GetRigidbody().AddForce(transform.up * knockback);
+                }
+                trigger.GetController()?.GetHealth().TakeDamage(damage);
+            }
         }
 
         transform.position = Vector3.zero;
