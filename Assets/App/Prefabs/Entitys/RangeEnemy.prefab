@@ -52,6 +52,7 @@ MonoBehaviour:
   attackCooldown: 0.3
   reloadCooldown: 0.8
   attackPoint: {fileID: 5309297015634064110}
+  m_MuzzleFlashPrefab: {fileID: 0}
   m_SFXManager: {fileID: 6023625709644627158}
 --- !u!114 &6023625709644627158
 MonoBehaviour:
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82303cb87d1dd4c4ebf8ada5c71ce2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
-  maxHealth: 30
+  maxHealth: 8
   invincibilityDelay: 0
   m_DamageSFXManager: {fileID: 449631955636452469}
 --- !u!114 &449631955636452469

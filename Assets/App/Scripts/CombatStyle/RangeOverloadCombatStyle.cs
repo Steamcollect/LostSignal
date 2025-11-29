@@ -1,25 +1,27 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class RangeOverloadCombatStyle : CombatStyle
 {
     [Header("Settings")]
-    [SerializeField] float maxCost;
-    [SerializeField] float shootCost;
+    [SerializeField] float maxTemperature;
+    [SerializeField] float shootTemperature;
+    [SerializeField] float temperatureLostPerSec;
     float curentTemperature;
-
-    [Space(10)]
-    [SerializeField] int bulletDamage;
-    [SerializeField] float bulletSpeed;
-    [SerializeField] float knockBackForce;
 
     [Space(10)]
     [SerializeField] float attackCooldown;
     [SerializeField] float overloadCooldown;
     [SerializeField] float timeToCoolsAfterShoot;
 
+    [Space(10)]
+    [SerializeField] int bulletDamage;
+    [SerializeField] float bulletSpeed;
+    [SerializeField] float knockBackForce;
+
     bool canAttack = true;
-    bool isReloading = false;
+    bool isOverload = false;
 
     float coolsTimer;
 
@@ -35,18 +37,18 @@ public class RangeOverloadCombatStyle : CombatStyle
     {
         coolsTimer += Time.deltaTime;
 
-        if(coolsTimer > timeToCoolsAfterShoot)
+        if(coolsTimer > timeToCoolsAfterShoot && !isOverload)
         {
-
+            Mathf.Clamp(curentTemperature -= temperatureLostPerSec * Time.deltaTime, 0, maxTemperature);
+            OnAmmoChange?.Invoke(curentTemperature, maxTemperature);
         }
     }
 
     public override void Attack()
     {
-        if (canAttack && !isReloading)
+        if (canAttack && !isOverload)
         {
             coolsTimer = 0;
-            OnAMMOChange?.Invoke(shootCost, maxCost);
 
             Bullet bullet = BulletManager.Instance.GetBullet();
             bullet.transform.position = attackPoint.position;
@@ -59,18 +61,27 @@ public class RangeOverloadCombatStyle : CombatStyle
 
             if (m_SFXManager)
                 m_SFXManager.PlayAttackSFX();
+
+            curentTemperature += shootTemperature;
+            if(curentTemperature >= maxTemperature)
+            {
+                curentTemperature = maxTemperature;
+                Overload();
+            }
+
+            OnAmmoChange?.Invoke(curentTemperature, maxTemperature);
         }
     }
 
-    public void Cools()
+    public void Overload()
     {
-        if (!isReloading)
+        if (!isOverload)
         {
             OnReload?.Invoke();
 
             if (m_SFXManager)
                 m_SFXManager.PlayReloadSFX();
-            StartCoroutine(ReloadCooldown());
+            StartCoroutine(OverloadCooldown());
         }
     }
 
@@ -81,12 +92,10 @@ public class RangeOverloadCombatStyle : CombatStyle
         canAttack = true;
     }
 
-    IEnumerator ReloadCooldown()
+    IEnumerator OverloadCooldown()
     {
-        isReloading = true;
+        isOverload = true;
         yield return new WaitForSeconds(overloadCooldown);
-        currentBulletCount = maxBulletCount;
-        OnAMMOChange?.Invoke(currentBulletCount, maxBulletCount);
-        isReloading = false;
+        isOverload = false;
     }
 }
