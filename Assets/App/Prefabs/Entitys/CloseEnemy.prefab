@@ -312,7 +312,7 @@ MonoBehaviour:
   combat: {fileID: 7315905735496179703}
   rb: {fileID: 847507863784800633}
   detectionRange: 14
-  attackRange: 2.5
+  attackRange: 4
   detectionMask:
     serializedVersion: 2
     m_Bits: 315
