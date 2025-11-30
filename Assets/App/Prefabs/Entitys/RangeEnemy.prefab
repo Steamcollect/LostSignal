@@ -290,6 +290,7 @@ MonoBehaviour:
   - {fileID: 3232189753623392808}
   m_Objects:
   - {fileID: 4458644276942394988}
+  - {fileID: 5332879825593717461}
 --- !u!1 &4107096721611965925
 GameObject:
   m_ObjectHideFlags: 0
