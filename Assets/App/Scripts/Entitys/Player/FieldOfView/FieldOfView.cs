@@ -1,3 +1,4 @@
+using FischlWorks_FogWar;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,15 +12,18 @@ public class FieldOfView : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float m_ViewRadius;
     [Range(0, 360)]
-    [SerializeField] private float m_ViewAngle;
+    [SerializeField] private float m_ViewAngle; 
+    [SerializeField] private float m_ProximityRadius = 3f;
+
     [SerializeField] private LayerMask m_TargetMask;
     [SerializeField] private LayerMask m_ObstacleMask;
+
     [SerializeField] private float meshResolution;
     [SerializeField] private MeshFilter viewMeshFilter;
 
     [SerializeField] private Transform m_Canon;
     
-    private List<Transform> m_VisibleTargets = new List<Transform>();
+    private List<GameObject> m_VisibleTargets = new List<GameObject>();
 
     private int edgeResolveIterations;
     private float edgeDstThreshold;
@@ -31,26 +35,12 @@ public class FieldOfView : MonoBehaviour
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
-
-        StartCoroutine(FindTargetsWithDelay(0.2f));
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
-    IEnumerator FindTargetsWithDelay(float delay)
-    {
-        while (enabled)
-        {
-            yield return new WaitForSeconds(delay);
-            FindVisibleTargets();
-        }
     }
 
     private void Update()
     {
+        FindVisibleTargets();
+
         if (m_Canon != null)
         {
             Quaternion newRotation = Quaternion.Euler(0, m_Canon.rotation.eulerAngles.y, 0);
@@ -65,21 +55,51 @@ public class FieldOfView : MonoBehaviour
 
     private void FindVisibleTargets()
     {
+        List<GameObject> targetsPreviouslyVisible = new List<GameObject>(m_VisibleTargets);
         m_VisibleTargets.Clear();
-        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, m_ViewRadius, m_TargetMask);
+
+        float searchRadius = Mathf.Max(m_ViewRadius, m_ProximityRadius);
+        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, searchRadius, m_TargetMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
-            Transform target = targetsInViewRadius[i].transform;
-            Vector3 dirToTarget = (target.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirToTarget) < m_ViewAngle / 2)
-            {
-                float dstToTarget = Vector3.Distance(transform.position, target.position);
+            GameObject target = targetsInViewRadius[i].gameObject;
+            Vector3 dirToTarget = (target.transform.position - transform.position).normalized;
+            float dstToTarget = Vector3.Distance(transform.position, target.transform.position);
 
+            bool inProximityRange = dstToTarget < m_ProximityRadius;
+
+            bool inViewCone = (dstToTarget < m_ViewRadius) && (Vector3.Angle(transform.forward, dirToTarget) < m_ViewAngle / 2);
+
+            if (inProximityRange || inViewCone)
+            {
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, m_ObstacleMask))
                 {
                     m_VisibleTargets.Add(target);
                 }
+            }
+        }
+
+        foreach (GameObject oldTarget in targetsPreviouslyVisible)
+        {
+            if (oldTarget != null && !m_VisibleTargets.Contains(oldTarget))
+            {
+                FogVisibilityObject fogScript = oldTarget.GetComponentInChildren<FogVisibilityObject>();
+
+                if(fogScript != null)
+                {
+                    fogScript.m_Visibility = false;
+                }
+            }
+        }
+
+        foreach (GameObject newVisibleTarget in m_VisibleTargets)
+        {
+            if (newVisibleTarget != null)
+            {
+                FogVisibilityObject fogScript = newVisibleTarget.GetComponentInChildren<FogVisibilityObject>();
+
+                if (fogScript != null && !fogScript.m_Visibility) fogScript.m_Visibility = true;
             }
         }
     }
@@ -234,9 +254,9 @@ public class FieldOfView : MonoBehaviour
         Handles.DrawLine(transform.position, transform.position + viewAngleB * (m_ViewRadius + 0.5f));
 
         Handles.color = Color.red;
-        foreach (Transform visibleTarget in m_VisibleTargets)
+        foreach (GameObject visibleTarget in m_VisibleTargets)
         {
-            Handles.DrawLine(transform.position, visibleTarget.position);
+            Handles.DrawLine(transform.position, visibleTarget.transform.position);
         }
     }
 #endif

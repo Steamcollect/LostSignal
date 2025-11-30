@@ -22,7 +22,7 @@ namespace FischlWorks_FogWar
     public class FogVisibilityObject : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private bool m_Visibility = false;
+        public bool m_Visibility = false;
         [SerializeField] [Range(0, 2)] private int m_AdditionalRadius = 0;
         
         [Header("References")]
@@ -31,17 +31,11 @@ namespace FischlWorks_FogWar
         [SerializeField] private List<GameObject> m_Objects;
         private void Update()
         {
-            if (!IsInRangeFogWar()) return;
-
             UpdateVisibilityObject();
         }
 
-        private bool IsInRangeFogWar() => FogWarManager.HasInstance() && FogWarManager.Instance.CheckWorldGridRange(transform.position);
-
         private void UpdateVisibilityObject()
         {
-            m_Visibility = FogWarManager.Instance.CheckVisibility(transform.position, m_AdditionalRadius);
-
             foreach (Renderer rend in m_Renderers)
             {
                 rend.enabled = m_Visibility;
