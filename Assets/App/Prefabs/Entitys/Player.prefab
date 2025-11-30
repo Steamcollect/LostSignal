@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FieldOfView
   m_ViewRadius: 40
   m_ViewAngle: 130
-  m_ProximityRadius: 4
+  m_ProximityRadius: 6
   m_TargetMask:
     serializedVersion: 2
     m_Bits: 512
