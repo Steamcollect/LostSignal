@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135eba6dc3255e44a8dd62d801c88833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_HorizontalLinearMovement
-  moveSpeed: 40
+  moveSpeed: 60
   rb: {fileID: 7817365298629724350}
 --- !u!114 &4795731786279744601
 MonoBehaviour:
@@ -790,10 +790,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Dash
   dashCooldown: 0.8
   dashForceMode: 1
-  dashDrag: 15
-  dashForce: 60
-  dadhTime: 0.1
+  dashDrag: 3
+  dashForce: 18
+  dadhTime: 0.25
+  invicibilityTime: 0.2
   rb: {fileID: 7817365298629724350}
+  entityHealth: {fileID: 8231817660637434609}
 --- !u!1 &5937513771234304038
 GameObject:
   m_ObjectHideFlags: 0

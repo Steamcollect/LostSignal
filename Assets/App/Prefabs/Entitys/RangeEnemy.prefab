@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RangeReloadingCombatStyle
   maxBulletCount: 10
   bulletDamage: 1
-  bulletSpeed: 30
+  bulletSpeed: 25
   knockBackForce: 0
-  attackCooldown: 0.3
+  attackCooldown: 0.4
   reloadCooldown: 0.8
   attackPoint: {fileID: 5309297015634064110}
   m_MuzzleFlashPrefab: {fileID: 4186470608034871016, guid: e1532b720bdc5ad4cb310a851a0a304a, type: 3}
@@ -878,8 +878,8 @@ MonoBehaviour:
     _object: {fileID: 5011621857055892473}
   combat: {fileID: 3283483463715396580}
   rb: {fileID: 5189926587359084582}
-  detectionRange: 12
-  closeRange: 5
+  detectionRange: 16
+  closeRange: 8
   detectionMask:
     serializedVersion: 2
     m_Bits: 319
