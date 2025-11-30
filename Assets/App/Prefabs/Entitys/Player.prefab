@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7086890690547375406}
   - component: {fileID: 5821534615709407183}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ViewField
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4071016256816336600}
   - component: {fileID: 5114071651880906620}
   - component: {fileID: 2864991524791546546}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StencilMask
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 8628298174995962097}
   - component: {fileID: 7409669833371987321}
   - component: {fileID: 598959188889133405}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StencilMaskArroundPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
