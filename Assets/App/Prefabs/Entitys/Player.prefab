@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7086890690547375406}
   - component: {fileID: 5821534615709407183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ViewField
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 514935712424246803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13d773664f2564f825e6f7bc8b3dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FieldOfView
-  m_ViewRadius: 40
+  m_ViewRadius: 50
   m_ViewAngle: 130
   m_ProximityRadius: 6
   m_TargetMask:
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4071016256816336600}
   - component: {fileID: 5114071651880906620}
   - component: {fileID: 2864991524791546546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StencilMask
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 7482137436969905181}
   - component: {fileID: 2758507689147800166}
   - component: {fileID: 137720684722639583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visual
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 2074092412787055408}
   - component: {fileID: 1149920520322700606}
   - component: {fileID: 658399684848975888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Combat
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 8628298174995962097}
   - component: {fileID: 7409669833371987321}
   - component: {fileID: 598959188889133405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StencilMaskArroundPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ Transform:
   m_GameObject: {fileID: 2927018423409884602}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 1003742095360013401}
   - component: {fileID: 8231817660637434609}
   - component: {fileID: 1866026752504187138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 8508021338843581821}
   - component: {fileID: 1120836424910208525}
   - component: {fileID: 6693995751490087855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 5371318777814390314}
   - component: {fileID: 1129812706102528412}
   - component: {fileID: 968097293021133466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RangeOverloadCombatStyle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 7483373340615603498}
   - component: {fileID: 4600652507870665905}
   - component: {fileID: 4795731786279744601}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Movement
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 874208509811087154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackPoint
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6504119424866204772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canon
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 8643273504320022015}
   - component: {fileID: 7362125588617569734}
   - component: {fileID: 1899103571868500874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1093,6 +1093,10 @@ PrefabInstance:
       value: WalkDust
       objectReference: {fileID: 0}
     - target: {fileID: 9120716195765561872, guid: 538462d8e11bfa447af7966eab7cf0b3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120716195765561872, guid: 538462d8e11bfa447af7966eab7cf0b3, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -1117,6 +1121,10 @@ PrefabInstance:
     - target: {fileID: 1537008473948126, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
       propertyPath: m_Name
       value: Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537008473948126, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1537008473948126, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
       propertyPath: m_TagString
@@ -1226,6 +1234,10 @@ PrefabInstance:
     - target: {fileID: 1614148614474272309, guid: 2f5defe4eda98344bbfee7dd67e6b60b, type: 3}
       propertyPath: m_Name
       value: FogRevealer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614148614474272309, guid: 2f5defe4eda98344bbfee7dd67e6b60b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1614148614474272309, guid: 2f5defe4eda98344bbfee7dd67e6b60b, type: 3}
       propertyPath: m_TagString
