@@ -542,7 +542,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b13c191107a7c44cbb54282a54d09b8, type: 2}
+  - {fileID: 2100000, guid: 2abe227e004228d47aced524b41f1c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 3967571892288779133}
   - component: {fileID: 1408150523670328044}
   - component: {fileID: 3234812715928615529}
+  - component: {fileID: 2230830742237945215}
   m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
@@ -1041,6 +1042,22 @@ MonoBehaviour:
   m_DamageVolume: 1
   m_DeathVolume: 1
   m_DamagePitchVariance: 0.2
+--- !u!114 &2230830742237945215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989291384880957242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108a3e3039a3a7b4a82f5a2e56a314d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageVisual
+  m_Renderers:
+  - {fileID: 3354146392642358034}
+  m_EntityHealth: {fileID: 1408150523670328044}
+  m_DamageAmount: 0
 --- !u!1001 &3080387515701456289
 PrefabInstance:
   m_ObjectHideFlags: 0

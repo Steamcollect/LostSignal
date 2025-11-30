@@ -3,25 +3,20 @@ using UnityEngine;
 
 public class DamageVisual : MonoBehaviour
 {
-    private MeshRenderer[] m_Renderers;
+    [Header("References")]
+    [SerializeField] private MeshRenderer[] m_Renderers;
+    [SerializeField] private EntityHealth m_EntityHealth;
     private MaterialPropertyBlock m_Block;
     [Range(0f, 1f)] [SerializeField] private float m_DamageAmount;
 
-    void Awake()
+    private void Awake()
     {
-        m_Renderers = GetComponentsInChildren<MeshRenderer>();
-
         m_Block = new MaterialPropertyBlock();
-    }
-
-    private void Start()
-    {
-        SetDamage(0);
     }
 
     private void Update()
     {
-        SetDamage(m_DamageAmount);
+        SetDamage(1 - m_EntityHealth.GetHealthPercentage());
     }
 
     public void SetDamage(float value)
