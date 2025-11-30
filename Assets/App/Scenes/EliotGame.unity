@@ -675,6 +675,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCameraSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 4686203961174464103, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
+      propertyPath: m_Dithering
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686203961174464103, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5305197814974200049, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.98129
@@ -712,8 +720,24 @@ PrefabInstance:
       value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 7812542238518711623, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812542238518711623, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
       propertyPath: orthographic size
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812542238518711623, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812542238518711623, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812542238518711623, guid: 180302a7e3f281a438ff7be0e11e8b1e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
