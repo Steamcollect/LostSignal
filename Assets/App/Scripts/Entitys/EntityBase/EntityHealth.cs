@@ -8,7 +8,7 @@ public class EntityHealth : MonoBehaviour, IHealth
     [SerializeField] protected int maxHealth;
     protected int currentHealth;
 
-    [SerializeField] float invincibilityDelay;
+    public float invincibilityDelay;
     bool isInvincible = false;
 
     [Header("References")]
@@ -26,7 +26,18 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(int damage)
     {
-        if (isInvincible) return;
+        //à faire plus proprement
+        if (invincibilityDelay > 0)
+        {
+            Debug.Log("Entity is now invincible for " + invincibilityDelay + " seconds.");
+            isInvincible = true;
+            CoroutineUtils.Delay(this, () =>
+            {
+                isInvincible = false;
+            }, invincibilityDelay);
+            //Mettre feedbacks d'invincibilité
+            return;
+        }
 
         currentHealth -= damage;
         
@@ -36,15 +47,6 @@ public class EntityHealth : MonoBehaviour, IHealth
         }
         else
         {
-            if(invincibilityDelay > 0)
-            {
-                isInvincible = true;
-                CoroutineUtils.Delay(this, () =>
-                {
-                    isInvincible = false;
-                }, invincibilityDelay);
-            }
-
             m_DamageSFXManager.PlayDamageSFX();
             OnTakeDamage?.Invoke();
         }
