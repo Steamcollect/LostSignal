@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1286264051780348516}
   - component: {fileID: 2981806605284669722}
   m_Layer: 0
-  m_Name: DeathFeedback
+  m_Name: DeathEnemyFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1883084624102959633}
   - component: {fileID: 5859129938443336403}
   m_Layer: 0
-  m_Name: HitFeedback
+  m_Name: HitEnemyFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,8 +220,8 @@ MonoBehaviour:
         ExtraBoundRenderers:
         - {fileID: 0}
         - {fileID: 0}
-        Mode: 0
-        PropertyName: _Tint
+        Mode: 1
+        PropertyName: _BaseColor
         FlickerDuration: 0.08
         FlickerPeriod: 0.08
         FlickerColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
