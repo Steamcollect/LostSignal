@@ -1245,6 +1245,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61521646}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &61750879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
+  m_PrefabInstance: {fileID: 314529445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f6cb52c6eaeaa439b8f0777fce5338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretEnemyController
 --- !u!1 &66394304
 GameObject:
   m_ObjectHideFlags: 0
@@ -6346,7 +6357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatFightingDetection
   entities:
   - {fileID: 809442286}
-  - {fileID: 0}
+  - {fileID: 670621998}
   - {fileID: 2026016702}
   - {fileID: 1345391232}
   - {fileID: 867551531}
@@ -10567,6 +10578,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549837161}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &554213145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
+  m_PrefabInstance: {fileID: 108164846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f6cb52c6eaeaa439b8f0777fce5338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretEnemyController
 --- !u!1001 &557601816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12405,6 +12427,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654127594}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &670621998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
+  m_PrefabInstance: {fileID: 1869656884}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f6cb52c6eaeaa439b8f0777fce5338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretEnemyController
 --- !u!1001 &670894280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31232,12 +31265,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatFightingDetection
   entities:
   - {fileID: 548381564}
-  - {fileID: 0}
+  - {fileID: 554213145}
   - {fileID: 118113788}
   - {fileID: 137042129}
   - {fileID: 1429582068}
   - {fileID: 1860396314}
-  - {fileID: 0}
+  - {fileID: 61750879}
   - {fileID: 944550396}
   OnEntitiesKilled:
     m_PersistentCalls:
