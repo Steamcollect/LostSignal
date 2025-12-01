@@ -11,7 +11,7 @@ public class EntityHealth : MonoBehaviour, IHealth
     [SerializeField] protected int currentHealth;
 
     [Header("INVINCIBILITY")]
-    [SerializeField] protected float m_InvincibilityRegainDuration = 5.0f;
+    [SerializeField] protected float m_InvincibilityRegainDuration;
     [SerializeField] protected bool m_IsInvincible = false;
 
     [Header("REFERENCES")]
