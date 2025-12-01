@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEditor;
 
+[SelectionBase]
 public class Barricade : MonoBehaviour
 {
     [Header("Settings")]

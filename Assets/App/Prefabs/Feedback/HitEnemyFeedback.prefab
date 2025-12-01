@@ -224,7 +224,7 @@ MonoBehaviour:
         PropertyName: _BaseColor
         FlickerDuration: 0.08
         FlickerPeriod: 0.08
-        FlickerColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+        FlickerColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
         MaterialIndexes: 00000000
         UseMaterialPropertyBlocks: 0
         SpriteRendererTextureProperty: _MainTex
