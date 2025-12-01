@@ -15,6 +15,10 @@ public class Bullet : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    private Vector3 m_OriginalPosition;
+    
+    public Vector3 GetShootPosition() => m_OriginalPosition;
+    
     public Bullet Setup(int damage, float speed)
     {
         this.damage = damage;
@@ -22,6 +26,8 @@ public class Bullet : MonoBehaviour
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        
+        m_OriginalPosition = transform.position;
 
         StartCoroutine(CheckDistanceFromPlayer());
 
@@ -35,9 +41,20 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        rb.position += transform.up * speed * Time.deltaTime;
+        rb.position += transform.up * (speed * Time.deltaTime);
     }
-
+    
+    public void Impact(GameObject target)
+    {
+        if (target.TryGetComponent(out IHealth health))
+        {
+            health.TakeDamage(damage);
+        }
+        
+        transform.position = Vector3.zero;
+        BulletManager.Instance.ReturnBullet(this);
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
         if (!other.gameObject.CompareTag("Bullet"))

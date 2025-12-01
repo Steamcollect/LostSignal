@@ -40,14 +40,14 @@ public class EntityHealth : MonoBehaviour, IHealth
         }
         else
         {
-            m_DamageSFXManager.PlayDamageSFX();
+            m_DamageSFXManager?.PlayDamageSFX();
             OnTakeDamage?.Invoke();
         }
     }
 
     void Die()
     {
-        m_DamageSFXManager.PlayDeathSFX();
+        m_DamageSFXManager?.PlayDeathSFX();
         OnDeath?.Invoke();
     }
 
@@ -58,7 +58,7 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     private IEnumerator OnInvincibilityGain(float duration)
     {
-        // Feedback gain d'invicibilité
+        // Feedback gain d'invicibilitï¿½
         m_IsInvincible = true;
         m_CurrentInvincibilityTimer = 0;
 
@@ -75,7 +75,7 @@ public class EntityHealth : MonoBehaviour, IHealth
     private void LoseInvincibility()
     {
         m_IsInvincible = false;
-        // Feedback perte d'invincibilité
+        // Feedback perte d'invincibilitï¿½
     }
 
     public int GetMaxHealth() => maxHealth;
