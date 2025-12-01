@@ -34,6 +34,7 @@ public class FightDetectorManager : MonoBehaviour
     {
         CheckStartFight();
 
+        if(enemys.Contains(enemy)) return;
         enemys.Add(enemy);
         enemy.OnDeath += OnEnemyDie;
     }
