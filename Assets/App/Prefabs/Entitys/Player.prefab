@@ -737,15 +737,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859ea51f3471d7b428dea5580c45ff77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeOverloadCombatStyle
-  maxTemperature: 100
-  shootTemperature: 5
-  temperatureLostPerSec: 7
-  attackCooldown: 0.4
-  overloadCooldown: 0.5
-  overloadRecorverySpeed: 20
+  maxTemperature: 80
+  shootTemperature: 6
+  temperatureLostPerSec: 80
+  attackCooldown: 0.28
+  overloadCooldown: 0.3
+  overloadRecorverySpeed: 55
   timeToCoolsAfterShoot: 0.5
   bulletDamage: 1
-  bulletSpeed: 30
+  bulletSpeed: 80
   knockBackForce: 0
   meshRenderer: {fileID: 137720684722639583}
   colorOverTemperature:
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135eba6dc3255e44a8dd62d801c88833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_HorizontalLinearMovement
-  moveSpeed: 60
+  moveSpeed: 50
   rb: {fileID: 7817365298629724350}
 --- !u!114 &4795731786279744601
 MonoBehaviour:
@@ -884,10 +884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1d2239c8eaa524c9d4ec77c567debe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Dash
-  dashCooldown: 0.8
+  dashCooldown: 1
   dashForceMode: 1
   dashDrag: 3
-  dashForce: 18
+  dashForce: 20
   dadhTime: 0.25
   invicibilityTime: 0.2
   rb: {fileID: 7817365298629724350}

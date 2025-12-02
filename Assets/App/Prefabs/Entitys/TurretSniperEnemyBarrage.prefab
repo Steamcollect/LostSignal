@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7892425440061775219}
   - component: {fileID: 1548744615613994876}
   m_Layer: 9
-  m_Name: TurretSniperEnemy
+  m_Name: TurretSniperEnemyBarrage
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -107,17 +107,18 @@ MonoBehaviour:
     _object: {fileID: 0}
   combat: {fileID: 3776052241868365976}
   rb: {fileID: 6320683322575009121}
-  m_AttackRange: 30
-  m_DetectionRange: 30
-  bonusRangeWhenAttacked: 50
+  m_AttackRange: 22
+  m_DetectionRange: 180
+  bonusRangeWhenAttacked: 0
   delayWhenAttacked: 0
+  autoReload: 0
   detectionMask:
     serializedVersion: 2
     m_Bits: 2555
   playertag: Player
-  delayToAim: 1
-  delayBeforeAttack: 0.1
-  delayAfterAttack: 0.1
+  delayToAim: 0
+  delayBeforeAttack: 0
+  delayAfterAttack: 0
   laserMask:
     serializedVersion: 2
     m_Bits: 777
@@ -197,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 944624924630220536}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.15}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -919,12 +920,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a447bb131288f1d4bb0e2c4ba38d706d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeReloadingCombatStyle
-  maxBulletCount: 1
-  bulletDamage: 2
-  bulletSpeed: 240
+  maxBulletCount: 120
+  bulletDamage: 1
+  bulletSpeed: 120
   knockBackForce: 0
-  attackCooldown: 1
-  reloadCooldown: 0.1
+  attackCooldown: 0.02
+  reloadCooldown: 2
   attackPoint: {fileID: 5114947788963044225}
   m_MuzzleFlashPrefab: {fileID: 4186470608034871016, guid: e1532b720bdc5ad4cb310a851a0a304a, type: 3}
   m_SFXManager: {fileID: 0}

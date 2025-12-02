@@ -11,6 +11,7 @@ public class TurretEnemyController : EntityController, ISpawnable
     [SerializeField] private float m_DetectionRange;
     [SerializeField] private float bonusRangeWhenAttacked;
     [SerializeField] private float delayWhenAttacked;
+    [SerializeField] private bool autoReload = true;
     [SerializeField] private LayerMask detectionMask;
     [SerializeField, TagName] private string playertag;
     [Space(10)]
@@ -107,7 +108,7 @@ public class TurretEnemyController : EntityController, ISpawnable
         yield return new WaitForSeconds(delayBeforeAttack);
 
         combat.Attack();
-        combat.GetCombatStyle().Reload();
+        if (autoReload ) combat.GetCombatStyle().Reload();
         yield return new WaitForSeconds(delayAfterAttack);
 
         canLookAtPlayer = true;
