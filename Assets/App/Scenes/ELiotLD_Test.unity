@@ -4491,7 +4491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0835dc6b5dd87c49b5ced659b1d4795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSystem
-  timeBetweenWaves: 1
+  timeBetweenWaves: 2
   IsInFight: 0
   spawners:
   - spawnPoint: {fileID: 38159341}
@@ -4499,11 +4499,9 @@ MonoBehaviour:
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 176903987}
     entitiesPerWave:
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 274791736}
@@ -4511,61 +4509,51 @@ MonoBehaviour:
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 1227552208}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 889698384}
     entitiesPerWave:
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 1623153105}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 1380022880}
     entitiesPerWave:
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
     - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 1585728187}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - spawnPoint: {fileID: 535380105}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
-    - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
+    - {fileID: 0}
   - spawnPoint: {fileID: 1029825971}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
-    - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
   - spawnPoint: {fileID: 1981766360}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
-    - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
   - spawnPoint: {fileID: 2114450795}
     entitiesPerWave:
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
-    - {fileID: 7892425440061775219, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
+    - {fileID: 0}
   OnWavesStart:
     m_PersistentCalls:
       m_Calls: []
