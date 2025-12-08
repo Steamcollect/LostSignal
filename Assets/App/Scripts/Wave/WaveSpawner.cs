@@ -23,12 +23,12 @@ public class WaveSpawner : MonoBehaviour
             // SPAWN ENEMY
             if(content.TryGetComponent<EntityController>(out EntityController entity))
             {
-                Instantiate(entity, transform.position, transform.rotation);
+                EntityController spawnedEntity = Instantiate(entity, transform.position, transform.rotation);
 
-                if (entity.TryGetComponent(out ISpawnable spawnable)) spawnable.OnSpawn();
+                if (spawnedEntity.TryGetComponent(out ISpawnable spawnable)) spawnable.OnSpawn();
+
+                onSpawnCallback?.Invoke(spawnedEntity);
             }
-
-            onSpawnCallback?.Invoke(entity);
         }
     }
 

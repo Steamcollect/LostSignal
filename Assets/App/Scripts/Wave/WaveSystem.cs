@@ -16,13 +16,13 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private List<WaveSpawner> m_Spawners = new List<WaveSpawner>();
 
     [Title("EVENTS")]
-    [SerializeField] private UnityEvent m_OnWavesStart;
-    [SerializeField] private UnityEvent m_OnWavesClear;
+    [SerializeField] private UnityEvent m_OnCombatStart;
+    [SerializeField] private UnityEvent m_OnCombatCompleted;
 
     // State
-    private readonly List<EntityController> m_CurrentEntitiesAlive = new();
-    private int m_CurrentWaveIndex;
-    private int m_MaxWaveCount;
+    public List<EntityController> m_CurrentEntitiesAlive = new List<EntityController>();
+    public int m_CurrentWaveIndex;
+    public int m_MaxWaveCount;
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class WaveSystem : MonoBehaviour
         IsInFight = true;
 
         FightDetectorManager.S_Instance?.OnWaveStart(this);
-        m_OnWavesStart?.Invoke();
+        m_OnCombatStart?.Invoke();
 
         SpawnCurrentWave();
     }
@@ -101,7 +101,7 @@ public class WaveSystem : MonoBehaviour
     {
         IsInFight = false;
         FightDetectorManager.S_Instance?.OnWaveEnd(this);
-        m_OnWavesClear?.Invoke();
+        m_OnCombatCompleted?.Invoke();
     }
 
 #if UNITY_EDITOR
