@@ -7,7 +7,13 @@ public class Bullet : MonoBehaviour
     float speed;
     int damage;
     float knockback;
-
+    
+    public int Damage
+    {
+        get => damage;
+        set => damage = value;
+    }
+    
     [Header("References")]
     [SerializeField] Rigidbody rb;
     [SerializeField] private GameObject m_HitPrefab;

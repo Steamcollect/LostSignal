@@ -7,7 +7,13 @@ public class Grenade : MonoBehaviour
     [SerializeField] float explosionRadius;
     [SerializeField] GameObject radiusVisualizer;
     private GameObject explosionEffect;
-    
+
+    public float Damage
+    {
+        get => damage;
+        set => damage = value;
+    }
+
     public void ShowExplosionRadius(Vector3 position)
     {
         if (radiusVisualizer != null)

@@ -37,6 +37,11 @@ public class Laser : CombatStyle
                 }
                 trigger.GetController()?.GetHealth().TakeDamage(m_DamagePerSecond * Time.deltaTime);
             }
+            
+            if (hit.collider.TryGetComponent(out EnergySource energySource))
+            {
+                energySource.TakeDamage(m_DamagePerSecond * Time.deltaTime);
+            }
         }
 
         // Update the laser beam line positions

@@ -64,6 +64,11 @@ public class EntityHealth : MonoBehaviour, IHealth
         OnDeath?.Invoke();
     }
 
+    public void GainInvincibility()
+    {
+        m_IsInvincible = true;
+    }
+    
     public void GainInvincibility(float duration)
     {
         StartCoroutine(OnInvincibilityGain(duration));
@@ -85,7 +90,7 @@ public class EntityHealth : MonoBehaviour, IHealth
         LoseInvincibility();
     }
 
-    private void LoseInvincibility()
+    public void LoseInvincibility()
     {
         m_IsInvincible = false;
         // Feedback perte d'invincibilit�
