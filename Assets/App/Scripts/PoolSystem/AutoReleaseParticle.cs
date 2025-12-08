@@ -14,7 +14,6 @@ public class AutoReleaseParticle : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
-        Debug.Log("Stop");
         if(m_PoolTicket == null) m_PoolTicket = GetComponent<PooledObject>();
 
         if(m_PoolTicket != null)
