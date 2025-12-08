@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class EntityHealth : MonoBehaviour, IHealth
 {
     [Header("HEALTH")]
-    [SerializeField] protected int maxHealth;
-    [SerializeField] protected int currentHealth;
+    [SerializeField] protected float maxHealth;
+    [SerializeField] protected float currentHealth;
 
     [Header("INVINCIBILITY")]
     [SerializeField] protected float m_InvincibilityRegainDuration;
@@ -27,7 +27,7 @@ public class EntityHealth : MonoBehaviour, IHealth
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (m_IsInvincible) return;
 
@@ -47,7 +47,7 @@ public class EntityHealth : MonoBehaviour, IHealth
         }
     }
 
-    public void TakeHealth(int health)
+    public void TakeHealth(float health)
     {
         currentHealth += health;
 
@@ -91,8 +91,8 @@ public class EntityHealth : MonoBehaviour, IHealth
         // Feedback perte d'invincibilit�
     }
 
-    public int GetMaxHealth() => maxHealth;
-    public int GetCurrentHealth() => currentHealth;
+    public float GetMaxHealth() => maxHealth;
+    public float GetCurrentHealth() => currentHealth;
     
     public float GetHealthPercentage() => (float)currentHealth / maxHealth;
 }

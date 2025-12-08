@@ -21,10 +21,17 @@ public class PlayerCombat : EntityCombat
         LookAt(targetPosition);
         if (attackIA.action.IsPressed())
             Attack();
+        if (attackIA.action.WasReleasedThisFrame())
+            StopAttack();
     }
 
     public override void Attack()
     {
         currentCombatStyle.Attack();
+    }
+    
+    public override void StopAttack()
+    {
+        currentCombatStyle.StopAttack();
     }
 }

@@ -32,7 +32,7 @@ public class PlayerHealthUI : MonoBehaviour
         SetHealthFillValue(entityHealth.GetCurrentHealth(), entityHealth.GetMaxHealth());
     }
 
-    public void SetHealthFillValue(int value, int max)
+    public void SetHealthFillValue(float value, float max)
     {
         if (m_HealthPoints.Count != max)
         {

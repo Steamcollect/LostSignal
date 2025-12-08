@@ -20,7 +20,12 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
     {
         currentCombatStyle.Attack();
     }
-
+    
+    public virtual void StopAttack()
+    {
+        currentCombatStyle.StopAttack();
+    }
+    
     public virtual void LookAt(Vector3 targetPos)
     {
         if (!canLookAt) return;

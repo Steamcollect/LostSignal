@@ -12,6 +12,7 @@ public class CombatStyle : MonoBehaviour
     protected bool isAttacking = false;
     
     public virtual void Attack() { }
+    public virtual void StopAttack() { }
     public virtual void Reload() { }
 
     public bool IsAttacking() => isAttacking;
