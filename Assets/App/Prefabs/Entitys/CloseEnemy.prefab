@@ -25,13 +25,13 @@ Transform:
   m_GameObject: {fileID: 1665980681649085449}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1267841440386319665}
   - {fileID: 5308874991480580794}
-  m_Father: {fileID: 4972967181453631696}
+  m_Father: {fileID: 3833168557764820987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840505579180620998
 GameObject:
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Rb: {fileID: 847507863784800633}
   m_DetectionRange: 10
   m_AttackRange: 4
+  m_AngleRequireToAttack: 0
   m_CurrentState: 0
   m_Agent: {fileID: 5093296222923946697}
   m_Detector: {fileID: 6294442591581554001}
@@ -403,6 +404,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3679163108035666795}
   - {fileID: 9060113417848896024}
   m_Father: {fileID: 4972967181453631696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -619,7 +621,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3679163108035666795}
   - {fileID: 3833168557764820987}
   m_Father: {fileID: 9217086084772404929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -642,8 +643,11 @@ MonoBehaviour:
   m_AttackCooldown: 0.8
   m_AttackBeginDelay: 0.2
   m_AttackFinishedDelay: 0.2
+  attackDashForce: 0
+  dashForceMode: 0
   m_WeaponPivot: {fileID: 9060113417848896024}
   m_CollidCallback: {fileID: 5189970067126118701}
+  m_Rb: {fileID: 0}
 --- !u!1 &6684894641878471297
 GameObject:
   m_ObjectHideFlags: 0

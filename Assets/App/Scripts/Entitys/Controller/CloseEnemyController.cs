@@ -47,7 +47,7 @@ public class CloseEnemyController : EntityController, ISpawnable
             else
             {
                 MoveTowardPlayer();
-                m_Combat.LookAt(transform.position + m_Agent.desiredVelocity.normalized);
+                m_Combat.LookAt(transform.position + m_Agent.desiredVelocity.normalized, LookAtAxis.Horizontal);
             }
         }
         else if(m_CurrentState == EnemyStates.Idle 

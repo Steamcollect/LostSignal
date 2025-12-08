@@ -7,9 +7,15 @@ public interface IMovement
     void Move(Vector3 input);
 }
 
+public enum LookAtAxis
+{
+    Horizontal,
+    Vertical,
+    Both
+}
 public interface ILookAtTarget
 {
-    void LookAt(Vector3 target);
+    void LookAt(Vector3 target, LookAtAxis lookAtAxis = LookAtAxis.Both);
 }
 
 public interface IHealth
