@@ -227,8 +227,10 @@ MonoBehaviour:
   m_Combat: {fileID: 3751175677323014230}
   m_Rb: {fileID: 847507863784800633}
   m_DetectionRange: 10
+  m_MinChaseRange: 2.2
   m_AttackRange: 4
-  m_AngleRequireToAttack: 0
+  m_AngleRequireToAttack: 50
+  m_DelayBetweenAttacks: 0
   m_CurrentState: 0
   m_Agent: {fileID: 5093296222923946697}
   m_Detector: {fileID: 6294442591581554001}
@@ -636,18 +638,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809c9c0301c8bcd4d8f220a1fe1af090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloseEnemyCombat
-  m_TurnSmoothTime: 0.03
+  m_TurnSmoothTime: 0.06
   m_VerticalPivot: {fileID: 3679163108035666795}
   m_HorizontalPivot: {fileID: 3833168557764820987}
   m_Damage: 1
-  m_AttackCooldown: 0.8
   m_AttackBeginDelay: 0.2
   m_AttackFinishedDelay: 0.2
-  attackDashForce: 0
-  dashForceMode: 0
+  m_AttackDashForce: 0
+  m_DashForceMode: 0
   m_WeaponPivot: {fileID: 9060113417848896024}
   m_CollidCallback: {fileID: 5189970067126118701}
-  m_Rb: {fileID: 0}
+  m_Rb: {fileID: 847507863784800633}
 --- !u!1 &6684894641878471297
 GameObject:
   m_ObjectHideFlags: 0

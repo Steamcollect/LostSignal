@@ -12,10 +12,10 @@ public class CloseEnemyController : EntityController, ISpawnable
 
     [Space(5)]
     [SerializeField] float m_AngleRequireToAttack;
-    bool canAttack = true;
+    bool m_CanAttack = true;
 
     [Space(10)]
-    [SerializeField] float delayBetweenAttacks;
+    [SerializeField] float m_DelayBetweenAttacks;
 
     [SerializeField, ReadOnly] EnemyStates m_CurrentState;
 
@@ -44,7 +44,7 @@ public class CloseEnemyController : EntityController, ISpawnable
     {
         if (m_CurrentState == EnemyStates.Chasing)
         {
-            if(canAttack
+            if(m_CanAttack
                 && m_Detector.IsPlayerInRange(m_AttackRange)
                 && m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack))
             {
@@ -69,13 +69,13 @@ public class CloseEnemyController : EntityController, ISpawnable
     IEnumerator Attack()
     {
         m_CurrentState = EnemyStates.Attacking;
-        canAttack = false;
+        m_CanAttack = false;
 
         yield return StartCoroutine(m_Combat.Attack());
         m_CurrentState = EnemyStates.Chasing;
 
-        yield return new WaitForSeconds(delayBetweenAttacks);
-        canAttack = true;
+        yield return new WaitForSeconds(m_DelayBetweenAttacks);
+        m_CanAttack = true;
     }
 
     void MoveTowardPlayer()

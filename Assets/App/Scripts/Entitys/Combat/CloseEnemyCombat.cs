@@ -13,8 +13,8 @@ public class CloseEnemyCombat : EntityCombat
     [SerializeField] float m_AttackFinishedDelay = .2f;
 
     [Space(10)]
-    [SerializeField] float attackDashForce;
-    [SerializeField] ForceMode dashForceMode;
+    [SerializeField] float m_AttackDashForce;
+    [SerializeField] ForceMode m_DashForceMode;
 
     bool m_IsAttacking = false;
 
@@ -50,7 +50,7 @@ public class CloseEnemyCombat : EntityCombat
         OnAttack?.Invoke();
         m_IsAttacking = true;
 
-        m_Rb.AddForce(GetLookAtDirection() * attackDashForce, dashForceMode);
+        m_Rb.AddForce(GetLookAtDirection() * m_AttackDashForce, m_DashForceMode);
 
         float rot = -20f;
         DOTween.To(() => rot, x => rot = x, 200f, 0.1f)
