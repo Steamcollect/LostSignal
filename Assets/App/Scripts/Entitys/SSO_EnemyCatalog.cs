@@ -30,25 +30,22 @@ public class SSO_EnemyCatalog : ScriptableObject
     public struct EnemyEntry
     {
         public string Name;
-        public EntityController Prefab;
+        public GameObject Prefab;
     }
 
     [Title("CONFIGURATION")]
     [TableList]
     [SerializeField] private List<EnemyEntry> m_Entries;
 
-    public static IEnumerable<ValueDropdownItem<EntityController>> GetDirectPrefabDropdown()
+    public static IEnumerable<ValueDropdownItem<GameObject>> GetDirectPrefabDropdown()
     {
-        ValueDropdownList<EntityController> list = new ValueDropdownList<EntityController>();
-
-        list.Add("Empty", null);
+        ValueDropdownList<GameObject> list = new ValueDropdownList<GameObject>();
 
         if (Instance != null)
         {
             foreach (var entry in Instance.m_Entries)
             {
-                if (entry.Prefab != null)
-                    list.Add(entry.Name, entry.Prefab);
+                list.Add(entry.Name, entry.Prefab);
             }
         }
 

@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [System.Serializable]
-    public struct WaveContent
-    {
-        [HideLabel]
-        [ValueDropdown("@SSO_EnemyCatalog.GetDirectPrefabDropdown()")]
-        [HideReferenceObjectPicker]
-        public EntityController EnemyPrefab;
-    }
-
     [Title("CONFIGURATION")]
-    [TableList(ShowIndexLabels = true, AlwaysExpanded = true)]
-    [SerializeField] private List<WaveContent> m_Entries = new List<WaveContent>();
-
-    public int ConfiguredWaveCount => m_Entries.Count;
+    [ValueDropdown("@SSO_EnemyCatalog.GetDirectPrefabDropdown()")]
+    [ListDrawerSettings(ShowIndexLabels = true, ShowItemCount = true, ShowFoldout = false)]
+    [SerializeField] private List<GameObject> m_Wave = new List<GameObject>();
+    public int ConfiguredWaveCount => m_Wave.Count;
 
     public void SpawnWave(int waveIndex, System.Action<EntityController> onSpawnCallback)
     {
-        if (waveIndex < 0 || waveIndex >= m_Entries.Count) return;
+        if (waveIndex < 0 || waveIndex >= m_Wave.Count) return;
 
-        WaveContent content = m_Entries[waveIndex];
-        if (content.EnemyPrefab != null)
+        GameObject content = m_Wave[waveIndex];
+        if (content != null)
         {
-            EntityController entity = Instantiate(content.EnemyPrefab, transform.position, transform.rotation);
 
-            if(entity.TryGetComponent(out ISpawnable spawnable)) spawnable.OnSpawn();
+            // DO SOMETHING
+
+            // SPAWN ENEMY
+            if(content.TryGetComponent<EntityController>(out EntityController entity))
+            {
+                Instantiate(entity, transform.position, transform.rotation);
+
+                if (entity.TryGetComponent(out ISpawnable spawnable)) spawnable.OnSpawn();
+            }
 
             onSpawnCallback?.Invoke(entity);
         }
