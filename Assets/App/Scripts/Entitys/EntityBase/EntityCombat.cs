@@ -10,7 +10,7 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
     bool canLookAt = true;
 
     [Header("References")]
-    [SerializeField] protected CombatStyle currentCombatStyle;
+    [SerializeField] public CombatStyle currentCombatStyle;
 
     [Space(10)]
     [SerializeField] protected Transform verticalPivot;
