@@ -54,8 +54,8 @@ public class RollingEnemyController : EntityController
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag(m_PlayerTag))
-            if (collision.collider.TryGetComponent(out EntityTrigger trigger))
-                trigger.GetController().GetHealth().TakeDamage(m_Damage);
+            if (collision.collider.TryGetComponent(out EntityController controller))
+                controller.GetHealth().TakeDamage(m_Damage);
 
         m_DirVelocity = Vector3.zero;
         StartCoroutine(StunCooldown());

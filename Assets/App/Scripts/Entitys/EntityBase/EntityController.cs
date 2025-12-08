@@ -5,16 +5,15 @@ using System;
 public class EntityController : MonoBehaviour, ITargetable
 {
     [Header("Settings")]
-    [SerializeField] Vector3 targetPos;
+    [SerializeField] Vector3 m_TargetPos;
 
     [Header("References")]
-    [SerializeField] protected EntityHealth health;
-    [SerializeField] protected EntityTrigger trigger;
-    [SerializeField] protected InterfaceReference<IMovement> movement;
-    [SerializeField] protected EntityCombat combat;
+    [SerializeField] protected EntityHealth m_Health;
+    [SerializeField] protected InterfaceReference<IMovement> m_Movement;
+    [SerializeField] protected EntityCombat m_Combat;
         
     [Space(10)]
-    [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected Rigidbody m_Rb;
 
     //[Header("Input")]
     //[Header("Output")]
@@ -23,8 +22,7 @@ public class EntityController : MonoBehaviour, ITargetable
 
     protected void Awake()
     {
-        trigger.SetController(this);
-        health.OnDeath += OnEntityDie;
+        m_Health.OnDeath += OnEntityDie;
     }
 
     void OnEntityDie()
@@ -35,19 +33,18 @@ public class EntityController : MonoBehaviour, ITargetable
 
     public Vector3 GetTargetPosition()
     {
-        return transform.position + targetPos;
+        return transform.position + m_TargetPos;
     }
 
-    public EntityHealth GetHealth() {  return health; }
-    public EntityTrigger GetTrigger() { return trigger; }
-    public EntityCombat GetCombat() { return combat; }
-    public IMovement GetMovement() { return movement.Value; }
+    public EntityHealth GetHealth() {  return m_Health; }
+    public EntityCombat GetCombat() { return m_Combat; }
+    public IMovement GetMovement() { return m_Movement.Value; }
 
-    public Rigidbody GetRigidbody() { return rb; }
+    public Rigidbody GetRigidbody() { return m_Rb; }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(GetTargetPosition(), .2f);
+        Gizmos.DrawSphere(transform.position + GetTargetPosition(), .2f);
     }
 }

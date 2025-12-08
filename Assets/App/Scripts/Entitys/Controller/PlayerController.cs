@@ -26,7 +26,7 @@ public class PlayerController : EntityController
     private bool m_IsMoving;
     private Vector3 m_MoveDir;
 
-    private void Awake()
+    private new void Awake()
     {
         m_Health.OnDeath += () => { SceneManager.LoadScene(SceneManager.GetActiveScene().name); };
 

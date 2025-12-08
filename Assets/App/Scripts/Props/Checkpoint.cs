@@ -22,8 +22,8 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerSpawnPoint.S_Position = m_SpawnPoint.position;
-            if (other.TryGetComponent(out EntityTrigger trigger))
-                trigger.GetController().GetHealth().TakeHealth(trigger.GetController().GetHealth().GetMaxHealth());
+            if (other.TryGetComponent(out EntityController controller))
+               controller.GetHealth().TakeHealth(controller.GetHealth().GetMaxHealth());
         }
     }
 }

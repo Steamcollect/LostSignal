@@ -26,7 +26,7 @@ public class CloseEnemyController : EntityController, ISpawnable
 
     private void Update()
     {
-        agent.nextPosition = rb.position;
+        agent.nextPosition = m_Rb.position;
     }
 
     private void FixedUpdate()
@@ -44,7 +44,7 @@ public class CloseEnemyController : EntityController, ISpawnable
         if (!agent.hasPath || agent.pathStatus == NavMeshPathStatus.PathInvalid)
             return;
 
-        movement.Value.Move(agent.desiredVelocity.normalized);
+        m_Movement.Value.Move(agent.desiredVelocity.normalized);
     }
 
     private void OnDrawGizmosSelected()

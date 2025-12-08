@@ -71,7 +71,7 @@ public class CloseCombatStyle : CombatStyle
     {
         if (!m_IsAttacking) return;
 
-        if (collid.TryGetComponent(out EntityTrigger trigger)) trigger.GetController().GetHealth().TakeDamage(m_Damage);
+        if (collid.TryGetComponent(out EntityController controller)) controller.GetHealth().TakeDamage(m_Damage);
     }
 
     private IEnumerator AttackCooldown()
