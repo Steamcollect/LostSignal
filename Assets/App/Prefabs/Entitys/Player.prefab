@@ -124,6 +124,7 @@ Transform:
   - {fileID: 8508021338843581821}
   - {fileID: 5371318777814390314}
   - {fileID: 218150582645766964}
+  - {fileID: 2057213839131031453}
   m_Father: {fileID: 1409431294601431814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1149920520322700606
@@ -1260,6 +1261,60 @@ MonoBehaviour:
   m_BulletSpeed: 30
   m_KnockBackForce: 1
   m_AttackPoint: {fileID: 874208509811087154}
+--- !u!1 &8769541793991180412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057213839131031453}
+  - component: {fileID: 2946788018567280599}
+  m_Layer: 8
+  m_Name: GrenadeLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2057213839131031453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8769541793991180412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2074092412787055408}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2946788018567280599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8769541793991180412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533e324be07d6aa4c92db705d860287e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadeLauncher
+  m_GrenadePrefab: {fileID: 3561684886862256561, guid: e1b2f896c04f27242a8e99efd5534f90, type: 3}
+  m_FirePoint: {fileID: 874208509811087154}
+  m_AimTarget: {fileID: 11400000, guid: 09f66405bedce16448f02f1b689a9c4a, type: 2}
+  m_MinArcHeight: 1
+  m_MaxArcHeight: 6
+  m_DesiredArcHeight: 2
+  m_FallbackDistance: 12
+  m_FallbackSpeed: 10
+  m_ReloadTime: 2
+  m_TrajectorySamples: 30
 --- !u!1001 &71215866602588187
 PrefabInstance:
   m_ObjectHideFlags: 0
