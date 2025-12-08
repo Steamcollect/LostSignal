@@ -1093,13 +1093,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7052904532813203400, guid: 538462d8e11bfa447af7966eab7cf0b3, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9120716195765561872, guid: 538462d8e11bfa447af7966eab7cf0b3, type: 3}
       propertyPath: m_Name
       value: WalkDust
       objectReference: {fileID: 0}
     - target: {fileID: 9120716195765561872, guid: 538462d8e11bfa447af7966eab7cf0b3, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9120716195765561872, guid: 538462d8e11bfa447af7966eab7cf0b3, type: 3}
       propertyPath: m_TagString
