@@ -1,33 +1,29 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class RangeReloadingCombatStyle : CombatStyle
 {
-    [FormerlySerializedAs("maxBulletCount")]
-    [Header("Settings")]
+    [Header("Bullet")]
     [SerializeField] private int m_MaxBulletCount;
-
-    [FormerlySerializedAs("bulletDamage")] [Space(10)] [SerializeField] private int m_BulletDamage;
-
-    [FormerlySerializedAs("bulletSpeed")] [SerializeField] private float m_BulletSpeed;
-    [FormerlySerializedAs("knockBackForce")] [SerializeField] private float m_KnockBackForce;
-
-    [FormerlySerializedAs("attackCooldown")] [Space(10)] [SerializeField] private float m_AttackCooldown;
-
-    [FormerlySerializedAs("reloadCooldown")] [SerializeField] private float m_ReloadCooldown;
-
-    [FormerlySerializedAs("attackPoint")]
-    [Header("References")]
-    [SerializeField] private Transform m_AttackPoint;
-
-    [SerializeField] private GameObject m_MuzzleFlashPrefab;
-
-    [FormerlySerializedAs("m_SFXManager")] [SerializeField] private RangeReloadingWeaponSFXManager m_SfxManager;
-
+    [SerializeField] private GameObject m_BulletPrefab;
     private int m_CurrentBulletCount;
 
-    private bool m_IsReloading;
+    [Space(10)]
+    [SerializeField] private int m_BulletDamage;
+    [SerializeField] private float m_BulletSpeed;
+    [SerializeField] private float m_KnockBackForce;
+
+    [Space(10)]
+    [SerializeField] private float m_AttackCooldown;
+    [SerializeField] private float m_ReloadCooldown;
+
+    private bool m_IsReloading = false;
+
+    [Header("References")]
+    [SerializeField] private Transform m_AttackPoint;
+    [SerializeField] private GameObject m_MuzzleFlashPrefab;
+
+    [SerializeField] private RangeReloadingWeaponSFXManager m_SFXManager;
 
     //[Header("Input")]
     //[Header("Output")]
@@ -37,7 +33,7 @@ public class RangeReloadingCombatStyle : CombatStyle
         StartCoroutine(LateStart());
     }
 
-    private IEnumerator LateStart()
+    IEnumerator LateStart()
     {
         yield return new WaitForSeconds(.1f);
         m_CurrentBulletCount = m_MaxBulletCount;
@@ -45,27 +41,27 @@ public class RangeReloadingCombatStyle : CombatStyle
 
     public override void Attack()
     {
-        if (m_CanAttack && !m_IsReloading)
+        if(m_CanAttack && !m_IsReloading)
         {
-            if (m_CurrentBulletCount > 0)
+            if(m_CurrentBulletCount > 0)
             {
                 OnAttack?.Invoke();
 
                 m_CurrentBulletCount--;
                 OnAmmoChange?.Invoke(m_CurrentBulletCount, m_MaxBulletCount);
-                GameObject muzzleVFX = Instantiate(m_MuzzleFlashPrefab, m_AttackPoint);
+                var muzzleVFX = Instantiate(m_MuzzleFlashPrefab, m_AttackPoint);
                 Destroy(muzzleVFX, muzzleVFX.GetComponent<ParticleSystem>().main.duration);
-                Bullet bullet = BulletManager.S_Instance.GetBullet();
-                bullet.transform.position = m_AttackPoint.position;
+                
+                Bullet bullet = PoolManager.Instance.Spawn(m_BulletPrefab, m_AttackPoint.position, Quaternion.identity).GetComponent<Bullet>();
                 bullet.transform.up = m_AttackPoint.forward;
 
                 bullet.Setup(m_BulletDamage, m_BulletSpeed)
                     .SetKnockback(m_KnockBackForce);
 
                 StartCoroutine(AttackCooldown());
-
-                if (m_SfxManager)
-                    m_SfxManager.PlayAttackSfx();
+                
+                if(m_SFXManager)
+                    m_SFXManager.PlayAttackSfx();
             }
             else
             {
@@ -80,20 +76,20 @@ public class RangeReloadingCombatStyle : CombatStyle
         {
             OnReload?.Invoke();
 
-            if (m_SfxManager)
-                m_SfxManager.PlayReloadSfx();
-            StartCoroutine(ReloadCooldown());
+            if(m_SFXManager)
+                m_SFXManager.PlayReloadSfx();
+            StartCoroutine(ReloadCooldown());         
         }
     }
 
-    private IEnumerator AttackCooldown()
+    IEnumerator AttackCooldown()
     {
         m_CanAttack = false;
         yield return new WaitForSeconds(m_AttackCooldown);
         m_CanAttack = true;
     }
 
-    private IEnumerator ReloadCooldown()
+    IEnumerator ReloadCooldown()
     {
         m_IsReloading = true;
         yield return new WaitForSeconds(m_ReloadCooldown);
