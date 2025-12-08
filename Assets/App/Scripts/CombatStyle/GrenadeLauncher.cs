@@ -1,4 +1,5 @@
 using System.Collections;
+using Sirenix.Reflection.Editor;
 using UnityEngine;
 
 /// <summary>
@@ -34,6 +35,7 @@ public class GrenadeLauncher : CombatStyle
     [Header("Gizmos")]
     [SerializeField] private int m_TrajectorySamples = 30;
 
+    
     private void Start()
     {
         if (m_AimTarget != null)
@@ -43,9 +45,23 @@ public class GrenadeLauncher : CombatStyle
     // ------------------ API principale ------------------
     public override void Attack()
     {
+        
+        
         if (!canAttack) return;
+        
+        if (CurrentMana.Get() >= manaCostPerAttack)
+        {
+            CurrentMana.Set(CurrentMana.Get() - manaCostPerAttack);
+        }
+        else
+        {
+            return;
+        }
+        
         isAttacking = true;
 
+        
+        
         if (m_GrenadePrefab == null || m_FirePoint == null)
         {
             Debug.LogWarning("GrenadeLauncher: prefab ou firePoint non assigné.");
@@ -87,6 +103,7 @@ public class GrenadeLauncher : CombatStyle
 
         grenade.GetComponent<Grenade>()?.ShowExplosionRadius(targetPos);
         OnAttack?.Invoke();
+        
         Reload();
     }
 

@@ -19,6 +19,15 @@ public class Laser : CombatStyle
     {
         if (!canAttack) return;
 
+        if (CurrentMana.Get() >= manaCostPerAttack)
+        {
+            CurrentMana.Set(CurrentMana.Get() - (manaCostPerAttack * Time.deltaTime));
+        }
+        else
+        {
+            return;
+        }
+        
         isAttacking = true;
         m_LaserBeamLine.enabled = true;
 

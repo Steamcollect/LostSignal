@@ -20,6 +20,15 @@ public class Shotgun : CombatStyle
     {
         if (!canAttack) return;
         
+        if (CurrentMana.Get() >= manaCostPerAttack)
+        {
+            CurrentMana.Set(CurrentMana.Get() - manaCostPerAttack);
+        }
+        else
+        {
+            return;
+        }
+        
         isAttacking = true;
         canAttack = false;
         

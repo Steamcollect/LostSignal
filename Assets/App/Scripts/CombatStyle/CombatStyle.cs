@@ -8,6 +8,8 @@ public class CombatStyle : MonoBehaviour
 
     public Action OnAttack;
 
+    public float manaCostPerAttack = 0f;
+    public RSO_Mana CurrentMana;
     protected bool canAttack = true;
     protected bool isAttacking = false;
     
