@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnergySource
   maxHealth: 20
   linkedObjects: []
+  lineMaterial: {fileID: 2100000, guid: a4be568dd1afa8d4ca968a47c695bced, type: 2}
 --- !u!65 &146635855296534187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68,8 +69,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 6.44411, z: 1}
+  m_Center: {x: 0.54, y: 2.722055, z: 0}
 --- !u!23 &5009577709478512865
 MeshRenderer:
   m_ObjectHideFlags: 0
