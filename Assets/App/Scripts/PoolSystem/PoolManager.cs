@@ -4,10 +4,20 @@ using System.Collections.Generic;
 
 public class PoolManager : MonoBehaviour
 {
+    [Header("PREWARM")]
+    [SerializeField] private List<PoolDefinition> m_PoolsToPrewarm = new List<PoolDefinition>();
     public static PoolManager Instance { get; private set; }
 
     private Dictionary<int, ObjectPool<GameObject>> m_Pools = new Dictionary<int, ObjectPool<GameObject>>();
     private Dictionary<int, Transform> m_PoolParents = new Dictionary<int, Transform>();
+
+    [System.Serializable]
+    public class PoolDefinition
+    {
+        public string Name = "New PoolableObject";
+        public GameObject Prefab;
+        [Min(1)] public int InitialAmount = 20;
+    }
 
     private void Awake()
     {
@@ -17,6 +27,16 @@ public class PoolManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        foreach(PoolDefinition def in m_PoolsToPrewarm)
+        {
+            if (def.Prefab == null) continue;
+
+            Prewarm(def.Prefab, def.InitialAmount);
+        }
     }
 
     public void Prewarm(GameObject prefab, int count)
