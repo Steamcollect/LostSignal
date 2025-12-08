@@ -18,7 +18,12 @@ public class ManaManager : MonoBehaviour
     {
         currentMana.OnChanged += UpdateManaUI;
     }
-    
+
+    private void OnDisable()
+    {
+        currentMana.OnChanged -= UpdateManaUI;
+    }
+
     private void UpdateManaUI(float _)
     {
         manaSlider.value = currentMana.Get() / maxMana;

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8fc8632f9c54841b3455da26514075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Laser
+  manaCostPerAttack: 3
+  CurrentMana: {fileID: 11400000, guid: 2ac42db844eb315418a5ee5920693790, type: 2}
   m_AttackPoint: {fileID: 6856597713704921143}
   m_LaserBeamLine: {fileID: 1975556686462429095}
   m_LaserRange: 50
@@ -293,6 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533e324be07d6aa4c92db705d860287e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrenadeLauncher
+  manaCostPerAttack: 25
+  CurrentMana: {fileID: 11400000, guid: 2ac42db844eb315418a5ee5920693790, type: 2}
   m_GrenadePrefab: {fileID: 3561684886862256561, guid: e1b2f896c04f27242a8e99efd5534f90, type: 3}
   m_FirePoint: {fileID: 6856597713704921143}
   m_AimTarget: {fileID: 11400000, guid: 09f66405bedce16448f02f1b689a9c4a, type: 2}
@@ -1122,6 +1126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859ea51f3471d7b428dea5580c45ff77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeOverloadCombatStyle
+  manaCostPerAttack: 0
+  CurrentMana: {fileID: 11400000, guid: 2ac42db844eb315418a5ee5920693790, type: 2}
   maxTemperature: 100
   shootTemperature: 5
   temperatureLostPerSec: 60
@@ -1563,6 +1569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74515fb61abfd004497206abebe48253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
+  manaCostPerAttack: 20
+  CurrentMana: {fileID: 11400000, guid: 2ac42db844eb315418a5ee5920693790, type: 2}
   m_ShotsPerMagazine: 2
   m_BulletsPerShot: 8
   m_SpreadAngle: 15
