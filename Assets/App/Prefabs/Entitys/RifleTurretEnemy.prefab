@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f6cb52c6eaeaa439b8f0777fce5338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretEnemyController
-  m_TargetPos: {x: 0, y: 1, z: 0}
+  m_TargetPos: {x: 0, y: 1.5, z: 0}
   m_Health: {fileID: 753641148596580737}
   m_Movement:
     _object: {fileID: 2095955059168881203}

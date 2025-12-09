@@ -67,8 +67,11 @@ public class TurretEnemyController : EntityController, ISpawnable
         m_CurrentState = EnemyStates.Chasing;
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(GetTargetPosition(), .2f);
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, m_AttackRange);
 

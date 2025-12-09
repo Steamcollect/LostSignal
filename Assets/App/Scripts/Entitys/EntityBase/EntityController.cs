@@ -41,10 +41,4 @@ public abstract class EntityController : MonoBehaviour, ITargetable
     public IMovement GetMovement() { return m_Movement.Value; }
 
     public Rigidbody GetRigidbody() { return m_Rb; }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position + GetTargetPosition(), .2f);
-    }
 }

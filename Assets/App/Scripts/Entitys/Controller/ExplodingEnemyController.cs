@@ -103,6 +103,9 @@ public class ExplodingEnemyController : EntityController, ISpawnable
 
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(GetTargetPosition(), .2f);
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, m_AttackRange);
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PlayerController : EntityController
 {
@@ -80,4 +79,10 @@ public class PlayerController : EntityController
     }
     
     public void Teleport(Vector3 position) => m_Rb.position = position;
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(GetTargetPosition(), .2f);
+    }
 }
