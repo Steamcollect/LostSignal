@@ -10,7 +10,12 @@ public class TurretEnemyController : EntityController, ISpawnable
     [SerializeField, Range(1, 180)] float m_AngleRequireToAttack;
 
     [Space(10)]
+    [SerializeField] float m_TimeBetweenAttacks;
+
+    [Space(10)]
     [SerializeField, ReadOnly] EnemyStates m_CurrentState;
+
+    bool m_CanAttack = true;
 
     [Header("Internal References")]
     [SerializeField] PlayerDetector m_Detector;
@@ -26,7 +31,8 @@ public class TurretEnemyController : EntityController, ISpawnable
             {
                 m_Combat.LookAt(m_Player.Get().GetTargetPosition());
 
-                if (m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack))
+                if (m_CanAttack
+                    && m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack))
                     StartCoroutine(Attack());
             }
         }
@@ -35,6 +41,7 @@ public class TurretEnemyController : EntityController, ISpawnable
             && m_Detector.CanSeePlayer(m_DetectionRange))
         {
             m_CurrentState = EnemyStates.Chasing;
+            StartCoroutine(AttackCooldown());
         }
     }
 
@@ -43,6 +50,16 @@ public class TurretEnemyController : EntityController, ISpawnable
         m_CurrentState = EnemyStates.Attacking;
         yield return StartCoroutine(m_Combat.Attack());
         m_CurrentState = EnemyStates.Chasing;
+
+        StartCoroutine(AttackCooldown());
+
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        m_CanAttack = false;
+        yield return new WaitForSeconds(m_TimeBetweenAttacks);
+        m_CanAttack = true;
     }
 
     public void OnSpawn()
@@ -58,10 +75,7 @@ public class TurretEnemyController : EntityController, ISpawnable
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, m_DetectionRange);
 
-        // draw cone edges and arc for m_AngleRequireToAttack
         Gizmos.color = Color.cyan;
-
-        // use forward on horizontal plane
         Vector3 forward = transform.forward;
         forward.y = 0f;
         if (forward.sqrMagnitude < 0.0001f)

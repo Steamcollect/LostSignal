@@ -15,12 +15,14 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
 
     private Vector3 m_TurnSmoothHozirontalVelocity, m_TurnSmoothVerticalVelocity;
 
-    public virtual void LookAt(Vector3 targetPos, LookAtAxis lookAtAxis = LookAtAxis.Both)
+    public virtual void LookAt(Vector3 targetPos, LookAtAxis lookAtAxis = LookAtAxis.Both, float turnSmoothTime = 999)
     {
         if (!m_CanLookAt) return;
 
         Vector3 direction = targetPos - m_HorizontalPivot.position;
         if (direction.sqrMagnitude < 0.0001f) return;
+
+        if(turnSmoothTime == 999) turnSmoothTime = m_TurnSmoothTime;
 
         if (m_HorizontalPivot && lookAtAxis != LookAtAxis.Vertical)
         {
@@ -32,7 +34,7 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
                 m_HorizontalPivot.LookAtSmoothDamp(
                     m_HorizontalPivot.position + horizontalDir,
                     ref m_TurnSmoothHozirontalVelocity,
-                    m_TurnSmoothTime
+                    turnSmoothTime
                 );
             }
         }
@@ -46,7 +48,7 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
             m_VerticalPivot.LookAtSmoothDamp(
                 verticalLookPoint,
                 ref m_TurnSmoothVerticalVelocity,
-                m_TurnSmoothTime
+                turnSmoothTime
             );
         }
     }
