@@ -18,11 +18,8 @@ public class Bullet : MonoBehaviour
     
     public Vector3 GetShootPosition() => m_OriginalPosition;
 
-    public Bullet Setup(int damage, float speed)
+    public Bullet Setup()
     {
-        this.m_Damage = damage;
-        this.m_Speed = speed;
-
         m_RigidBody.linearVelocity = Vector3.zero;
         m_RigidBody.angularVelocity = Vector3.zero;
         
@@ -64,7 +61,10 @@ public class Bullet : MonoBehaviour
             }
 
             if(m_Knockback > 0 && other.gameObject.TryGetComponent(out EntityController controller))
+            {
+                print(m_Knockback);
                 controller.GetRigidbody().AddForce(transform.up * m_Knockback);
+            }
 
             if (other.gameObject.TryGetComponentInChildrens(out IHealth health))
                 health.TakeDamage(m_Damage);

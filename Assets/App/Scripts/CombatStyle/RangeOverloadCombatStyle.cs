@@ -18,12 +18,6 @@ public class RangeOverloadCombatStyle : CombatStyle
     [SerializeField] private float m_OverloadRecorverySpeed;
     [SerializeField] private float m_TimeToCoolsAfterShoot;
 
-    [Space(10)] 
-    [SerializeField] private int m_BulletDamage;
-
-    [SerializeField] private float m_BulletSpeed;
-    [SerializeField] private float m_KnockBackForce;
-
     [Header("Visual")]
     [SerializeField] private MeshRenderer m_MeshRenderer;
 
@@ -80,7 +74,7 @@ public class RangeOverloadCombatStyle : CombatStyle
 
             GameObject muzzleVFX = Instantiate(m_MuzzleFlashPrefab, m_AttackPoint);
             Destroy(muzzleVFX, muzzleVFX.GetComponent<ParticleSystem>().main.duration);
-            bullet.Setup(m_BulletDamage, m_BulletSpeed).SetKnockback(m_KnockBackForce);
+            bullet.Setup();
 
             StartCoroutine(AttackCooldown());
 

@@ -5,10 +5,6 @@ using UnityEngine;
 public class RangeEnemyCombat : EntityCombat
 {
     [Header("Settings")]
-    [SerializeField] int m_Damage;
-    [SerializeField] float m_BulletSpeed;
-
-    [Space(5)]
     [SerializeField] int m_BulletCount;
     [SerializeField] float m_TimeBetweenBullets;
 
@@ -51,7 +47,7 @@ public class RangeEnemyCombat : EntityCombat
 
             Bullet bullet = PoolManager.Instance.Spawn(m_BulletPrefab, m_AttackPoint.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.transform.up = m_AttackPoint.forward;
-            bullet.Setup(m_Damage, m_BulletSpeed);
+            bullet.Setup();
 
             yield return new WaitForSeconds(m_TimeBetweenBullets);
         }
