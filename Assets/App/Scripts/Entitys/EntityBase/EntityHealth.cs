@@ -29,6 +29,8 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(float damage)
     {
+        if (currentHealth <= 0) return;
+        
         if (m_IsInvincible) return;
 
         Debug.Log("Entity gain invincibility for " + m_InvincibilityRegainDuration + " seconds.");
@@ -60,7 +62,7 @@ public class EntityHealth : MonoBehaviour, IHealth
     void Die()
     {
         m_DamageSFXManager?.PlayDeathSFX();
-        m_OnDeathFeedback.Invoke();
+        m_OnDeathFeedback?.Invoke();
         OnDeath?.Invoke();
     }
 
@@ -76,6 +78,9 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     private IEnumerator OnInvincibilityGain(float duration)
     {
+        if (duration <= 0)
+            yield break;
+        
         // Feedback gain d'invicibilit�
         m_IsInvincible = true;
         m_CurrentInvincibilityTimer = 0;

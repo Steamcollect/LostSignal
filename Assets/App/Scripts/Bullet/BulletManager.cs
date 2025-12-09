@@ -44,8 +44,13 @@ public class BulletManager : MonoBehaviour
 
     public void ReturnBullet(Bullet bullet)
     {
-        bullet.gameObject.SetActive(false);
-        bullets.Enqueue(bullet);
+        // Ensure bullet state is reset before reusing
+        if (bullet != null)
+        {
+            bullet.ResetBullet();
+            bullet.gameObject.SetActive(false);
+            bullets.Enqueue(bullet);
+        }
     }
 
     Bullet CreateBullet()
