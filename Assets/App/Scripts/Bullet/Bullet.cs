@@ -18,8 +18,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] private GameObject m_HitPrefab;
 
-    // Track the distance coroutine so we can stop it when returning the bullet to the pool
-    private Coroutine m_DistanceCoroutine;
+    //[Header("Input")]
+    //[Header("Output")]
 
     private Vector3 m_OriginalPosition;
     
@@ -35,14 +35,7 @@ public class Bullet : MonoBehaviour
         
         m_OriginalPosition = transform.position;
 
-        // Ensure any previous distance-check coroutine is stopped before starting a new one
-        if (m_DistanceCoroutine != null)
-        {
-            StopCoroutine(m_DistanceCoroutine);
-            m_DistanceCoroutine = null;
-        }
-
-        m_DistanceCoroutine = StartCoroutine(CheckDistanceFromPlayer());
+        StartCoroutine(CheckDistanceFromPlayer());
 
         return this;
     }
@@ -64,9 +57,6 @@ public class Bullet : MonoBehaviour
             health.TakeDamage(damage);
         }
         
-        // Make sure we stop any running coroutines / reset state before returning to pool
-        ResetBullet();
-
         transform.position = Vector3.zero;
         BulletManager.Instance.ReturnBullet(this);
     }
@@ -103,9 +93,6 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        // Ensure we stop coroutines / reset state before returning to pool
-        ResetBullet();
-
         transform.position = Vector3.zero;
         BulletManager.Instance.ReturnBullet(this);
     }
@@ -115,44 +102,5 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(5);
         transform.position = Vector3.zero;
         BulletManager.Instance.ReturnBullet(this);
-
-        // mark coroutine as finished
-        m_DistanceCoroutine = null;
-    }
-
-    // Public helper to stop coroutines and reset internal state when returning to pool
-    public void ResetBullet()
-    {
-        if (m_DistanceCoroutine != null)
-        {
-            try { StopCoroutine(m_DistanceCoroutine); } catch { }
-            m_DistanceCoroutine = null;
-        }
-
-        // stop any other coroutines on this bullet to be safe
-        StopAllCoroutines();
-
-        // reset velocities
-        if (rb != null)
-        {
-            rb.position = Vector3.zero;
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-
-        // reset transform scale/rotation if needed (keeps pooling predictable)
-        transform.localScale = Vector3.one;
-        transform.localRotation = Quaternion.identity;
-    }
-
-    private void OnDisable()
-    {
-        // Make sure no coroutine is left running when disabled
-        if (m_DistanceCoroutine != null)
-        {
-            try { StopCoroutine(m_DistanceCoroutine); } catch { }
-            m_DistanceCoroutine = null;
-        }
-        StopAllCoroutines();
     }
 }
