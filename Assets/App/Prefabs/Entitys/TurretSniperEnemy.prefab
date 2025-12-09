@@ -116,7 +116,7 @@ MonoBehaviour:
     m_Bits: 2555
   playertag: Player
   delayToAim: 2
-  delayBeforeAttack: 0.3
+  delayBeforeAttack: 0.4
   delayAfterAttack: 0.3
   laserMask:
     serializedVersion: 2
@@ -979,6 +979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a447bb131288f1d4bb0e2c4ba38d706d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeReloadingCombatStyle
+  manaCostPerAttack: 0
+  CurrentMana: {fileID: 0}
   maxBulletCount: 1
   bulletDamage: 1
   bulletSpeed: 80
