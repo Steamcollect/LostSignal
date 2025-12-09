@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82303cb87d1dd4c4ebf8ada5c71ce2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
-  maxHealth: 10
-  currentHealth: 20
+  maxHealth: 1
+  currentHealth: 1
   m_InvincibilityRegainDuration: 0
   m_IsInvincible: 0
   m_OnDeathFeedback:
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dae4e6faf1cbe409d1c80c83bc5445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosiveBarrel
-  explosionRadius: 5
+  explosionRadius: 6
   explosionDamage: 100
   explosionEffect: {fileID: 3549472828668674561}
   mask:

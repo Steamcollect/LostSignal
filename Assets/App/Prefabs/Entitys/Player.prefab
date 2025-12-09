@@ -1569,16 +1569,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74515fb61abfd004497206abebe48253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  manaCostPerAttack: 20
+  manaCostPerAttack: 10
   CurrentMana: {fileID: 11400000, guid: 2ac42db844eb315418a5ee5920693790, type: 2}
-  m_ShotsPerMagazine: 2
-  m_BulletsPerShot: 8
-  m_SpreadAngle: 15
+  m_ShotsPerMagazine: 1
+  m_BulletsPerShot: 12
+  m_SpreadAngle: 40
   m_AttackCooldown: 1
-  m_ReloadCooldown: 3
-  m_BulletDamage: 0
-  m_BulletSpeed: 30
-  m_KnockBackForce: 1
+  m_ReloadCooldown: 0.8
+  m_BulletDamage: 2
+  m_BulletSpeed: 40
+  m_KnockBackForce: 3
   m_AttackPoint: {fileID: 6856597713704921143}
 --- !u!1 &8765086759897483739
 GameObject:
