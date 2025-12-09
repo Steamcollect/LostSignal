@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7809023691055429006}
   - component: {fileID: 8890464476001108427}
   - component: {fileID: 4738139436442621573}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: ElectricSpark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

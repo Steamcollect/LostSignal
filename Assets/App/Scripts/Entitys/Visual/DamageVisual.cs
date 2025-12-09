@@ -1,33 +1,68 @@
+using System;
 using UnityEngine;
-
-public class DamageVisual : MonoBehaviour
-{
-    private static readonly int s_DamageAmount = Shader.PropertyToID("_DamageAmount");
-
-    [Header("References")]
-    [SerializeField] private MeshRenderer[] m_Renderers;
-
-    [SerializeField] private EntityHealth m_EntityHealth;
-    [Range(0f, 1f)] [SerializeField] private float m_DamageAmount;
-    private MaterialPropertyBlock m_Block;
-
-    private void Awake()
+    using UnityEngine.VFX;
+    
+    public class DamageVisual : MonoBehaviour
     {
-        m_Block = new MaterialPropertyBlock();
-    }
-
-    private void Update()
-    {
-        SetDamage(1 - m_EntityHealth.GetHealthPercentage());
-    }
-
-    private void SetDamage(float value)
-    {
-        foreach (MeshRenderer rend in m_Renderers)
+        private static readonly int s_DamageAmount = Shader.PropertyToID("_DamageAmount");
+        private static readonly int s_VfxIntensity = Shader.PropertyToID("Intensity");
+    
+        [Header("References")]
+        [SerializeField] private MeshRenderer[] m_Renderers;
+        [SerializeField] private EntityHealth m_EntityHealth;
+        [SerializeField] private VisualEffect m_SmokeDamage;
+        private MaterialPropertyBlock m_Block;
+    
+        private void Awake()
         {
-            rend.GetPropertyBlock(m_Block);
-            m_Block.SetFloat(s_DamageAmount, value);
-            rend.SetPropertyBlock(m_Block);
+            m_Block = new MaterialPropertyBlock();
+        }
+
+        private void Start() => HandleTakeDamage();
+
+        private void OnEnable()
+        {
+            if (!m_EntityHealth) return;
+            m_EntityHealth.OnTakeDamage += HandleTakeDamage;
+        }
+    
+        private void OnDisable()
+        {
+            if (!m_EntityHealth) return;
+            m_EntityHealth.OnTakeDamage -= HandleTakeDamage;
+        }
+    
+        private void Update()
+        {
+            // keep renderer shader in sync every frame
+            float value = 1f - (m_EntityHealth ? m_EntityHealth.GetHealthPercentage() : 1f);
+            SetDamage(value);
+        }
+    
+        private void HandleTakeDamage()
+        {
+            if (!m_EntityHealth) return;
+            SetDamage(1f - m_EntityHealth.GetHealthPercentage());
+        }
+    
+        private void SetDamage(float value)
+        {
+            value = Mathf.Clamp01(value);
+    
+            if (m_Renderers != null)
+            {
+                foreach (MeshRenderer rend in m_Renderers)
+                {
+                    if (!rend) continue;
+                    rend.GetPropertyBlock(m_Block);
+                    m_Block.SetFloat(s_DamageAmount, value);
+                    rend.SetPropertyBlock(m_Block);
+                }
+            }
+    
+            if (m_SmokeDamage)
+            {
+                m_SmokeDamage.SetFloat(s_VfxIntensity, value);
+            }
         }
     }
-}

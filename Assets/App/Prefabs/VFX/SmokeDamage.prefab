@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2311961294969838844}
-  - component: {fileID: 5964906730732910334}
   - component: {fileID: 7730166156107105811}
   - component: {fileID: 2341589179162022140}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: SmokeDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5964906730732910334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288455319595483531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d186616e26815247a452e2e08471f11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  m_EntityHealth: {fileID: 0}
-  m_VisualEffect: {fileID: 7730166156107105811}
 --- !u!2083052967 &7730166156107105811
 VisualEffect:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody m_RigidBody;
     [SerializeField] private GameObject m_HitPrefab;
 
+    [Header("Output")]
+    [SerializeField] private UnityEvent m_OnImpact;
+    
     private Vector3 m_OriginalPosition;
 
     private PooledObject m_PoolTicket;
@@ -41,7 +45,8 @@ public class Bullet : MonoBehaviour
         {
             health.TakeDamage(m_Damage);
         }
-        
+        m_OnImpact.Invoke();
+
         ReleaseBullet();
     }
     
@@ -68,6 +73,8 @@ public class Bullet : MonoBehaviour
 
             if (other.gameObject.TryGetComponentInChildrens(out IHealth health))
                 health.TakeDamage(m_Damage);
+            
+            m_OnImpact.Invoke();
         }
 
         ReleaseBullet();

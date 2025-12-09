@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CloseEnemyCombat : EntityCombat
 {
@@ -23,6 +24,9 @@ public class CloseEnemyCombat : EntityCombat
     [SerializeField] ColliderCallback m_ColliderCallback;
     [SerializeField] Rigidbody m_Rb;
 
+    [Header("Output")]
+    [SerializeField] private UnityEvent m_OnAttack;
+    
     //[Header("Input")]
     //[Header("Output")]
     public Action OnAttack;
@@ -47,6 +51,7 @@ public class CloseEnemyCombat : EntityCombat
 
         yield return new WaitForSeconds(m_AttackBeginDelay);
 
+        m_OnAttack?.Invoke();
         OnAttack?.Invoke();
         m_IsAttacking = true;
 

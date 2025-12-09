@@ -17,9 +17,8 @@ public class EntityHealth : MonoBehaviour, IHealth
     [SerializeField] protected bool m_IsInvincible;
 
     [Header("REFERENCES")]
+    [SerializeField] protected UnityEvent m_OnTakeDamageFeedback;
     [SerializeField] protected UnityEvent m_OnDeathFeedback;
-
-    [SerializeField] protected DamageSFXManager m_DamageSfxManager;
 
     protected float m_CurrentInvincibilityTimer;
 
@@ -34,7 +33,7 @@ public class EntityHealth : MonoBehaviour, IHealth
     {
         if (m_IsInvincible) return;
 
-        //Debug.Log("Entity gain invincibility for " + m_InvincibilityRegainDuration + " seconds.");
+        Debug.Log("Entity gain invincibility for " + m_InvincibilityRegainDuration + " seconds.");
         GainInvincibility(m_InvincibilityRegainDuration);
 
         m_CurrentHealth -= damage;
@@ -45,7 +44,7 @@ public class EntityHealth : MonoBehaviour, IHealth
         }
         else
         {
-            m_DamageSfxManager?.PlayDamageSfx();
+            m_OnTakeDamageFeedback.Invoke();
             OnTakeDamage?.Invoke();
         }
     }
@@ -62,7 +61,6 @@ public class EntityHealth : MonoBehaviour, IHealth
 
     private void Die()
     {
-        m_DamageSfxManager?.PlayDeathSfx();
         m_OnDeathFeedback.Invoke();
         OnDeath?.Invoke();
     }

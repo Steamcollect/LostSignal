@@ -35,8 +35,8 @@ public class RangeOverloadCombatStyle : CombatStyle
     [SerializeField] private GameObject m_MuzzleFlashPrefab;
     [SerializeField] private Bullet m_BulletPrefab;
 
-    [SerializeField] private RangeReloadingWeaponSFXManager m_SfxManager;
     [SerializeField] private UnityEvent m_OnAttackFeedback;
+    [SerializeField] private UnityEvent m_OnReloadFeedback;
 
     private float m_CoolsTimer;
     private float m_CurentTemperature;
@@ -72,7 +72,6 @@ public class RangeOverloadCombatStyle : CombatStyle
     {
         if (m_CanAttack && !m_IsOverload)
         {
-            m_OnAttackFeedback?.Invoke();
             OnAttack?.Invoke();
             m_CoolsTimer = 0;
             
@@ -83,9 +82,8 @@ public class RangeOverloadCombatStyle : CombatStyle
             Destroy(muzzleVFX, muzzleVFX.GetComponent<ParticleSystem>().main.duration);
 
             StartCoroutine(AttackCooldown());
-
-            if (m_SfxManager)
-                m_SfxManager.PlayAttackSfx();
+            
+            m_OnAttackFeedback?.Invoke();
 
             m_CurentTemperature += m_ShootTemperature;
             if (m_CurentTemperature >= m_MaxTemperature)
@@ -107,8 +105,7 @@ public class RangeOverloadCombatStyle : CombatStyle
         {
             OnReload?.Invoke();
 
-            if (m_SfxManager)
-                m_SfxManager.PlayReloadSfx();
+            m_OnReloadFeedback?.Invoke();
             StartCoroutine(OverloadCooldown());
         }
     }

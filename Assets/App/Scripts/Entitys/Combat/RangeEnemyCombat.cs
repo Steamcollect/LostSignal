@@ -1,6 +1,7 @@
 using System.Collections;
 using MVsToolkit.Dev;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RangeEnemyCombat : EntityCombat
 {
@@ -24,6 +25,9 @@ public class RangeEnemyCombat : EntityCombat
 
     [Space(5)]
     [SerializeField] RSO_PlayerController m_Player;
+    
+    [Header("Output")]
+    [SerializeField] private UnityEvent m_OnShoot;
 
     //[Header("Input")]
     //[Header("Output")]
@@ -49,6 +53,8 @@ public class RangeEnemyCombat : EntityCombat
             bullet.transform.up = m_AttackPoint.forward;
             bullet.Setup();
 
+            m_OnShoot.Invoke();
+            
             yield return new WaitForSeconds(m_TimeBetweenBullets);
         }
 

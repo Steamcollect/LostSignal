@@ -16,7 +16,9 @@ public class WaveSystem : MonoBehaviour
     [Title("EVENTS")]
     [SerializeField] private UnityEvent m_OnCombatStart;
     [SerializeField] private UnityEvent m_OnCombatCompleted;
-
+    [SerializeField] private UnityEvent m_OnWaveEnd;
+    
+    
     // State
     public List<EntityController> m_CurrentEntitiesAlive = new List<EntityController>();
     public int m_CurrentWaveIndex;
@@ -79,6 +81,7 @@ public class WaveSystem : MonoBehaviour
     private void OnWaveComplete()
     {
         m_CurrentWaveIndex++;
+        m_OnWaveEnd.Invoke();
 
         if (m_CurrentWaveIndex >= m_MaxWaveCount)
         {

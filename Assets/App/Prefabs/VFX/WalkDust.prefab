@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4741017690797183938}
   - component: {fileID: 7052904532813203400}
   - component: {fileID: 1986198659858703515}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: WalkDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}

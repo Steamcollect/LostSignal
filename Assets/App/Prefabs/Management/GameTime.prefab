@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3966324087775590345}
   - component: {fileID: 4464615860274867751}
+  - component: {fileID: 7419987199655906186}
   m_Layer: 0
   m_Name: GameTime
   m_TagString: Untagged
@@ -46,3 +47,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimerManager
   m_TimerSpeed: 1
   m_Timer: {fileID: 11400000, guid: 004bffd9af8a1144ea35db8a1cf77ee1, type: 2}
+--- !u!114 &7419987199655906186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169923317201967416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7de9ef06f04864391a928af29f4b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMTimeManager
+  NormalTimeScale: 1
+  UpdateTimescale: 1
+  UpdateFixedDeltaTime: 1
+  UpdateMaximumDeltaTime: 1
+  CurrentTimeScale: 1
+  TargetTimeScale: 1
+  TestButton: 0
