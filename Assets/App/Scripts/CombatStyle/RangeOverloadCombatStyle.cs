@@ -33,6 +33,7 @@ public class RangeOverloadCombatStyle : CombatStyle
     [SerializeField] private Transform m_AttackPoint;
 
     [SerializeField] private GameObject m_MuzzleFlashPrefab;
+    [SerializeField] private GameObject m_BulletPrefab;
 
     [SerializeField] private RangeReloadingWeaponSFXManager m_SfxManager;
     [SerializeField] private UnityEvent m_OnAttackFeedback;
@@ -74,10 +75,8 @@ public class RangeOverloadCombatStyle : CombatStyle
             m_OnAttackFeedback?.Invoke();
             OnAttack?.Invoke();
             m_CoolsTimer = 0;
-
-            Bullet bullet = BulletManager.S_Instance.GetBullet();
-            bullet.transform.position = m_AttackPoint.position;
-            bullet.transform.up = m_AttackPoint.forward;
+            
+            Bullet bullet = PoolManager.Instance.Spawn(m_BulletPrefab, m_AttackPoint.position, m_AttackPoint.rotation).GetComponent<Bullet>();
 
             Debug.Log("Shoot Bullet");
 

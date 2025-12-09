@@ -69,14 +69,11 @@ public class Bullet : MonoBehaviour
                 Destroy(hitVFX, hitVFX.GetComponent<ParticleSystem>().main.duration);
             }
 
-            if (other.gameObject.TryGetComponent(out EntityTrigger trigger))
-            {
-                if (m_Knockback > 0)
-                {
-                    trigger.GetController().GetRigidbody().AddForce(transform.up * m_Knockback);
-                }
-                trigger.GetController()?.GetHealth().TakeDamage(m_Damage);
-            }
+            if(m_Knockback > 0 && other.gameObject.TryGetComponent(out EntityController controller))
+                controller.GetRigidbody().AddForce(transform.up * m_Knockback);
+
+            if (other.gameObject.TryGetComponentInChildrens(out IHealth health))
+                health.TakeDamage(m_Damage);
         }
 
         transform.position = Vector3.zero;
