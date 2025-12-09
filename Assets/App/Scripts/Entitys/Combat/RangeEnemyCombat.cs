@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RangeEnemyCombat : MonoBehaviour
+public class RangeEnemyCombat : EntityCombat
 {
     [Header("Settings")]
     [SerializeField] int m_Damage;

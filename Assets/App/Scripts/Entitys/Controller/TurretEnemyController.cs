@@ -52,9 +52,30 @@ public class TurretEnemyController : EntityController, ISpawnable
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, m_AttackRange);
-        Gizmos.color = Color.green;
+
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, m_DetectionRange);
+
+        // draw cone edges and arc for m_AngleRequireToAttack
+        Gizmos.color = Color.cyan;
+
+        // use forward on horizontal plane
+        Vector3 forward = transform.forward;
+        forward.y = 0f;
+        if (forward.sqrMagnitude < 0.0001f)
+        {
+            forward = Vector3.forward;
+        }
+        forward.Normalize();
+
+        float halfAngle = m_AngleRequireToAttack * 0.5f;
+
+        Vector3 dirLeft = Quaternion.Euler(0f, -halfAngle, 0f) * forward;
+        Vector3 dirRight = Quaternion.Euler(0f, halfAngle, 0f) * forward;
+
+        Gizmos.DrawLine(transform.position, transform.position + dirLeft * m_DetectionRange);
+        Gizmos.DrawLine(transform.position, transform.position + dirRight * m_DetectionRange);
     }
 }
