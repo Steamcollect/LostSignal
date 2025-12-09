@@ -9832,7 +9832,6 @@ GameObject:
   - component: {fileID: 4581899121895831684}
   - component: {fileID: 1516571823923487824}
   - component: {fileID: 4018166420172724844}
-  - component: {fileID: 135912523397799775}
   m_Layer: 11
   m_Name: Bullet
   m_TagString: Bullet
@@ -9849,7 +9848,7 @@ Transform:
   m_GameObject: {fileID: 2553044389363761576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 3.65, z: 2.609}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.5, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14735,20 +14734,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &135912523397799775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2553044389363761576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ea6cad798acc0d438b0ead9d986deb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AutoReleaseParticle
-  m_PoolTicket: {fileID: 0}
-  m_ParticleSystem: {fileID: 1516571823923487824}
 --- !u!1 &7805347405845795416
 GameObject:
   m_ObjectHideFlags: 0

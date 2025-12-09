@@ -66,8 +66,6 @@ public class PoolManager : MonoBehaviour
 
         GameObject spawnedObject = m_Pools[prefabID].Get();
 
-        spawnedObject.transform.SetPositionAndRotation(position, rotation);
-
         if(parent != null)
         {
             spawnedObject.transform.parent = parent;
@@ -76,6 +74,10 @@ public class PoolManager : MonoBehaviour
         PooledObject returnHandler = spawnedObject.GetComponent<PooledObject>();
         if(returnHandler == null) returnHandler = spawnedObject.AddComponent<PooledObject>();
         returnHandler.Initialize(prefabID);
+
+        spawnedObject.transform.SetPositionAndRotation(position, rotation);
+
+        spawnedObject.SetActive(true);
 
         return spawnedObject;
     }
@@ -98,7 +100,6 @@ public class PoolManager : MonoBehaviour
         if(m_Pools.ContainsKey(prefabID)) return;
 
         GameObject poolParentObj = new GameObject($"Pool_{prefab.name}");
-
         poolParentObj.transform.SetParent(this.transform);
         m_PoolParents[prefabID] = poolParentObj.transform;
 
@@ -107,9 +108,10 @@ public class PoolManager : MonoBehaviour
             createFunc: () =>
             {
                 GameObject obj = Instantiate(prefab, m_PoolParents[prefabID]);
+                obj.SetActive(false);
                 return obj;
             },
-            actionOnGet: (obj) => obj.SetActive(true),
+            actionOnGet: (obj) => { },
             actionOnRelease: (obj) =>
             {
                 obj.SetActive(false);

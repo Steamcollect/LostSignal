@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     private PooledObject m_PoolTicket;
     
     public Vector3 GetShootPosition() => m_OriginalPosition;
-    
+
     public Bullet Setup(int damage, float speed)
     {
         this.m_Damage = damage;
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         m_RigidBody.linearVelocity = Vector3.zero;
         m_RigidBody.angularVelocity = Vector3.zero;
         
-        m_OriginalPosition = transform.position;
+        m_RigidBody.linearVelocity = transform.up * m_Speed;
 
         StartCoroutine(CheckDistanceFromPlayer());
 
@@ -37,11 +37,6 @@ public class Bullet : MonoBehaviour
         this.m_Knockback = knockback;
         return this;
     }
-
-    private void Update()
-    {
-        m_RigidBody.position += transform.up * (m_Speed * Time.deltaTime);
-    }
     
     public void Impact(GameObject target)
     {
@@ -50,7 +45,6 @@ public class Bullet : MonoBehaviour
             health.TakeDamage(m_Damage);
         }
         
-        transform.position = Vector3.zero;
         ReleaseBullet();
     }
     
@@ -76,21 +70,18 @@ public class Bullet : MonoBehaviour
                 health.TakeDamage(m_Damage);
         }
 
-        transform.position = Vector3.zero;
         ReleaseBullet();
     }
 
     IEnumerator CheckDistanceFromPlayer()
     {
         yield return new WaitForSeconds(5);
-        transform.position = Vector3.zero;
         ReleaseBullet();
     }
 
     private void ReleaseBullet()
     {
         if(m_PoolTicket == null) m_PoolTicket = GetComponent<PooledObject>();
-
         m_PoolTicket.Release();
     }
 }
