@@ -46,7 +46,7 @@ public class CloseEnemyController : EntityController, ISpawnable
         {
             if(m_CanAttack
                 && m_Detector.IsPlayerInRange(m_AttackRange)
-                && m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack))
+                && m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack)) // Not check if wall between player and enemy
             {
                 StartCoroutine(Attack());
             }
@@ -91,6 +91,11 @@ public class CloseEnemyController : EntityController, ISpawnable
         m_Movement.Value.Move(m_Agent.desiredVelocity.normalized);
     }
 
+    public void OnSpawn()
+    {
+        m_CurrentState = EnemyStates.Chasing;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -121,10 +126,5 @@ public class CloseEnemyController : EntityController, ISpawnable
 
         Gizmos.DrawLine(transform.position, transform.position + dirLeft * m_DetectionRange);
         Gizmos.DrawLine(transform.position, transform.position + dirRight * m_DetectionRange);
-    }
-
-    public void OnSpawn()
-    {
-        m_CurrentState = EnemyStates.Chasing;
     }
 }
