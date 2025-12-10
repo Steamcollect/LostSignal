@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6134571766970536489}
   - component: {fileID: 167269885798792605}
   - component: {fileID: 5424058489915727379}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,10 +185,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 959
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

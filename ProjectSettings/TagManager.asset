@@ -17,7 +17,7 @@ TagManager:
   - StencilMask
   - Player
   - Enemy
-  - 
+  - HitBox
   - Bullet
   - 
   - 

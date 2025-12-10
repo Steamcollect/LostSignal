@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point;
 
-        if (other.gameObject.TryGetComponent(out HurtBox hurtBox))
+        if (other.collider.gameObject.TryGetComponent(out HurtBox hurtBox))
             hurtBox.TakeDamage(m_Damage);
         else
             PoolManager.Instance.Spawn(m_HitPrefab, pos, rot);

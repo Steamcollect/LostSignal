@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDetector
   m_DetectionMask:
     serializedVersion: 2
-    m_Bits: 2555
+    m_Bits: 2491
   m_PlayerTag: Player
   m_Player: {fileID: 11400000, guid: 889c55170c3d485408a368282da46058, type: 2}
   m_Controller: {fileID: 1608218501876916987}
@@ -316,10 +316,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 959
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
