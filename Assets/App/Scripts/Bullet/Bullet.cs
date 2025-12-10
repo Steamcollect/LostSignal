@@ -6,24 +6,21 @@ using UnityEngine.Events;
 public class Bullet : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float m_Speed;
-    [SerializeField] private int m_Damage;
-    [SerializeField] private float m_Knockback;
-    [SerializeField] private ForceMode m_KnockbackForceMode = ForceMode.Impulse;
+    [SerializeField] float m_Speed;
+    [SerializeField] int m_Damage;
+
+    Vector3 m_OriginalPosition;
 
     [Header("References")]
-    [SerializeField] private Rigidbody m_RigidBody;
-    [SerializeField] private GameObject m_HitPrefab;
+    [SerializeField] Rigidbody m_RigidBody;
+    [SerializeField] GameObject m_HitPrefab;
+
+    Coroutine m_TimeBeforeResetCoroutine;
 
     [Header("Output")]
-    [SerializeField] private UnityEvent m_OnImpact;
+    [SerializeField] UnityEvent m_OnImpact;
+    PooledObject m_PoolTicket;
     
-    private Vector3 m_OriginalPosition;
-
-    private PooledObject m_PoolTicket;
-    
-    public Vector3 GetShootPosition() => m_OriginalPosition;
-
     public Bullet Setup()
     {
         m_RigidBody.linearVelocity = Vector3.zero;
@@ -32,14 +29,21 @@ public class Bullet : MonoBehaviour
         m_RigidBody.linearVelocity = transform.up * m_Speed;
         
         m_OriginalPosition = transform.position;
-        
-        StartCoroutine(CheckDistanceFromPlayer());
+
+        if (m_TimeBeforeResetCoroutine != null) StopCoroutine(m_TimeBeforeResetCoroutine);
+        m_TimeBeforeResetCoroutine = StartCoroutine(TimeBeforeReset());
 
         return this;
     }
-    public Bullet SetKnockback(float knockback)
+
+    public Bullet SetDamage(int damage)
     {
-        this.m_Knockback = knockback;
+        m_Damage = damage;
+        return this;
+    }
+    public Bullet SetSpeed(float speed)
+    {
+        m_Speed = speed;
         return this;
     }
 
@@ -56,30 +60,18 @@ public class Bullet : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("Bullet"))
-        {
-            ContactPoint contact = other.contacts[0];
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 pos = contact.point;
+        ContactPoint contact = other.contacts[0];
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        Vector3 pos = contact.point;
 
-            if (m_HitPrefab && (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("Player")))
-            {
-                PoolManager.Instance.Spawn(m_HitPrefab, pos, rot);
-            }
-
-            if(other.gameObject.TryGetComponent(out EntityController controller))
-                controller.GetRigidbody().AddForce(transform.up * m_Knockback, m_KnockbackForceMode);
-
-            if (other.gameObject.TryGetComponentInChildrens(out IHealth health))
-                health.TakeDamage(m_Damage);
-            
-            m_OnImpact.Invoke();
-        }
-
+        if (other.gameObject.TryGetComponent(out HurtBox hurtBox))
+            hurtBox.TakeDamage(m_Damage);
+        else
+        m_OnImpact.Invoke();
         ReleaseBullet();
     }
 
-    IEnumerator CheckDistanceFromPlayer()
+    IEnumerator TimeBeforeReset()
     {
         yield return new WaitForSeconds(5);
         ReleaseBullet();
@@ -87,7 +79,11 @@ public class Bullet : MonoBehaviour
 
     private void ReleaseBullet()
     {
-        if(m_PoolTicket == null) m_PoolTicket = GetComponent<PooledObject>();
+        if(m_TimeBeforeResetCoroutine != null) StopCoroutine(m_TimeBeforeResetCoroutine);
+
+        if (m_PoolTicket == null) m_PoolTicket = GetComponent<PooledObject>();
         m_PoolTicket.Release();
     }
+
+    public Vector3 GetShootPosition() => m_OriginalPosition;
 }

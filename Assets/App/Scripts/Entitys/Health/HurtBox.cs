@@ -1,7 +1,7 @@
 using MVsToolkit.Dev;
 using UnityEngine;
 
-public class HeartBox : MonoBehaviour
+public class HurtBox : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float m_DamageMultiplier;
