@@ -218,9 +218,9 @@ MonoBehaviour:
         DebugActive: 0
         RepeatUntilStopped: 0
         CameraShakeProperties:
-          Duration: 0.1
-          Amplitude: 5
-          Frequency: 40
+          Duration: 0.15
+          Amplitude: 10
+          Frequency: 10
           AmplitudeX: 0
           AmplitudeY: 0
           AmplitudeZ: 0
@@ -477,5 +477,5 @@ MonoBehaviour:
           ButtonText: Automatic Shaker Setup
         Owner: {fileID: 1286264051780348516}
         DebugActive: 0
-        FreezeFrameDuration: 0.1
+        FreezeFrameDuration: 0.15
         MinimumTimescaleThreshold: 0.1

@@ -873,6 +873,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8386313832012218351}
     - target: {fileID: 1883084624102959633, guid: 394356303bb447f418b80c0d3fb08c75, type: 3}
+      propertyPath: managedReferences[4705919900768010322].AnimateScaleTarget
+      value: 
+      objectReference: {fileID: 6232260696553207354}
+    - target: {fileID: 1883084624102959633, guid: 394356303bb447f418b80c0d3fb08c75, type: 3}
       propertyPath: 'managedReferences[491240477089857609].ExtraBoundRenderers.Array.data[0]'
       value: 
       objectReference: {fileID: 7317064939774906229}
