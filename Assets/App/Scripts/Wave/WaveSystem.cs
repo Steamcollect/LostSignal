@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using MVsToolkit.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -18,7 +16,9 @@ public class WaveSystem : MonoBehaviour
     [Title("EVENTS")]
     [SerializeField] private UnityEvent m_OnCombatStart;
     [SerializeField] private UnityEvent m_OnCombatCompleted;
-
+    [SerializeField] private UnityEvent m_OnWaveEnd;
+    
+    
     // State
     public List<EntityController> m_CurrentEntitiesAlive = new List<EntityController>();
     public int m_CurrentWaveIndex;
@@ -40,7 +40,7 @@ public class WaveSystem : MonoBehaviour
         m_CurrentWaveIndex = 0;
         IsInFight = true;
 
-        FightDetectorManager.S_Instance?.OnWaveStart(this);
+        FightDetectorManager.Instance?.OnWaveStart(this);
         m_OnCombatStart?.Invoke();
 
         SpawnCurrentWave();
@@ -81,6 +81,7 @@ public class WaveSystem : MonoBehaviour
     private void OnWaveComplete()
     {
         m_CurrentWaveIndex++;
+        m_OnWaveEnd.Invoke();
 
         if (m_CurrentWaveIndex >= m_MaxWaveCount)
         {
@@ -88,7 +89,7 @@ public class WaveSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Wave terminée. Prochaine wave dans {m_TimeBetweenWaves} secondes...");
+            Debug.Log($"Wave terminï¿½e. Prochaine wave dans {m_TimeBetweenWaves} secondes...");
 
             this.Delay(() =>
             {
@@ -100,7 +101,7 @@ public class WaveSystem : MonoBehaviour
     private void EndCombat()
     {
         IsInFight = false;
-        FightDetectorManager.S_Instance?.OnWaveEnd(this);
+        FightDetectorManager.Instance?.OnWaveEnd(this);
         m_OnCombatCompleted?.Invoke();
     }
 

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AmbianceManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EventReference m_Ambiance;
-    private EventInstance m_MusicInstance;
 
+    private EventInstance m_MusicInstance;
+    
     private void Start()
     {
         m_MusicInstance = RuntimeManager.CreateInstance(m_Ambiance);

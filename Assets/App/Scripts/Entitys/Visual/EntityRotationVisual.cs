@@ -3,13 +3,11 @@ using UnityEngine.Serialization;
 
 public class EntityRotationVisual : MonoBehaviour
 {
-    [FormerlySerializedAs("rotationTime")]
     [Header("Settings")]
     [SerializeField] private float m_RotationTime;
 
-    [FormerlySerializedAs("maxRotationAngle")] [SerializeField] private float m_MaxRotationAngle;
+    [SerializeField] private float m_MaxRotationAngle;
 
-    [FormerlySerializedAs("rotationPivot")]
     [Header("References")]
     [SerializeField] private Transform m_RotationPivot;
 

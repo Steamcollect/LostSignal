@@ -1,32 +1,30 @@
+using System.Collections;
 using MVsToolkit.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class EntityCombat : MonoBehaviour, ILookAtTarget
 {
-    [FormerlySerializedAs("turnSmoothTime")]
     [Header("Settings")]
     [SerializeField] private float m_TurnSmoothTime;
 
-    [FormerlySerializedAs("currentCombatStyle")]
     [Header("References")]
-    [SerializeField] protected CombatStyle m_CurrentCombatStyle;
+    [SerializeField] protected Transform m_VerticalPivot;
+    [SerializeField] protected Transform m_HorizontalPivot;
 
-    [FormerlySerializedAs("verticalPivot")] [Space(10)] [SerializeField] protected Transform m_VerticalPivot;
-
-    [FormerlySerializedAs("horizontalPivot")] [SerializeField] protected Transform m_HorizontalPivot;
     private bool m_CanLookAt = true;
 
     private Vector3 m_TurnSmoothHozirontalVelocity, m_TurnSmoothVerticalVelocity;
 
-    public virtual void LookAt(Vector3 targetPos)
+    public virtual void LookAt(Vector3 targetPos, LookAtAxis lookAtAxis = LookAtAxis.Both, float turnSmoothTime = 999)
     {
         if (!m_CanLookAt) return;
 
         Vector3 direction = targetPos - m_HorizontalPivot.position;
         if (direction.sqrMagnitude < 0.0001f) return;
 
-        if (m_HorizontalPivot)
+        if(turnSmoothTime == 999) turnSmoothTime = m_TurnSmoothTime;
+
+        if (m_HorizontalPivot && lookAtAxis != LookAtAxis.Vertical)
         {
             Vector3 horizontalDir = direction;
             horizontalDir.y = 0f;
@@ -36,12 +34,12 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
                 m_HorizontalPivot.LookAtSmoothDamp(
                     m_HorizontalPivot.position + horizontalDir,
                     ref m_TurnSmoothHozirontalVelocity,
-                    m_TurnSmoothTime
+                    turnSmoothTime
                 );
             }
         }
 
-        if (m_VerticalPivot)
+        if (m_VerticalPivot && lookAtAxis != LookAtAxis.Horizontal)
         {
             Vector3 verticalDir = direction.normalized;
 
@@ -50,33 +48,15 @@ public class EntityCombat : MonoBehaviour, ILookAtTarget
             m_VerticalPivot.LookAtSmoothDamp(
                 verticalLookPoint,
                 ref m_TurnSmoothVerticalVelocity,
-                m_TurnSmoothTime
+                turnSmoothTime
             );
         }
     }
 
-    public virtual void Attack()
-    {
-        m_CurrentCombatStyle.Attack();
-    }
+    public virtual IEnumerator Attack() { yield break; }
 
-    public Vector3 GetLookAtDirection()
-    {
-        return (m_VerticalPivot.forward + m_HorizontalPivot.forward).normalized;
-    }
+    public Vector3 GetLookAtDirection() => (m_VerticalPivot.forward + m_HorizontalPivot.forward).normalized;
+    public Vector3 GetVerticalPivotPos() => m_VerticalPivot.position;
 
-    public CombatStyle GetCombatStyle()
-    {
-        return m_CurrentCombatStyle;
-    }
-
-    public Vector3 GetVerticalPivotPos()
-    {
-        return m_VerticalPivot.position;
-    }
-
-    public void SetActiveLookAt(bool canLookAt)
-    {
-        this.m_CanLookAt = canLookAt;
-    }
+    public void SetActiveLookAt(bool canLookAt) => m_CanLookAt = canLookAt;
 }

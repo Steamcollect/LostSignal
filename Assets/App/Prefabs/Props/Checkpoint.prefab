@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4870286913fb5724c87838ca8a1c67b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Checkpoint
-  applySpawnPosOnStart: 0
-  spawnPoint: {fileID: 6501928090126216852}
+  m_ApplySpawnPosOnStart: 0
+  m_SpawnPoint: {fileID: 6501928090126216852}

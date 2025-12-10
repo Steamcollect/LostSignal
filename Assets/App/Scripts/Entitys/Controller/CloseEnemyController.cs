@@ -1,39 +1,33 @@
+using System.Collections;
 using MVsToolkit.Dev;
-using MVsToolkit.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public class CloseEnemyController : EntityController, ISpawnable
 {
-    [FormerlySerializedAs("detectionRange")]
     [Header("Settings")]
-    [SerializeField] private float m_DetectionRange;
+    [SerializeField] float m_DetectionRange;
+    [SerializeField] float m_MinChaseRange;
+    [SerializeField] float m_AttackRange;
 
-    [FormerlySerializedAs("attackRange")] [SerializeField] private float m_AttackRange;
-    [FormerlySerializedAs("detectionMask")] [SerializeField] private LayerMask m_DetectionMask;
-    [FormerlySerializedAs("playertag")] [SerializeField] [TagName] private string m_Playertag;
+    [Space(5)]
+    [SerializeField] float m_AngleRequireToAttack;
+    bool m_CanAttack = true;
 
-    [FormerlySerializedAs("stopMovementOnAttackDelay")] [Space(10)] [SerializeField] private float m_StopMovementOnAttackDelay;
+    [Space(10)]
+    [SerializeField] float m_DelayBetweenAttacks;
 
-    [FormerlySerializedAs("attackDashForce")] [Space(10)] [SerializeField] private float m_AttackDashForce;
+    [SerializeField, ReadOnly] EnemyStates m_CurrentState;
 
-    [FormerlySerializedAs("attackDashForceMode")] [SerializeField] private ForceMode m_AttackDashForceMode;
-
-    [FormerlySerializedAs("agent")]
     [Header("Internal References")]
-    [SerializeField] private NavMeshAgent m_Agent;
+    [SerializeField] NavMeshAgent m_Agent;
+    [SerializeField] PlayerDetector m_Detector;
 
-    [FormerlySerializedAs("detectionLight")] [SerializeField] private GameObject m_DetectionLight;
+    [Space(10)]
+    [SerializeField] RSO_PlayerController m_Player;
 
-    [FormerlySerializedAs("player")]
-    [Header("Input")]
-    [SerializeField] private RSO_PlayerController m_Player;
-
-    private bool m_CanChasePlayer = true;
-
-    private bool m_IsChasingPlayer;
-
+    //[Header("Input")]
     //[Header("Output")]
 
     private void Start()
@@ -41,19 +35,11 @@ public class CloseEnemyController : EntityController, ISpawnable
         m_Agent.updatePosition = false;
         m_Agent.updateRotation = false;
 
-        m_DetectionLight.SetActive(false);
-
-        m_Health.OnTakeDamage += OnTakeDamage;
-
-        m_Combat.GetCombatStyle().OnAttack += () =>
+        m_Health.OnTakeDamage += () =>
         {
-            m_CanChasePlayer = false;
-            m_Movement.Value.ResetVelocity();
-
-            this.Delay(() => { m_CanChasePlayer = true; }, m_StopMovementOnAttackDelay);
+            if (m_CurrentState == EnemyStates.Idle)
+                m_CurrentState = EnemyStates.Chasing;
         };
-
-        m_Combat.GetCombatStyle().OnAttack += DashOnAttack;
     }
 
     private void Update()
@@ -63,56 +49,43 @@ public class CloseEnemyController : EntityController, ISpawnable
 
     private void FixedUpdate()
     {
-        if (!m_CanChasePlayer) return;
-
-        if (!m_IsChasingPlayer)
+        if (m_CurrentState == EnemyStates.Chasing)
         {
-            if (IsPlayerInRange(m_DetectionRange) && CanSeePlayer())
+            if(m_CanAttack
+                && m_Detector.IsPlayerInRange(m_AttackRange)
+                && m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack)) // Not check if wall between player and enemy
             {
-                m_IsChasingPlayer = true;
-                FightDetectorManager.S_Instance?.OnEnemyStartCombat(this);
-                m_DetectionLight.SetActive(true);
-            }
-
-            return;
-        }
-
-        m_Combat.LookAt(m_Player.Get().GetTargetPosition());
-
-        if (CanSeePlayer())
-        {
-            if (!IsPlayerInRange(m_AttackRange))
-            {
-                MoveTowardPlayer();
+                StartCoroutine(Attack());
             }
             else
             {
-                if (!m_Combat.GetCombatStyle().IsAttacking()
-                    && m_Combat.GetCombatStyle().CanAttack())
-                    m_Combat.Attack();
+                m_Combat.LookAt(transform.position + m_Agent.desiredVelocity.normalized, LookAtAxis.Horizontal);
+                
+                if (!m_Detector.IsPlayerInRange(m_MinChaseRange))
+                    MoveTowardPlayer();
             }
         }
-        else
+        else if(m_CurrentState == EnemyStates.Idle 
+            && m_Detector.CanSeePlayer(m_DetectionRange) 
+            && m_Detector.IsPlayerInRange(m_DetectionRange))
         {
-            MoveTowardPlayer();
+            m_CurrentState = EnemyStates.Chasing;
         }
     }
 
-    private void OnDrawGizmosSelected()
+    IEnumerator Attack()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, m_DetectionRange);
+        m_CurrentState = EnemyStates.Attacking;
+        m_CanAttack = false;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, m_AttackRange);
+        yield return StartCoroutine(m_Combat.Attack());
+        m_CurrentState = EnemyStates.Chasing;
+
+        yield return new WaitForSeconds(m_DelayBetweenAttacks);
+        m_CanAttack = true;
     }
 
-    public void OnSpawn()
-    {
-        m_IsChasingPlayer = true;
-    }
-
-    private void MoveTowardPlayer()
+    void MoveTowardPlayer()
     {
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = m_Player.Get().GetTargetPosition();
@@ -125,41 +98,43 @@ public class CloseEnemyController : EntityController, ISpawnable
         m_Movement.Value.Move(m_Agent.desiredVelocity.normalized);
     }
 
-    private void DashOnAttack()
+    public void OnSpawn()
     {
-        m_Rb.AddForce(m_Combat.GetLookAtDirection() * m_AttackDashForce, m_AttackDashForceMode);
+        m_CurrentState = EnemyStates.Chasing;
     }
 
-    private void OnTakeDamage()
+    private void OnDrawGizmosSelected()
     {
-        FightDetectorManager.S_Instance?.OnEnemyStartCombat(this);
-        m_IsChasingPlayer = true;
-        m_DetectionLight.SetActive(true);
-    }
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(GetTargetPosition(), .2f);
 
-    private bool CanSeePlayer()
-    {
-        Vector3 dir = (m_Player.Get().GetTargetPosition() - GetTargetPosition()).normalized;
-        Vector3 eyePos = m_Combat.GetVerticalPivotPos(); // bien plus robuste
-        Ray ray = new(eyePos, dir);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, m_AttackRange);
 
-        RaycastHit hit;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, m_DetectionRange);
 
-        if (Physics.Raycast(ray, out hit, m_DetectionRange, m_DetectionMask))
-            if (hit.collider.CompareTag(m_Playertag))
-                return true;
+        Gizmos.color = Color.orange;
+        Gizmos.DrawWireSphere(transform.position, m_MinChaseRange);
 
-        return false;
-    }
+        // draw cone edges and arc for m_AngleRequireToAttack
+        Gizmos.color = Color.cyan;
 
-    private bool IsPlayerInRange(float range)
-    {
-        Vector3 enemyPos = GetTargetPosition();
-        Vector3 playerPos = m_Player.Get().GetTargetPosition();
+        // use forward on horizontal plane
+        Vector3 forward = transform.forward;
+        forward.y = 0f;
+        if (forward.sqrMagnitude < 0.0001f)
+        {
+            forward = Vector3.forward;
+        }
+        forward.Normalize();
 
-        enemyPos.y = 0;
-        playerPos.y = 0;
+        float halfAngle = m_AngleRequireToAttack * 0.5f;
 
-        return Vector3.Distance(enemyPos, playerPos) < range;
+        Vector3 dirLeft = Quaternion.Euler(0f, -halfAngle, 0f) * forward;
+        Vector3 dirRight = Quaternion.Euler(0f, halfAngle, 0f) * forward;
+
+        Gizmos.DrawLine(transform.position, transform.position + dirLeft * m_DetectionRange);
+        Gizmos.DrawLine(transform.position, transform.position + dirRight * m_DetectionRange);
     }
 }

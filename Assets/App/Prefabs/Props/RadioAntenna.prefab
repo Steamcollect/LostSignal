@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4254456304971949335}
   - component: {fileID: 5532927521816519968}
   - component: {fileID: 6689999428837330713}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: RadioAntenna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c815632dad31e47bf6f9f90784772c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadioAntennaController
-  state: 0
-  trigger: {fileID: 6689999428837330713}
+  m_Trigger: {fileID: 0}
+  m_OnPlayerInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6689999428837330713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,10 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d9199e03e95f74fbdd72b62bc11a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadioAntennaTrigger
-  playerTag: Player
-  interactInput: E
-  pointerPosition: {x: 0, y: 3.5, z: 0}
-  bumpScaleValue: 1.15
-  bumpScaleTime: 0.05
-  interactIA: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  cam: {fileID: 11400000, guid: 70cd5213f1bae7344a3e3bf0871f82e4, type: 2}
+  m_PlayerTag: Untagged
+  m_InteractInput: E
+  m_PointerPosition: {x: 0, y: 0, z: 0}
+  m_BumpScaleValue: 0
+  m_BumpScaleTime: 0
+  m_InteractIa: {fileID: 0}

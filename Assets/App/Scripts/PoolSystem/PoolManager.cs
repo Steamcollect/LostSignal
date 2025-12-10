@@ -58,26 +58,28 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public GameObject Spawn(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null)
+    public T Spawn<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent = null) where T : Component
     {
         int prefabID = prefab.GetInstanceID();
 
-        InitPool(prefab, prefabID);
+        InitPool(prefab.gameObject, prefabID);
 
         GameObject spawnedObject = m_Pools[prefabID].Get();
 
-        spawnedObject.transform.SetPositionAndRotation(position, rotation);
-
-        if(parent != null)
+        if (parent != null)
         {
             spawnedObject.transform.parent = parent;
         }
 
         PooledObject returnHandler = spawnedObject.GetComponent<PooledObject>();
-        if(returnHandler == null) returnHandler = spawnedObject.AddComponent<PooledObject>();
+        if (returnHandler == null) returnHandler = spawnedObject.AddComponent<PooledObject>();
         returnHandler.Initialize(prefabID);
 
-        return spawnedObject;
+        spawnedObject.transform.SetPositionAndRotation(position, rotation);
+
+        spawnedObject.SetActive(true);
+
+        return spawnedObject.GetComponent<T>();
     }
 
     public void ReturnToPool(GameObject prefab, int prefabID)
@@ -98,7 +100,6 @@ public class PoolManager : MonoBehaviour
         if(m_Pools.ContainsKey(prefabID)) return;
 
         GameObject poolParentObj = new GameObject($"Pool_{prefab.name}");
-
         poolParentObj.transform.SetParent(this.transform);
         m_PoolParents[prefabID] = poolParentObj.transform;
 
@@ -107,9 +108,10 @@ public class PoolManager : MonoBehaviour
             createFunc: () =>
             {
                 GameObject obj = Instantiate(prefab, m_PoolParents[prefabID]);
+                obj.SetActive(false);
                 return obj;
             },
-            actionOnGet: (obj) => obj.SetActive(true),
+            actionOnGet: (obj) => { },
             actionOnRelease: (obj) =>
             {
                 obj.SetActive(false);

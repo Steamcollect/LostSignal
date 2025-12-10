@@ -1,190 +1,107 @@
 using System.Collections;
 using MVsToolkit.Dev;
-using MVsToolkit.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TurretEnemyController : EntityController, ISpawnable
 {
     [Header("Settings")]
-    [SerializeField] private float m_AttackRange;
+    [SerializeField] float m_DetectionRange;
+    [SerializeField] float m_AttackRange;
+    [SerializeField, Range(1, 180)] float m_AngleRequireToAttack;
 
-    [SerializeField] private float m_DetectionRange;
-    [FormerlySerializedAs("bonusRangeWhenAttacked")] [SerializeField] private float m_BonusRangeWhenAttacked;
-    [FormerlySerializedAs("delayWhenAttacked")] [SerializeField] private float m_DelayWhenAttacked;
-    [FormerlySerializedAs("detectionMask")] [SerializeField] private LayerMask m_DetectionMask;
-    [FormerlySerializedAs("playertag")] [SerializeField] [TagName] private string m_Playertag;
+    [Space(10)]
+    [SerializeField] float m_TimeBetweenAttacks;
 
-    [FormerlySerializedAs("delayToAim")] [Space(10)] [SerializeField] private float m_DelayToAim;
+    [Space(10)]
+    [SerializeField, ReadOnly] EnemyStates m_CurrentState;
 
-    [FormerlySerializedAs("delayBeforeAttack")] [SerializeField] private float m_DelayBeforeAttack;
-    [FormerlySerializedAs("delayAfterAttack")] [SerializeField] private float m_DelayAfterAttack;
+    bool m_CanAttack = true;
 
-    [FormerlySerializedAs("laserMask")] [Space(10)] [SerializeField] private LayerMask m_LaserMask;
-
-    [FormerlySerializedAs("laserMaxDistance")] [SerializeField] private float m_LaserMaxDistance;
-
-    [FormerlySerializedAs("TargetGradient")] [Space(10)] [SerializeField] private Gradient m_TargetGradient;
-
-    [FormerlySerializedAs("OnShootGradient")] [SerializeField] private Gradient m_OnShootGradient;
-
-    [FormerlySerializedAs("detectionLight")]
     [Header("Internal References")]
-    [SerializeField] private GameObject m_DetectionLight;
+    [SerializeField] PlayerDetector m_Detector;
 
-    [FormerlySerializedAs("lineRenderer")] [SerializeField] private LineRenderer m_LineRenderer;
-    [FormerlySerializedAs("laserOrigin")] [SerializeField] private Transform m_LaserOrigin;
-
-    [FormerlySerializedAs("player")]
-    [Header("Input")]
+    [Space(10)]
     [SerializeField] private RSO_PlayerController m_Player;
 
-    private bool m_CanLookAtPlayer = true;
-    private bool m_IsAttacking;
-
-    private bool m_IsTargetingPlayer;
-
-    private Vector3 m_LastPlayerPos;
-
-    private void Start()
+    void Start()
     {
-        SetInactive();
-
-        m_Health.OnTakeDamage += OnTakeDamage;
+        m_Health.OnTakeDamage += () =>
+        {
+            if (m_CurrentState == EnemyStates.Idle)
+                m_CurrentState = EnemyStates.Chasing;
+        };
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        UpdateLaserPosition(m_LastPlayerPos);
-
-        if (CanSeePlayer() && m_CanLookAtPlayer)
+        if (m_CurrentState == EnemyStates.Chasing)
         {
-            m_Combat.LookAt(m_LastPlayerPos);
-            m_LastPlayerPos = m_Player.Get().GetTargetPosition();
+            if (m_Detector.CanSeePlayer(m_DetectionRange))
+            {
+                m_Combat.LookAt(m_Player.Get().GetTargetPosition());
+
+                if (m_CanAttack
+                    && m_Detector.IsLookDirectionWithinAngle(GetTargetPosition(), m_Combat.GetLookAtDirection(), m_AngleRequireToAttack))
+                    StartCoroutine(Attack());
+            }
         }
-
-        if (IsPlayerInRange(m_DetectionRange) && CanSeePlayer()) SetAware();
-
-        if (IsPlayerInRange(m_AttackRange)) SetAttacking();
-
-        if (IsPlayerInRange(m_AttackRange) && !CanSeePlayer())
+        else if (m_CurrentState == EnemyStates.Idle
+            && m_Detector.IsPlayerInRange(m_DetectionRange)
+            && m_Detector.CanSeePlayer(m_DetectionRange))
         {
-            m_IsTargetingPlayer = false;
-            SetAttacking();
+            m_CurrentState = EnemyStates.Chasing;
+            StartCoroutine(AttackCooldown());
         }
-
-        if (!IsPlayerInRange(m_DetectionRange) && !IsPlayerInRange(m_AttackRange)) SetInactive();
     }
 
-    private void OnDrawGizmosSelected()
+    IEnumerator Attack()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, m_AttackRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, m_DetectionRange);
+        m_CurrentState = EnemyStates.Attacking;
+        yield return StartCoroutine(m_Combat.Attack());
+        m_CurrentState = EnemyStates.Chasing;
+
+        StartCoroutine(AttackCooldown());
+
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        m_CanAttack = false;
+        yield return new WaitForSeconds(m_TimeBetweenAttacks);
+        m_CanAttack = true;
     }
 
     public void OnSpawn()
     {
-        SetAware();
+        m_CurrentState = EnemyStates.Chasing;
     }
 
-    private void SetInactive()
+    void OnDrawGizmosSelected()
     {
-        m_IsTargetingPlayer = false;
-        m_DetectionLight.SetActive(false);
-        m_LineRenderer.enabled = false;
-    }
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(GetTargetPosition(), .2f);
 
-    private void SetAware()
-    {
-        if (!m_IsTargetingPlayer)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, m_AttackRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, m_DetectionRange);
+
+        Gizmos.color = Color.cyan;
+        Vector3 forward = transform.forward;
+        forward.y = 0f;
+        if (forward.sqrMagnitude < 0.0001f)
         {
-            m_IsTargetingPlayer = true;
-            m_DetectionLight.SetActive(true);
-            m_LineRenderer.enabled = true;
-
-            FightDetectorManager.S_Instance?.OnEnemyStartCombat(this);
+            forward = Vector3.forward;
         }
-    }
+        forward.Normalize();
 
-    private void SetAttacking()
-    {
-        if (!m_IsAttacking) StartCoroutine(Attack());
-    }
+        float halfAngle = m_AngleRequireToAttack * 0.5f;
 
-    private IEnumerator Attack()
-    {
-        m_IsAttacking = true;
-        m_LineRenderer.material.color = Color.red;
-        yield return new WaitForSeconds(m_DelayToAim);
+        Vector3 dirLeft = Quaternion.Euler(0f, -halfAngle, 0f) * forward;
+        Vector3 dirRight = Quaternion.Euler(0f, halfAngle, 0f) * forward;
 
-        m_LineRenderer.material.color = Color.white;
-
-        m_CanLookAtPlayer = false;
-        yield return new WaitForSeconds(m_DelayBeforeAttack);
-
-        m_Combat.Attack();
-        m_Combat.GetCombatStyle().Reload();
-        m_LineRenderer.material.color = Color.red;
-
-        yield return new WaitForSeconds(m_DelayAfterAttack);
-
-        m_CanLookAtPlayer = true;
-        m_IsAttacking = false;
-    }
-
-    private void UpdateLaserPosition(Vector3 targetPosition)
-    {
-        if (m_LineRenderer == null) return;
-
-        m_LineRenderer.SetPosition(0, m_LaserOrigin.position);
-
-        Ray ray = new(m_LaserOrigin.position, m_LaserOrigin.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, m_LaserMaxDistance, m_LaserMask))
-        {
-            m_LineRenderer.SetPosition(1, hit.point);
-        }
-        else
-        {
-            Vector3 endPoint = m_LaserOrigin.position + m_LaserOrigin.forward * m_LaserMaxDistance;
-            m_LineRenderer.SetPosition(1, endPoint);
-        }
-    }
-
-    private void OnTakeDamage()
-    {
-        m_DetectionRange += m_BonusRangeWhenAttacked;
-        m_AttackRange += m_BonusRangeWhenAttacked;
-        this.Delay(() => m_DetectionRange -= m_BonusRangeWhenAttacked, new WaitForSeconds(m_DelayWhenAttacked));
-        this.Delay(() => m_AttackRange -= m_BonusRangeWhenAttacked, new WaitForSeconds(m_DelayWhenAttacked));
-    }
-
-    private bool CanSeePlayer()
-    {
-        Vector3 dir = (m_Player.Get().GetTargetPosition() - GetTargetPosition()).normalized;
-        Vector3 eyePos = m_Combat.GetVerticalPivotPos(); // bien plus robuste
-        Ray ray = new(eyePos, dir);
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, m_DetectionRange, m_DetectionMask))
-            if (hit.collider.CompareTag(m_Playertag))
-                return true;
-
-        return false;
-    }
-
-    private bool IsPlayerInRange(float range)
-    {
-        Vector3 enemyPos = GetTargetPosition();
-        Vector3 playerPos = m_Player.Get().GetTargetPosition();
-
-        enemyPos.y = 0;
-        playerPos.y = 0;
-
-        return Vector3.Distance(enemyPos, playerPos) < range;
+        Gizmos.DrawLine(transform.position, transform.position + dirLeft * m_DetectionRange);
+        Gizmos.DrawLine(transform.position, transform.position + dirRight * m_DetectionRange);
     }
 }
