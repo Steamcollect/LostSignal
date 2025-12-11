@@ -8,6 +8,7 @@ public class VideoManager : RegularSingleton<VideoManager>
     [Title("REFERENCES")]
     [SerializeField] private SSO_UniversalSettings m_Resolution;
     [SerializeField] private SSO_UniversalSettings m_WindowMode;
+    [SerializeField] private SSO_UniversalSettings m_VSync;
 
     private List<Resolution> m_Resolutions;
 
@@ -17,13 +18,15 @@ public class VideoManager : RegularSingleton<VideoManager>
         InitializeResolutions();
 
         m_Resolution.OnEnumChanged += SetResolution;
-
         m_WindowMode.OnEnumChanged += SetWindowMode;
+        m_VSync.OnEnumChanged += SetVSync;
     }
 
     private void OnDestroy()
     {
         m_Resolution.OnEnumChanged -= SetResolution;
+        m_WindowMode.OnEnumChanged -= SetWindowMode;
+        m_VSync.OnEnumChanged -= SetVSync;
     }
 
     private void InitializeResolutions()
@@ -86,79 +89,9 @@ public class VideoManager : RegularSingleton<VideoManager>
         }
     }
 
-    public void AnisotropicFilteringEnable()
+    public void SetVSync(int index)
     {
-        QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
-    }
-
-    public void AnisotropicFilteringDisable()
-    {
-        QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
-    }
-
-    public void AntiAliasingSet(int index)
-    {
-        // 0, 2, 4, 8 - Zero means off
-        QualitySettings.antiAliasing = index;
-    }
-
-    public void VsyncSet(int index)
-    {
-        // 0, 1 - Zero means off
         QualitySettings.vSyncCount = index;
-    }
-
-    public void ShadowResolutionSet(int index)
-    {
-        if (index == 3)
-            QualitySettings.shadowResolution = ShadowResolution.VeryHigh;
-        else if (index == 2)
-            QualitySettings.shadowResolution = ShadowResolution.High;
-        else if (index == 1)
-            QualitySettings.shadowResolution = ShadowResolution.Medium;
-        else if (index == 0)
-            QualitySettings.shadowResolution = ShadowResolution.Low;
-    }
-
-    public void ShadowsSet(int index)
-    {
-        if (index == 0)
-            QualitySettings.shadows = ShadowQuality.Disable;
-        else if (index == 1)
-            QualitySettings.shadows = ShadowQuality.All;
-    }
-
-    public void ShadowsCascasedSet(int index)
-    {
-        //0 = No, 2 = Two, 4 = Four
-        QualitySettings.shadowCascades = index;
-    }
-
-    public void TextureSet(int index)
-    {
-        // 0 = Full, 4 = Eight Resolution
-        QualitySettings.globalTextureMipmapLimit = index;
-    }
-
-    public void SoftParticleSet(int index)
-    {
-        if (index == 0)
-            QualitySettings.softParticles = false;
-        else if (index == 1)
-            QualitySettings.softParticles = true;
-    }
-
-    public void ReflectionSet(int index)
-    {
-        if (index == 0)
-            QualitySettings.realtimeReflectionProbes = false;
-        else if (index == 1)
-            QualitySettings.realtimeReflectionProbes = true;
-    }
-
-    public void SetOverallQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
     }
 
     public void WindowFullscreen()

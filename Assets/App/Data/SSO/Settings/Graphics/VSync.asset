@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aece9297082f28e4394fe2bee52a90b9, type: 3}
   m_Name: VSync
   m_EditorClassIdentifier: Assembly-CSharp::SSO_UniversalSettings
-  ID: 
+  ID: VSync
   Type: 1
   DefaultFloat: 1
   DefaultEnumIndex: 0

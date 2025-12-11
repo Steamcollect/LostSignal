@@ -72,6 +72,7 @@ public class UI_Manager : MonoBehaviour
     {
         m_OpenPanel.Call("LoadingScreen");
         yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(sceneName);
         //m_LoadingScreen.LoadScene(sceneName);
     }
 

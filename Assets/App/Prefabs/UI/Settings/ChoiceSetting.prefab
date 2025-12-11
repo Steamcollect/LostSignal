@@ -133,7 +133,6 @@ MonoBehaviour:
   m_LeftArrow: {fileID: 7328498815712728951}
   m_RightArrow: {fileID: 6675430661794702187}
   m_SelectedText: {fileID: 3037884856649281423}
-  SelectedIndex: 0
   m_Slider: {fileID: 0}
   m_PreviewValue: {fileID: 0}
 --- !u!114 &4928613430943295785
@@ -682,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_Color: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1154,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07, g: 0.07, b: 0.07, a: 1}
+  m_Color: {r: 0.15, g: 0.15, b: 0.15, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

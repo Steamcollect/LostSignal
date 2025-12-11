@@ -6,7 +6,7 @@ public enum SettingType { Float, Enum }
 [CreateAssetMenu(fileName = "UniversalSettings", menuName = "SSO/UniversalSettings")]
 public class SSO_UniversalSettings : ScriptableObject
 {
-    [Header("CONFIGURATION")]
+    [Title("CONFIGURATION")]
     public string ID;
     [EnumToggleButtons]
     public SettingType Type;
