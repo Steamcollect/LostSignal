@@ -48,7 +48,7 @@ public class StepHandler : MonoBehaviour
             else
                 center = m_IKTarget.position;
 #else
-            center = body.TransformPoint(startLocalPosition);
+            center = body.TransformPoint(m_StartLocalPosition);
 #endif
         }
         else
