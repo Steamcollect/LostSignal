@@ -372,8 +372,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7668863626325199442}
   - component: {fileID: 7484752821749247885}
-  - component: {fileID: 4597401926915999044}
-  - component: {fileID: 9152020969948302939}
+  - component: {fileID: 8711373268052685728}
+  - component: {fileID: 8847260327051247126}
   m_Layer: 5
   m_Name: SliderSettings
   m_TagString: Untagged
@@ -423,7 +423,7 @@ MonoBehaviour:
   SelectedIndex: 0
   m_Slider: {fileID: 6177924601889146400}
   m_PreviewValue: {fileID: 4365107935650664559}
---- !u!114 &4597401926915999044
+--- !u!114 &8711373268052685728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &9152020969948302939
+--- !u!95 &8847260327051247126
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -477,7 +477,7 @@ Animator:
   m_GameObject: {fileID: 3755055071203391743}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e2e464361fca5fd40b524e237ea4d91e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9d6f0e6185a7f604c813c615774cb007, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

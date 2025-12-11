@@ -14,9 +14,6 @@ public class UI_Selection : MonoBehaviour
     [ShowIf("@m_Data.Type", SettingType.Enum)]
     [SerializeField] private TextMeshProUGUI m_SelectedText;
 
-    [ShowIf("@m_Data.Type", SettingType.Enum)] 
-    public int SelectedIndex = 0;
-
     [ShowIf("@m_Data.Type", SettingType.Float)]
     [SerializeField] private Slider m_Slider;
 
@@ -25,61 +22,54 @@ public class UI_Selection : MonoBehaviour
 
     private void Start()
     {
+        m_Data.LoadSavedValue();
+
         switch (m_Data.Type) 
         {
             case SettingType.Float:
                 m_Slider.minValue = m_Data.MinFloat;
                 m_Slider.maxValue = m_Data.MaxFloat;
-                m_Slider.value = PlayerPrefs.GetFloat(m_Data.ID, m_Data.FloatValue);
+                m_Slider.value = m_Data.CurrentFloat;
 
-                UpdateValue(m_Slider.value);
+                UpdatePreviewText(m_Data.CurrentFloat);
 
-                m_Slider.onValueChanged.AddListener(UpdateValue);
+                m_Slider.onValueChanged.AddListener((value) => {
+                    m_Data.SetNewFloatValue(value);
+                    UpdatePreviewText(value);
+                }
+                );
                 
                 break;
             case SettingType.Enum:
-                SelectedIndex = PlayerPrefs.GetInt(m_Data.ID, m_Data.EnumIndex);
+                UpdateEnumDisplay();
 
-                if (m_Data.EnumOptions.Length != 0) UpdateDisplay();
-
-                m_LeftArrow.onClick.AddListener(SelectPrevious);
-                m_RightArrow.onClick.AddListener(SelectNext);
+                m_LeftArrow.onClick.AddListener(() => ChangeEnum(-1));
+                m_RightArrow.onClick.AddListener(() => ChangeEnum(1));
                 break;
         }
     }
 
-    private void UpdateValue(float value)
+    private void UpdatePreviewText(float value)
     {
-        PlayerPrefs.SetFloat(m_Data.ID, value);
         m_PreviewValue.text = value.ToString("F2");
     }
 
-    private void SelectPrevious()
+    private void ChangeEnum(int direction)
     {
-        if (SelectedIndex <= 0) return;
-        SelectedIndex--;
-        InvokeItemEvent();
+        int newIndex = m_Data.CurrentEnumIndex + direction;
+
+        if (newIndex < 0 || newIndex >= m_Data.EnumOptions.Length) return;
+
+        m_Data.SetNewEnumValue(newIndex);
+        UpdateEnumDisplay();
     }
 
-    private void SelectNext()
+    private void UpdateEnumDisplay()
     {
-        if (SelectedIndex >= m_Data.EnumOptions.Length - 1) return;
-        SelectedIndex++;
-        InvokeItemEvent();
-    }
+        if(m_Data.EnumOptions.Length > 0)
+            m_SelectedText.text = m_Data.EnumOptions[m_Data.CurrentEnumIndex];
 
-    public void InvokeItemEvent()
-    {
-        PlayerPrefs.SetInt(m_Data.ID, SelectedIndex);
-
-        UpdateDisplay();
-    }
-
-    private void UpdateDisplay()
-    {
-        m_SelectedText.text = m_Data.EnumOptions[SelectedIndex];
-
-        m_LeftArrow.interactable = SelectedIndex > 0 ? true : false;
-        m_RightArrow.interactable = SelectedIndex < m_Data.EnumOptions.Length - 1 ? true : false;
+        m_LeftArrow.interactable = m_Data.CurrentEnumIndex > 0;
+        m_RightArrow.interactable = m_Data.CurrentEnumIndex < m_Data.EnumOptions.Length - 1;
     }
 }

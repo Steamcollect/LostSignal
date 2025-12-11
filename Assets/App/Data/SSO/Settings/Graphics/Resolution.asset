@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_UniversalSettings
   ID: 
   Type: 1
-  FloatValue: 1
+  DefaultFloat: 1
+  DefaultEnumIndex: 0
   MinFloat: 0
   MaxFloat: 1
-  EnumIndex: 0
   EnumOptions: []
+  CurrentFloat: 0
+  CurrentEnumIndex: 0

@@ -1,98 +1,89 @@
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class SettingsManager : RegularSingleton<SettingsManager>
+public class VideoManager : RegularSingleton<VideoManager>
 {
-    [Title("AUDIO")]
-    [SerializeField] private string m_MasterBusName;
-    [SerializeField] private string m_MusicBusName;
-    [SerializeField] private string m_EffectsBusName;
-
-    [Title("GRAPHICS")]
-    [SerializeField] private CustomDropdown m_ResolutionsDropdown;
+    [Title("REFERENCES")]
+    [SerializeField] private SSO_UniversalSettings m_Resolution;
+    [SerializeField] private SSO_UniversalSettings m_WindowMode;
 
     private List<Resolution> m_Resolutions;
-    private List<string> m_Options = new List<string>();
 
-    private FMOD.Studio.Bus m_MasterBus;
-    private FMOD.Studio.Bus m_MusicBus;
-    private FMOD.Studio.Bus m_EffectsBus;
-
-    private void Start()
+    protected override void Awake()
     {
-        // AUDIO
-        //m_MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/+" + m_MasterBusName);
-        //m_MusicBus = FMODUnity.RuntimeManager.GetBus("bus:/+" + m_MusicBusName);
-        //m_EffectsBus = FMODUnity.RuntimeManager.GetBus("bus:/+" + m_EffectsBusName);
+        base.Awake();
+        InitializeResolutions();
 
-        m_MasterBus.setVolume(PlayerPrefs.GetFloat("MasterVolume" + "Slider"));
-        m_MasterBus.setVolume(PlayerPrefs.GetFloat("MusicVolume" + "Slider"));
-        m_MasterBus.setVolume(PlayerPrefs.GetFloat("EffectsVolume" + "Slider"));
+        m_Resolution.OnEnumChanged += SetResolution;
 
-        // RESOLUTIONS
+        m_WindowMode.OnEnumChanged += SetWindowMode;
+    }
 
-        if (m_ResolutionsDropdown == null) return;
+    private void OnDestroy()
+    {
+        m_Resolution.OnEnumChanged -= SetResolution;
+    }
 
-        m_ResolutionsDropdown.DropdownItems.RemoveRange(0, m_ResolutionsDropdown.DropdownItems.Count);
-        m_Resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().Reverse().ToList();
+    private void InitializeResolutions()
+    {
+        Resolution[] allResolutions = Screen.resolutions;
+        m_Resolutions = new List<Resolution>();
 
+        double currentRefreshRate = Screen.currentResolution.refreshRateRatio.value;
+
+        for(int i = 0; i < allResolutions.Length; i++)
+        {
+            if(!m_Resolutions.Any(r => r.width == allResolutions[i].width && r.height == allResolutions[i].height))
+            {
+                m_Resolutions.Add(allResolutions[i]);
+            }
+        }
+
+        List<string> options = new List<string>();
         int currentResolutionIndex = 0;
+
         for (int i = 0; i < m_Resolutions.Count; i++)
         {
             string option = m_Resolutions[i].width + " x " + m_Resolutions[i].height;
-            m_Options.Add(option);
+            options.Add(option);
 
-            if (m_Resolutions[i].width == Screen.currentResolution.width && m_Resolutions[i].height == Screen.currentResolution.height)
+            if (m_Resolutions[i].width == Screen.width &&
+                m_Resolutions[i].height == Screen.height)
             {
                 currentResolutionIndex = i;
-                m_ResolutionsDropdown.SelectedIndex = currentResolutionIndex;
-                m_ResolutionsDropdown.Index = currentResolutionIndex;
             }
-
-            m_ResolutionsDropdown.CreateNewOption(m_Options[i]);
-            CustomDropdown.Item item = m_ResolutionsDropdown.DropdownItems[i];
-            item.OnItemSelection = new UnityEvent();
-            item.OnItemSelection.AddListener(UpdateResolution);
         }
 
-        m_ResolutionsDropdown.SetupDropdown();
+        m_Resolution.EnumOptions = options.ToArray();
+
+        m_Resolution.SetNewEnumValue(currentResolutionIndex);
     }
 
-    public void UpdateResolution()
+    private void SetResolution(int index)
     {
-        SetResolution(m_ResolutionsDropdown.Index);
-        StartCoroutine(FixResolution());
+        if (index < 0 || index >= m_Resolutions.Count) return;
+
+        Resolution resolution = m_Resolutions[index];
+
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode);
     }
 
-    IEnumerator FixResolution()
+    private void SetWindowMode(int index)
     {
-        yield return new WaitForSeconds(0.1f);
-        SetResolution(m_ResolutionsDropdown.Index);
-        StopCoroutine(FixResolution());
-    }
-
-    public void SetResolution(int resolutionIndex)
-    {
-        Screen.SetResolution(m_Resolutions[resolutionIndex].width, m_Resolutions[resolutionIndex].height, Screen.fullScreen);
-    }
-
-    public void VolumeSetMaster(float volume)
-    {
-        m_MasterBus.setVolume(volume);
-    }
-
-    public void VolumeSetMusic(float volume)
-    {
-        m_MusicBus.setVolume(volume);
-    }
-
-    public void VolumeSetEffects(float volume)
-    {
-        m_EffectsBus.setVolume(volume);
+        switch (index)
+        {
+            case 0:
+                WindowWindowed();
+                break;
+            case 1:
+                WindowBorderless();
+                break;
+            case 2:
+                WindowFullscreen();
+                break;
+        }
     }
 
     public void AnisotropicFilteringEnable()
