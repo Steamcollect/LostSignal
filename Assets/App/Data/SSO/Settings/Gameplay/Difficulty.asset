@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_UniversalSettings
   ID: Difficulty
   Type: 1
-  FloatValue: 1
+  DefaultFloat: 1
+  DefaultEnumIndex: 0
   MinFloat: 0
   MaxFloat: 1
-  EnumIndex: 1
   EnumOptions:
   - Easy
   - Default
   - Hard
+  - Hardcore
+  CurrentFloat: 0
+  CurrentEnumIndex: 3
