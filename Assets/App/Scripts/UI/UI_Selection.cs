@@ -22,8 +22,6 @@ public class UI_Selection : MonoBehaviour
 
     private void Start()
     {
-        m_Data.LoadSavedValue();
-
         switch (m_Data.Type) 
         {
             case SettingType.Float:
@@ -31,20 +29,18 @@ public class UI_Selection : MonoBehaviour
                 m_Slider.maxValue = m_Data.MaxFloat;
                 m_Slider.value = m_Data.CurrentFloat;
 
-                UpdatePreviewText(m_Data.CurrentFloat);
-
                 m_Slider.onValueChanged.AddListener((value) => {
                     m_Data.SetNewFloatValue(value);
                     UpdatePreviewText(value);
-                }
-                );
-                
+                });
+
+                UpdatePreviewText(m_Data.CurrentFloat);
                 break;
             case SettingType.Enum:
-                UpdateEnumDisplay();
-
                 m_LeftArrow.onClick.AddListener(() => ChangeEnum(-1));
                 m_RightArrow.onClick.AddListener(() => ChangeEnum(1));
+
+                UpdateEnumDisplay();
                 break;
         }
     }

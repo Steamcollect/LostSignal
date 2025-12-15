@@ -20,6 +20,10 @@ public class VideoManager : RegularSingleton<VideoManager>
         m_Resolution.OnEnumChanged += SetResolution;
         m_WindowMode.OnEnumChanged += SetWindowMode;
         m_VSync.OnEnumChanged += SetVSync;
+
+        m_Resolution.LoadSavedValue();
+        m_WindowMode.LoadSavedValue();
+        m_VSync.LoadSavedValue();
     }
 
     private void OnDestroy()
@@ -45,7 +49,6 @@ public class VideoManager : RegularSingleton<VideoManager>
         }
 
         List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
 
         for (int i = 0; i < m_Resolutions.Count; i++)
         {
@@ -55,13 +58,11 @@ public class VideoManager : RegularSingleton<VideoManager>
             if (m_Resolutions[i].width == Screen.width &&
                 m_Resolutions[i].height == Screen.height)
             {
-                currentResolutionIndex = i;
+                m_Resolution.SetNewEnumValue(i);
             }
         }
 
         m_Resolution.EnumOptions = options.ToArray();
-
-        m_Resolution.SetNewEnumValue(currentResolutionIndex);
     }
 
     private void SetResolution(int index)

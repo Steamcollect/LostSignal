@@ -48,6 +48,7 @@ public class SSO_UniversalSettings : ScriptableObject
 
         OnEnumChanged?.Invoke(CurrentEnumIndex);
     }
+
     public void LoadSavedValue()
     {
         switch(Type)
