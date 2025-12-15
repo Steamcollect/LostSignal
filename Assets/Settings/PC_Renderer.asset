@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8269348939243910203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1df5d20f0bcbe45be9f661e38712b2, type: 3}
+  m_Name: OutlineFeature
+  m_EditorClassIdentifier: Assembly-CSharp::Outline.OutlineFeature
+  m_Active: 1
+  m_OutlineShader: {fileID: 4800000, guid: 02f7514acc9f4d348ad0194001c666df, type: 3}
+  m_MaskShader: {fileID: 4800000, guid: e605da2b508168f4da93246bbd4e931b, type: 3}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &-6893253384282849156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,22 +151,23 @@ MonoBehaviour:
   - {fileID: 7438256128910173561}
   - {fileID: -1501523597941309592}
   - {fileID: 4957163220301868118}
+  - {fileID: -8269348939243910203}
   - {fileID: -2281786908386741507}
   - {fileID: -6893253384282849156}
-  m_RendererFeatureMap: ad6b866f10d7b46c792510288afe3967687fd73a3e8429eb566cb947af61cb44fdb27870e57655e07cc00fab913e56a0
+  m_RendererFeatureMap: ad6b866f10d7b46c792510288afe3967687fd73a3e8429eb566cb947af61cb44c50b9de0f35e3d8dfdb27870e57655e07cc00fab913e56a0
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   m_AssetVersion: 3
   m_PrepassLayerMask:
     serializedVersion: 2
-    m_Bits: 3327
+    m_Bits: 7423
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 3327
+    m_Bits: 7423
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 3327
+    m_Bits: 7423
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0

@@ -1,5 +1,5 @@
 using System;
-using Sirenix.OdinInspector;
+using MVsToolkit.Dev;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -8,7 +8,7 @@ public class ColliderCallback : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool m_UseTagFilter = false;
-    [ShowIf("m_UseTagFilter"),SerializeField] private string[] m_TagsToDetect;
+    [Sirenix.OdinInspector.ShowIf("m_UseTagFilter"),SerializeField, TagName] private string[] m_TagsToDetect;
 
     [Header("Output")]
     public UnityEvent OnTriggerEnterEvent;

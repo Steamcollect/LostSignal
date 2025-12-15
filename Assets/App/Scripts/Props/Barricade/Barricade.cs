@@ -60,8 +60,12 @@ public class Barricade : MonoBehaviour
         if (!m_BulletLayer.Contains(other.gameObject.layer)) return;
         if (!other.TryGetComponent(out Bullet bullet)) return;
 
-        if (bullet.GetShootPosition().Distance(m_TriggerCollider.ClosestPoint(bullet.GetShootPosition())) >
-            m_DistanceThreshold)
+        if (!IsInRange(bullet.GetShootPosition()))
             bullet.Impact(gameObject);
+    }
+
+    public bool IsInRange(Vector3 position)
+    {
+        return position.Distance(m_TriggerCollider.ClosestPoint(position)) <= m_DistanceThreshold;
     }
 }
