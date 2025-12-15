@@ -50,7 +50,7 @@ public class RangeEnemyCombat : EntityCombat
             bulletsFired++;
 
             Bullet bullet = PoolManager.Instance.Spawn(m_BulletPrefab, m_AttackPoint.position, Quaternion.identity);
-            bullet.transform.up = m_AttackPoint.forward;
+            bullet.transform.forward = m_AttackPoint.forward;
             bullet.Setup();
 
             m_OnShoot.Invoke();
