@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: WindowMode
   Type: 1
   DefaultFloat: 1
-  DefaultEnumIndex: 0
+  DefaultEnumIndex: 1
   MinFloat: 0
   MaxFloat: 1
   EnumOptions:
@@ -23,4 +23,4 @@ MonoBehaviour:
   - Borderless
   - Fullscreen
   CurrentFloat: 0
-  CurrentEnumIndex: 0
+  CurrentEnumIndex: 1
