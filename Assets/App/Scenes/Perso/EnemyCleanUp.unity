@@ -1039,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1718930974139365487, guid: 18749dca538327045a209859941c9621, type: 3}
+      propertyPath: m_DetectionMask.m_Bits
+      value: 2491
+      objectReference: {fileID: 0}
     - target: {fileID: 2367199991920660355, guid: 18749dca538327045a209859941c9621, type: 3}
       propertyPath: m_Name
       value: RifleTurretEnemy
@@ -2422,6 +2426,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 283880491}
     m_Modifications:
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_RangeToBuff.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_RangeToBuff.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_RangeToNerf.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_RangeToNerf.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_RangeToReset.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_RangeToReset.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_BuffCoolsPerSec
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_NerfCoolsPerSec
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_DefaultCoolsPerSec
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129812706102528412, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
+      propertyPath: m_OverloadCoolsPerSec
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 1409431294601431814, guid: 2aebfa12f14e2f34e91e75d4f77fd2d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
