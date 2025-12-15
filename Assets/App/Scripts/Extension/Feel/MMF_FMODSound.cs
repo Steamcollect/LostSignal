@@ -200,10 +200,10 @@ namespace MoreMountains.Feedbacks
         {
             m_FMODDuration = 0f;
             EventDescription desc = default;
-            if (!Event.IsNull && String.IsNullOrEmpty(Event.Path))
+            /*if (!Event.IsNull && String.IsNullOrEmpty(Event.Path))
             {
                 desc = RuntimeManager.GetEventDescription(Event);
-            }
+            }*/
 
             if (desc.isValid())
             {
