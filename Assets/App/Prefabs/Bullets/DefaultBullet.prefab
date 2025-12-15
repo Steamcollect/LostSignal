@@ -9920,8 +9920,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   m_Speed: 30
   m_Damage: 1
-  m_Knockback: 5
-  m_KnockbackForceMode: 1
   m_RigidBody: {fileID: 5628321439133379174}
   m_HitPrefab: {fileID: 1358016219978357355, guid: 3ef0c918d5a1d974c953de859dca5608, type: 3}
   m_OnImpact:

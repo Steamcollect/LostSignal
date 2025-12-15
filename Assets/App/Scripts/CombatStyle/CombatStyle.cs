@@ -6,13 +6,21 @@ public abstract class CombatStyle : MonoBehaviour
 {
     protected bool m_CanAttack = true;
     protected bool m_IsAttacking = false;
+    
     public Action<float /*current*/, float /*max*/> OnAmmoChange;
-
+    
+    [SerializeField] protected RSO_Mana m_CurrentMana;
+    [SerializeField] protected float manaCostPerAttack = 10f;
+    
     public Action OnAttack;
     public Action OnReload;
 
     public virtual IEnumerator Attack() { yield break; }
-
+    public virtual void StopAttack()
+    {
+        m_IsAttacking = false;
+    }
+    
     public virtual void Reload()
     {
     }
