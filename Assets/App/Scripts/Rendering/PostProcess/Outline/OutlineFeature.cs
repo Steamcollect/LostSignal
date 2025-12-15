@@ -88,7 +88,7 @@ namespace Outline
             private void UpdateSettings()
             {
                 if (m_OutlineMaterial == null) { Debug.LogError("update settings material null"); return; }
-                SelectableOutlineVolume volume = VolumeManager.instance.stack.GetComponent<SelectableOutlineVolume>();
+                OutlineVolume volume = VolumeManager.instance.stack.GetComponent<OutlineVolume>();
 
                 Color outlineColor = volume.OutlineColor.value;
                 float outlineWidth = volume.OutlineWidth.value;

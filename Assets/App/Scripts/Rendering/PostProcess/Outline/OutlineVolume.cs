@@ -6,9 +6,9 @@ namespace Outline
 {
     [Serializable]
     [VolumeComponentMenu("Outline")]
-    public class SelectableOutlineVolume : VolumeComponent
+    public class OutlineVolume : VolumeComponent
     {
-        public ColorParameter OutlineColor = new(Color.red);
+        public ColorParameter OutlineColor = new(Color.white);
         public FloatParameter OutlineWidth = new(1f);
     }
 }
