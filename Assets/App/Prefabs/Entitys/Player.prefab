@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 5071253312774906998}
   - component: {fileID: 8231817660637434609}
   - component: {fileID: 666573636361024304}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}

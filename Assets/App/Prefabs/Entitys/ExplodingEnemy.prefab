@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6134571766970536489}
   - component: {fileID: 167269885798792605}
   - component: {fileID: 5424058489915727379}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDetector
   m_DetectionMask:
     serializedVersion: 2
-    m_Bits: 2491
+    m_Bits: 443
   m_PlayerTag: Player
   m_Player: {fileID: 11400000, guid: 889c55170c3d485408a368282da46058, type: 2}
   m_Controller: {fileID: 1728428419120648262}
