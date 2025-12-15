@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Shotgun : CombatStyle
+public class ShotgunCombatStyle : CombatStyle
 {
     [SerializeField] private int m_ShotsPerMagazine = 2;
     [SerializeField] private int m_BulletsPerShot = 8;
@@ -18,18 +18,16 @@ public class Shotgun : CombatStyle
     
     [SerializeField] private Bullet m_BulletPrefab;
     
+    private int m_ShotsRemaining;
+
+    private void Start()
+    {
+        m_ShotsRemaining = m_ShotsPerMagazine;
+    }
+
     public override IEnumerator Attack()
     {
         if (!m_CanAttack) yield break;
-        
-        if (m_CurrentMana.Get() >= manaCostPerAttack)
-        {
-            m_CurrentMana.Set(m_CurrentMana.Get() - manaCostPerAttack);
-        }
-        else
-        {
-            yield break;
-        }
         
         m_IsAttacking = true;
         m_CanAttack = false;
@@ -38,19 +36,30 @@ public class Shotgun : CombatStyle
         
         for (int i = 0; i < m_BulletsPerShot; i++)
         {
-            float angle = Random.Range(-m_SpreadAngle / 2, m_SpreadAngle / 2);
-            Quaternion rotation = Quaternion.Euler(0, angle, 0);
-            Vector3 direction = rotation * m_AttackPoint.forward;
+            // Compute a regularly spaced yaw angle across the spread cone (degrees)
+            float yaw;
+            if (m_BulletsPerShot == 1)
+            {
+                yaw = 0f;
+            }
+            else
+            {
+                float step = m_SpreadAngle / (m_BulletsPerShot - 1);
+                yaw = -m_SpreadAngle / 2f + step * i;
+            }
 
-            Bullet bullet = PoolManager.Instance.Spawn(m_BulletPrefab, m_AttackPoint.position, rotation);
-            bullet.transform.up = direction;
+            // Apply yaw relative to the AttackPoint's local rotation so spread follows the barrel orientation
+            Quaternion spreadRotation = m_AttackPoint.rotation * Quaternion.Euler(0f, yaw, 0f);
+
+            // Spawn the bullet with the calculated rotation
+            Bullet bullet = PoolManager.Instance.Spawn(m_BulletPrefab, m_AttackPoint.position, spreadRotation);
 
             bullet.Setup();
         }
         
-        m_ShotsPerMagazine--;
+        m_ShotsRemaining--;
 
-        if (m_ShotsPerMagazine <= 0)
+        if (m_ShotsRemaining <= 0)
         {
             Reload();
         }
@@ -69,6 +78,7 @@ public class Shotgun : CombatStyle
     private IEnumerator ReloadCooldown()
     {
         yield return new WaitForSeconds(m_ReloadCooldown);
+        m_ShotsRemaining = m_ShotsPerMagazine;
         m_CanAttack = true;
         m_IsAttacking = false;
     }
