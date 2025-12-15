@@ -1,4 +1,5 @@
 using System;
+using MVsToolkit.Dev;
 using UnityEngine;
     using UnityEngine.VFX;
     
@@ -7,10 +8,13 @@ using UnityEngine;
         private static readonly int s_DamageAmount = Shader.PropertyToID("_DamageAmount");
         private static readonly int s_VfxIntensity = Shader.PropertyToID("Intensity");
     
+        [Header("Settings")]
+        [SerializeField] private bool m_UseSmokeVfx = true;
+        
         [Header("References")]
-        [SerializeField] private MeshRenderer[] m_Renderers;
         [SerializeField] private EntityHealth m_EntityHealth;
-        [SerializeField] private VisualEffect m_SmokeDamage;
+        [SerializeField, ShowIf("m_UseSmokeVfx",true)] private VisualEffect m_SmokeDamage;
+        [SerializeField] private MeshRenderer[] m_Renderers;
         private MaterialPropertyBlock m_Block;
     
         private void Awake()
@@ -60,7 +64,7 @@ using UnityEngine;
                 }
             }
     
-            if (m_SmokeDamage)
+            if (m_UseSmokeVfx && m_SmokeDamage)
             {
                 m_SmokeDamage.SetFloat(s_VfxIntensity, value);
             }
