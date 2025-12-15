@@ -1,9 +1,10 @@
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerCombat : EntityCombat
 {
-    private CombatStyle m_PrimaryCombatStyle, m_SecondaryCombatStyle;
+    [ShowInInspector] private CombatStyle m_PrimaryCombatStyle, m_SecondaryCombatStyle;
 
     [SerializeField] private InputPlayerController m_InputPlayerController;
     [Space(10)]

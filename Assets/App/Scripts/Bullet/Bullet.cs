@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         m_RigidBody.linearVelocity = Vector3.zero;
         m_RigidBody.angularVelocity = Vector3.zero;
         
-        m_RigidBody.linearVelocity = transform.up * m_Speed;
+        m_RigidBody.linearVelocity = transform.forward * m_Speed;
         
         m_OriginalPosition = transform.position;
 

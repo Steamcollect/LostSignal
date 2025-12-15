@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 4710385784493003900}
   - component: {fileID: 384362440837574710}
   - component: {fileID: 5662550271351511903}
-  - component: {fileID: 1184728958860470707}
+  - component: {fileID: 5005335753775605273}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_MoveIa: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_PrimaryAttackIa: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_SecondaryAttackIa: {fileID: 3904447635185269525, guid: 052faaac586de48259a63d0c4782560b, type: 3}
---- !u!208 &1184728958860470707
+--- !u!208 &5005335753775605273
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -696,13 +696,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5937513771234304038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6504119424866204772}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6067575283797751824
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +993,7 @@ MonoBehaviour:
   manaCostPerAttack: 10
   m_ShotsPerMagazine: 2
   m_BulletsPerShot: 8
-  m_SpreadAngle: 15
+  m_SpreadAngle: 25
   m_AttackCooldown: 1
   m_ReloadCooldown: 1
   m_BulletDamage: 0
