@@ -9916,7 +9916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e760831c4258a8d4bad21d0132632feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  m_Speed: 30
+  m_Speed: 40
   m_Damage: 1
   m_RigidBody: {fileID: 5628321439133379174}
   m_HitPrefab: {fileID: 1358016219978357355, guid: 3ef0c918d5a1d974c953de859dca5608, type: 3}

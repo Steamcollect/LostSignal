@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 7409131326627769553}
   - component: {fileID: 8387968463056374007}
   - component: {fileID: 3167256854889467629}
+  - component: {fileID: 8393150615118657890}
   m_Layer: 10
   m_Name: ExplosiveBarrel
   m_TagString: Enemy
@@ -328,4 +329,20 @@ MonoBehaviour:
   explosionEffect: {fileID: 3549472828668674561}
   mask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4096
+--- !u!208 &8393150615118657890
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727377098952432511}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
