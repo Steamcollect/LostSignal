@@ -8,18 +8,22 @@ public class AudioManager : RegularSingleton<AudioManager>
     [Title("AUDIO")]
     [SerializeField] private SSO_FMODBus m_MasterBus;
     [SerializeField] private SSO_FMODBus m_MusicBus;
-    [SerializeField] private SSO_FMODBus m_SFXBus;
     
     [Title("REFERENCES")]
     [SerializeField] private SSO_UniversalSettings m_MasterVolumeSetting;
     [SerializeField] private SSO_UniversalSettings m_MusicVolumeSetting;
-    [SerializeField] private SSO_UniversalSettings m_SFXVolumeSetting;
 
     protected override void Awake()
     {
         base.Awake();
 
         InitializeAudio();
+
+        m_MasterVolumeSetting.OnFloatChanged += VolumeSetMaster;
+        m_MusicVolumeSetting.OnFloatChanged += VolumeSetMusic;
+
+        m_MasterVolumeSetting.LoadSavedValue();
+        m_MusicVolumeSetting.LoadSavedValue();
     }
 
     private void InitializeAudio()
@@ -27,7 +31,6 @@ public class AudioManager : RegularSingleton<AudioManager>
         // AUDIO
         m_MasterBus.Bus.setVolume(m_MasterVolumeSetting.CurrentFloat);
         m_MusicBus.Bus.setVolume(m_MusicVolumeSetting.CurrentFloat);
-        m_SFXBus.Bus.setVolume(m_SFXVolumeSetting.CurrentFloat);
     }
 
     public void VolumeSetMaster(float volume)
@@ -38,10 +41,5 @@ public class AudioManager : RegularSingleton<AudioManager>
     public void VolumeSetMusic(float volume)
     {
         m_MusicBus.Bus.setVolume(volume);
-    }
-    
-    public void VolumeSetSFX(float volume)
-    {
-        m_SFXBus.Bus.setVolume(volume);
     }
 }
