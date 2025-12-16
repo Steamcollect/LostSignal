@@ -1135,6 +1135,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &38659485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,6 +4215,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!114 &143917643 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
@@ -4899,6 +4903,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &180108470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6634,6 +6640,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &275302190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8097,6 +8105,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &345571775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9045,6 +9055,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &384138022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9924,6 +9936,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -10336,6 +10350,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &431279463
 GameObject:
   m_ObjectHideFlags: 0
@@ -11308,6 +11324,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &488541289
 GameObject:
   m_ObjectHideFlags: 0
@@ -11356,6 +11374,8 @@ MonoBehaviour:
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!4 &489526681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4883762814713038, guid: baebdd3b26f756b4c8f1b2d2efe1cf42, type: 3}
@@ -11641,6 +11661,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &500752670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11970,6 +11992,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!4 &513444573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4883762814713038, guid: baebdd3b26f756b4c8f1b2d2efe1cf42, type: 3}
@@ -12435,6 +12459,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &536185020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13123,6 +13149,8 @@ MonoBehaviour:
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &579357938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13747,6 +13775,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &614255751
 GameObject:
   m_ObjectHideFlags: 0
@@ -14668,6 +14698,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &653479910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16688,6 +16720,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &721786724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17461,6 +17495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &755539071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18788,6 +18824,8 @@ MonoBehaviour:
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &837793636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20123,6 +20161,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!4 &892075834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4883762814713038, guid: baebdd3b26f756b4c8f1b2d2efe1cf42, type: 3}
@@ -20262,6 +20302,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &894553578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21266,6 +21308,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &912803487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23358,6 +23402,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &988800646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24411,6 +24457,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1031877418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24963,6 +25011,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1049946344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26945,6 +26995,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1102904099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27335,6 +27387,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1112708035
 GameObject:
   m_ObjectHideFlags: 0
@@ -28653,6 +28707,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!4 &1199536283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9421d374b1813c148a0364ca24351d53, type: 3}
@@ -29120,6 +29176,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1236267039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29498,6 +29556,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!114 &1266322738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
@@ -29911,6 +29971,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1289492166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31244,6 +31306,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1350646593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32319,6 +32383,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1386037744
 GameObject:
   m_ObjectHideFlags: 0
@@ -33753,6 +33819,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1432206976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34331,6 +34399,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1452596002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35407,6 +35477,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!114 &1495953519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
@@ -36128,6 +36200,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1547825909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36570,6 +36644,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1579636728
 GameObject:
   m_ObjectHideFlags: 0
@@ -36729,6 +36805,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!114 &1586483507 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 630752205924355106, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
@@ -37102,6 +37180,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!4 &1613699079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4883762814713038, guid: baebdd3b26f756b4c8f1b2d2efe1cf42, type: 3}
@@ -37920,6 +38000,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1623836293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40651,6 +40733,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1713382441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41994,6 +42078,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1815904520
 GameObject:
   m_ObjectHideFlags: 0
@@ -44431,6 +44517,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1894750234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45011,6 +45099,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1926716864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45387,6 +45477,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1932491767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46831,6 +46923,8 @@ MonoBehaviour:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1981766359
 GameObject:
   m_ObjectHideFlags: 0
@@ -46879,6 +46973,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1983913549
 GameObject:
   m_ObjectHideFlags: 0
@@ -46927,6 +47023,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &1990516712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47425,6 +47523,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &1998387449
 GameObject:
   m_ObjectHideFlags: 0
@@ -48733,6 +48833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!114 &2033280790 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7400050932402465849, guid: 477be3f445e28c44da7badf8f7627b2b, type: 3}
@@ -50334,6 +50436,8 @@ MonoBehaviour:
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
   - {fileID: 0}
   - {fileID: 2367199991920660355, guid: 96d291150eabc4744b2dc8ac81652121, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1001 &2100998810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50734,6 +50838,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
 --- !u!1 &2121728130
 GameObject:
   m_ObjectHideFlags: 0
