@@ -507,7 +507,7 @@ MonoBehaviour:
         m_CallState: 2
   mask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4096
 --- !u!114 &2568614247108590622
 MonoBehaviour:
   m_ObjectHideFlags: 0
