@@ -27,7 +27,7 @@ public class PlayerController : EntityController
     {
         base.OnEntityDie();
         m_OnPlayerDie.Call();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneLoader.Instance.LoadGameplayScene();
     }
 
     protected override void Awake()

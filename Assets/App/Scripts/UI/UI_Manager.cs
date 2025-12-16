@@ -2,7 +2,6 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -74,7 +73,7 @@ public class UI_Manager : MonoBehaviour
     {
         m_OpenPanel.Call("LoadingScreen");
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(sceneName);
+        SceneLoader.Instance.LoadGameplayScene();
         //m_LoadingScreen.LoadScene(sceneName);
     }
 
