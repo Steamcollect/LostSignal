@@ -80,6 +80,11 @@ public class PlayerController : EntityController
     
     public void Teleport(Vector3 position) => m_Rb.position = position;
 
+    public PlayerCombat GetPlayerCombat()
+    {
+        return m_Combat as PlayerCombat;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;

@@ -27,7 +27,7 @@ public class CombatStyleSelector : MonoBehaviour
         m_OnRiflePickedUp.Action -= EnableRifle;
     }
     
-    private void Awake()
+    private void Start()
     {
         SetPrimaryCombatStyle(m_DefaultCombatStyle);
         SetSecondaryCombatStyle(null);

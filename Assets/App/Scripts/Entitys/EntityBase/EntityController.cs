@@ -31,14 +31,14 @@ public abstract class EntityController : MonoBehaviour, ITargetable
         gameObject.SetActive(false);
     }
 
-    public Vector3 GetTargetPosition()
+    public virtual Vector3 GetTargetPosition()
     {
         return transform.position + m_TargetPos;
     }
 
-    public EntityHealth GetHealth() {  return m_Health; }
-    public EntityCombat GetCombat() { return m_Combat; }
-    public IMovement GetMovement() { return m_Movement.Value; }
+    public virtual EntityHealth GetHealth() {  return m_Health; }
+    public virtual EntityCombat GetCombat() { return m_Combat; }
+    public virtual IMovement GetMovement() { return m_Movement.Value; }
 
-    public Rigidbody GetRigidbody() { return m_Rb; }
+    public virtual Rigidbody GetRigidbody() { return m_Rb; }
 }

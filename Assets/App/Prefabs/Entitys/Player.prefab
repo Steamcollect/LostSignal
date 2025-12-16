@@ -608,7 +608,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_HandleCoolsInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_HandleCoolsSkillInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5283047779086152633
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_HandleCoolsInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_HandleCoolsSkillInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5439680732867493737
 GameObject:
   m_ObjectHideFlags: 0

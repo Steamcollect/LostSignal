@@ -25,6 +25,7 @@ public class PlayerCombatStyleHUD : MonoBehaviour
     [SerializeField] TMP_Text m_ReloadTxt;
     [SerializeField] RSO_PlayerCameraController m_PlayerCameraController;
 
+    CombatStyle m_CurrentStyle;
     RangeOverload_CombatStyle m_OverloadStyle;
 
     [Space(10)]
@@ -37,24 +38,23 @@ public class PlayerCombatStyleHUD : MonoBehaviour
 
     //[Header("Output")]
 
-    private void OnEnable()
+    private void Awake()
     {
-        PlayerCombat c = m_PlayerController.Get().GetCombat() as PlayerCombat;
+        PlayerCombat c = m_PlayerController.Get().GetPlayerCombat();
         c.OnPrimaryCombatStyleChange += OnCombatStyleChange;
     }
 
     private void OnDisable()
     {
-        PlayerCombat c = m_PlayerController.Get().GetCombat() as PlayerCombat;
+        PlayerCombat c = m_PlayerController.Get().GetPlayerCombat();
         c.OnPrimaryCombatStyleChange -= OnCombatStyleChange;
         
         if (combat != null)
         {
             combat.GetPrimaryCombatStyle().OnAmmoChange -= SetFillValue;
-        }
-        
-        if (m_OverloadStyle != null)
-        {
+
+            m_CurrentStyle.OnAmmoChange -= SetFillValue;
+
             m_OverloadStyle.OnOverloadStart -= EnableReloadSkills;
             m_OverloadStyle.OnOverloadEnd -= DisableReloadSkills;
         }
@@ -63,47 +63,21 @@ public class PlayerCombatStyleHUD : MonoBehaviour
     private PlayerCombat combat;
     void Init()
     {
-        combat = m_PlayerController.Get().GetCombat() as PlayerCombat;
+        if(combat == null) combat = m_PlayerController.Get().GetPlayerCombat();
+        m_CurrentStyle = combat.GetPrimaryCombatStyle();
+        m_CurrentStyle.OnAmmoChange += SetFillValue;
 
-        combat.GetPrimaryCombatStyle().OnAmmoChange += SetFillValue;
+        if (combat.GetPrimaryCombatStyle() is not RangeOverload_CombatStyle) return;
 
         m_OverloadStyle = combat.GetPrimaryCombatStyle() as RangeOverload_CombatStyle;
-        if (m_OverloadStyle == null) return;
-
         m_OverloadStyle.OnOverloadStart += EnableReloadSkills;
         m_OverloadStyle.OnOverloadEnd += DisableReloadSkills;
 
-        Vector2 buffValues = m_OverloadStyle.RangeToBuff;
-        Vector2 resetValues = m_OverloadStyle.RangeToReset;
-        m_ParentWidth = m_ParentRect.rect.width;
-
-        if (m_BuffZoneRct != null)
-        {
-            float left = buffValues.x * (m_ParentWidth * .01f);
-            float right = buffValues.y * (m_ParentWidth * .01f);
-
-            Vector2 offMin = m_BuffZoneRct.offsetMin;
-            offMin.x = left;
-            m_BuffZoneRct.offsetMin = offMin;
-
-            Vector2 offMax = m_BuffZoneRct.offsetMax;
-            offMax.x = -(m_ParentWidth - right);
-            m_BuffZoneRct.offsetMax = offMax;
-        }
-
-        if (m_ResetZoneRct != null)
-        {
-            float left = resetValues.x * (m_ParentWidth * .01f);
-            float right = resetValues.y * (m_ParentWidth * .01f);
-
-            Vector2 offMin = m_ResetZoneRct.offsetMin;
-            offMin.x = left;
-            m_ResetZoneRct.offsetMin = offMin;
-
-            Vector2 offMax = m_ResetZoneRct.offsetMax;
-            offMax.x = -(m_ParentWidth - right);
-            m_ResetZoneRct.offsetMax = offMax;
-        }
+        SetReloadSkillsRect();
+    }
+    private void LateUpdate()
+    {
+        UpdatePosition();
     }
 
     void OnCombatStyleChange()
@@ -111,21 +85,16 @@ public class PlayerCombatStyleHUD : MonoBehaviour
         if (combat != null)
         {
             combat.GetPrimaryCombatStyle().OnAmmoChange -= SetFillValue;
-        }
-        
-        if (m_OverloadStyle != null)
-        {
+
+            m_CurrentStyle.OnAmmoChange -= SetFillValue;
+
             m_OverloadStyle.OnOverloadStart -= EnableReloadSkills;
             m_OverloadStyle.OnOverloadEnd -= DisableReloadSkills;
         }
-        
+
         Init();
     }
 
-    private void LateUpdate()
-    {
-        UpdatePosition();
-    }
 
     public void SetFillValue(float value, float max)
     {
@@ -159,6 +128,41 @@ public class PlayerCombatStyleHUD : MonoBehaviour
                 case RangeOverloadWeaponState.OverloadCool:
                 m_FillImg.color = m_ReloadColor;
                 break;
+        }
+    }
+
+    void SetReloadSkillsRect()
+    {
+        Vector2 buffValues = m_OverloadStyle.RangeToBuff;
+        Vector2 resetValues = m_OverloadStyle.RangeToReset;
+        m_ParentWidth = m_ParentRect.rect.width;
+
+        if (m_BuffZoneRct != null)
+        {
+            float left = buffValues.x * (m_ParentWidth * .01f);
+            float right = buffValues.y * (m_ParentWidth * .01f);
+
+            Vector2 offMin = m_BuffZoneRct.offsetMin;
+            offMin.x = left;
+            m_BuffZoneRct.offsetMin = offMin;
+
+            Vector2 offMax = m_BuffZoneRct.offsetMax;
+            offMax.x = -(m_ParentWidth - right);
+            m_BuffZoneRct.offsetMax = offMax;
+        }
+
+        if (m_ResetZoneRct != null)
+        {
+            float left = resetValues.x * (m_ParentWidth * .01f);
+            float right = resetValues.y * (m_ParentWidth * .01f);
+
+            Vector2 offMin = m_ResetZoneRct.offsetMin;
+            offMin.x = left;
+            m_ResetZoneRct.offsetMin = offMin;
+
+            Vector2 offMax = m_ResetZoneRct.offsetMax;
+            offMax.x = -(m_ParentWidth - right);
+            m_ResetZoneRct.offsetMax = offMax;
         }
     }
 

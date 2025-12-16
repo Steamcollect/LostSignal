@@ -1,5 +1,4 @@
 using System;
-using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -31,6 +30,7 @@ public class PlayerCombat : EntityCombat
     public void SetPrimaryCombatStyle(CombatStyle newStyle)
     {
         m_PrimaryCombatStyle = newStyle;
+        print("qdd");
         OnPrimaryCombatStyleChange?.Invoke();
     }
     
