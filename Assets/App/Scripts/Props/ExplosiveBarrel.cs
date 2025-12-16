@@ -39,8 +39,10 @@ public class ExplosiveBarrel : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            collider.TryGetComponent<HurtBox>(out HurtBox hurtBox);
-            hurtBox.TakeDamage(m_Damage);
+            if(collider.TryGetComponent(out HurtBox hurtBox))
+            {
+                hurtBox.TakeDamage(m_Damage);
+            }
         }
     }
 
