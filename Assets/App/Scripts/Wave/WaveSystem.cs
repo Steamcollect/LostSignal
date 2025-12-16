@@ -52,7 +52,7 @@ public class WaveSystem : MonoBehaviour
 
         foreach(WaveSpawner spawner in m_Spawners)
         {
-            spawner.SpawnWave(m_CurrentWaveIndex, RegisterEntity);
+            StartCoroutine(spawner.SpawnWave(m_CurrentWaveIndex, RegisterEntity));
         }
 
         this.Delay(() =>

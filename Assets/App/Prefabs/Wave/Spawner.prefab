@@ -47,3 +47,5 @@ MonoBehaviour:
   m_Wave:
   - {fileID: 4831938329720140113, guid: 791694bd5be7fa241a1fc111e4864ab2, type: 3}
   - {fileID: 141670675761034791, guid: f33d8a5546c338e4d8e6f5fa6aa4c434, type: 3}
+  m_SpawnFeedback: {fileID: 1598034248799334, guid: 5fb125617629fb64386fdafd5ec4a612, type: 3}
+  m_SpawnFeedbackDuration: 1
