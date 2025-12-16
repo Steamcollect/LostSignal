@@ -1,3 +1,5 @@
+using System;
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,7 +10,9 @@ public class PlayerCombat : EntityCombat
     [SerializeField] private InputPlayerController m_InputPlayerController;
     [Space(10)]
     [SerializeField] private RSO_PlayerAimTarget m_AimTarget;
-    
+
+    public Action OnPrimaryCombatStyleChange;
+
     private void Update()
     {
         LookAt(m_AimTarget.Get().position, LookAtAxis.Horizontal);
@@ -27,6 +31,7 @@ public class PlayerCombat : EntityCombat
     public void SetPrimaryCombatStyle(CombatStyle newStyle)
     {
         m_PrimaryCombatStyle = newStyle;
+        OnPrimaryCombatStyleChange?.Invoke();
     }
     
     public void SetSecondaryCombatStyle(CombatStyle newStyle)

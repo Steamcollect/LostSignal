@@ -36,12 +36,20 @@ public class PlayerCombatStyleHUD : MonoBehaviour
 
     //[Header("Output")]
 
-    private void Start()
+    private void OnEnable()
+    {
+        PlayerCombat c = m_PlayerController.Get().GetCombat() as PlayerCombat;
+        c.OnPrimaryCombatStyleChange += OnCombatStyleChange;
+    }
+
+    void Init()
     {
         PlayerCombat combat = m_PlayerController.Get().GetCombat() as PlayerCombat;
-        m_OverloadStyle = combat.GetPrimaryCombatStyle() as RangeOverload_CombatStyle;
 
-        m_OverloadStyle.OnAmmoChange += SetFillValue;
+        combat.GetPrimaryCombatStyle().OnAmmoChange += SetFillValue;
+
+        m_OverloadStyle = combat.GetPrimaryCombatStyle() as RangeOverload_CombatStyle;
+        if (m_OverloadStyle == null) return;
 
         m_OverloadStyle.OnOverloadStart += EnableReloadSkills;
         m_OverloadStyle.OnOverloadEnd += DisableReloadSkills;
@@ -79,6 +87,11 @@ public class PlayerCombatStyleHUD : MonoBehaviour
         }
     }
 
+    void OnCombatStyleChange()
+    {
+        Init();
+    }
+
     private void LateUpdate()
     {
         UpdatePosition();
@@ -86,6 +99,14 @@ public class PlayerCombatStyleHUD : MonoBehaviour
 
     public void SetFillValue(float value, float max)
     {
+        float _value = Mathf.Clamp(value, 0, max) / max;
+        m_FillImg.fillAmount = _value;
+        m_CursorRct.anchoredPosition = new Vector2(
+            (_value * m_ParentWidth),
+            m_CursorRct.anchoredPosition.y);
+
+        if (m_OverloadStyle == null) return;
+
         switch (m_OverloadStyle.GetState())
         {
             case RangeOverloadWeaponState.CanShoot:
@@ -108,12 +129,6 @@ public class PlayerCombatStyleHUD : MonoBehaviour
                 m_FillImg.color = m_ReloadColor;
                 break;
         }
-
-        float _value = Mathf.Clamp(value, 0, max) / max;
-        m_FillImg.fillAmount = _value;
-        m_CursorRct.anchoredPosition = new Vector2(
-            (_value * m_ParentWidth),
-            m_CursorRct.anchoredPosition.y);
     }
 
     void EnableReloadSkills()
