@@ -533,7 +533,6 @@ MonoBehaviour:
   manaCostPerAttack: 10
   m_CurentTemperature: 0
   m_CurrentState: 0
-  m_AttackCooldown: 0.1
   m_ShootTemperature: 3
   m_StunDelayOnOverload: 0.4
   m_DefaultCoolsPerSec: 60
@@ -543,6 +542,40 @@ MonoBehaviour:
   RangeToReset: {x: 30, y: 60}
   RangeToBuff: {x: 20, y: 30}
   RangeToNerf: {x: 0, y: 100}
+  drawReloadRect: 0
+  m_AttackCooldown: 0.1
+  m_HandleCoolsInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_OnAttackFeedback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 325144946353715551}
+        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
+        m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_OnReloadFeedback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9089985229987993329}
+        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
+        m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MeshRenderer: {fileID: 137720684722639583}
   m_ColorOverTemperature:
     serializedVersion: 2
@@ -577,38 +610,6 @@ MonoBehaviour:
   m_AttackPoint: {fileID: 874208509811087154}
   m_MuzzleFlashPrefab: {fileID: 4186470608034871016, guid: e1532b720bdc5ad4cb310a851a0a304a, type: 3}
   m_BulletPrefab: {fileID: 4581899121895831684, guid: 11c5c37b2fad53d4c8e99a0565d12384, type: 3}
-  m_OnAttackFeedback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325144946353715551}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_OnReloadFeedback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9089985229987993329}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_HandleCoolsInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5283047779086152633
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +658,6 @@ MonoBehaviour:
   manaCostPerAttack: 10
   m_CurentTemperature: 0
   m_CurrentState: 0
-  m_AttackCooldown: 0.15
   m_ShootTemperature: 5
   m_StunDelayOnOverload: 0.4
   m_DefaultCoolsPerSec: 60
@@ -667,6 +667,40 @@ MonoBehaviour:
   RangeToReset: {x: 30, y: 60}
   RangeToBuff: {x: 20, y: 30}
   RangeToNerf: {x: 0, y: 100}
+  drawReloadRect: 0
+  m_AttackCooldown: 0.15
+  m_HandleCoolsInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_OnAttackFeedback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 325144946353715551}
+        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
+        m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_OnReloadFeedback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9089985229987993329}
+        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
+        m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MeshRenderer: {fileID: 137720684722639583}
   m_ColorOverTemperature:
     serializedVersion: 2
@@ -701,38 +735,6 @@ MonoBehaviour:
   m_AttackPoint: {fileID: 874208509811087154}
   m_MuzzleFlashPrefab: {fileID: 4186470608034871016, guid: e1532b720bdc5ad4cb310a851a0a304a, type: 3}
   m_BulletPrefab: {fileID: 4581899121895831684, guid: 11c5c37b2fad53d4c8e99a0565d12384, type: 3}
-  m_OnAttackFeedback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325144946353715551}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_OnReloadFeedback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9089985229987993329}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_HandleCoolsInput: {fileID: 97074022804792908, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5439680732867493737
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,14 +1001,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShotgunCombatStyle
   m_CurrentMana: {fileID: 11400000, guid: 2ac42db844eb315418a5ee5920693790, type: 2}
   manaCostPerAttack: 0
-  m_ShotsPerMagazine: 1
+  m_CurentTemperature: 0
+  m_CurrentState: 0
+  m_ShootTemperature: 50
+  m_StunDelayOnOverload: 0.5
+  m_DefaultCoolsPerSec: 60
+  m_OverloadCoolsPerSec: 60
+  m_NerfCoolsPerSec: 60
+  m_BuffCoolsPerSec: 60
+  RangeToReset: {x: 30, y: 60}
+  RangeToBuff: {x: 60, y: 70}
+  RangeToNerf: {x: 0, y: 100}
+  drawReloadRect: 0
+  m_AttackCooldown: 0.2
+  m_HandleCoolsInput: {fileID: 0}
+  m_HandleCoolsSkillInput: {fileID: -3765115832670413013, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_OnAttackFeedback:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnReloadFeedback:
+    m_PersistentCalls:
+      m_Calls: []
   m_BulletsPerShot: 12
   m_SpreadAngle: 35
-  m_AttackCooldown: 0
   m_ReloadCooldown: 1
-  m_BulletDamage: 2
-  m_BulletSpeed: 40
-  m_KnockBackForce: 5
   m_AttackPoint: {fileID: 874208509811087154}
   m_BulletPrefab: {fileID: 4581899121895831684, guid: 11c5c37b2fad53d4c8e99a0565d12384, type: 3}
 --- !u!1 &7969789460747989224

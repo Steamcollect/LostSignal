@@ -1,5 +1,3 @@
-using System;
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +24,7 @@ public class PlayerCombatStyleHUD : MonoBehaviour
     [SerializeField] RSO_PlayerCameraController m_PlayerCameraController;
 
     CombatStyle m_CurrentStyle;
-    RangeOverload_CombatStyle m_OverloadStyle;
+    OverloadCombatStyle m_OverloadStyle;
 
     [Space(10)]
     [SerializeField] RectTransform m_ParentRect;
@@ -67,9 +65,9 @@ public class PlayerCombatStyleHUD : MonoBehaviour
         m_CurrentStyle = combat.GetPrimaryCombatStyle();
         m_CurrentStyle.OnAmmoChange += SetFillValue;
 
-        if (combat.GetPrimaryCombatStyle() is not RangeOverload_CombatStyle) return;
+        if (combat.GetPrimaryCombatStyle() is not OverloadCombatStyle) return;
 
-        m_OverloadStyle = combat.GetPrimaryCombatStyle() as RangeOverload_CombatStyle;
+        m_OverloadStyle = combat.GetPrimaryCombatStyle() as OverloadCombatStyle;
         m_OverloadStyle.OnOverloadStart += EnableReloadSkills;
         m_OverloadStyle.OnOverloadEnd += DisableReloadSkills;
 
@@ -98,7 +96,6 @@ public class PlayerCombatStyleHUD : MonoBehaviour
 
     public void SetFillValue(float value, float max)
     {
-        Debug.Log("SetFillValue: " + value + " / " + max);
         float _value = Mathf.Clamp(value, 0, max) / max;
         m_FillImg.fillAmount = _value;
         m_CursorRct.anchoredPosition = new Vector2(
@@ -109,23 +106,23 @@ public class PlayerCombatStyleHUD : MonoBehaviour
 
         switch (m_OverloadStyle.GetState())
         {
-            case RangeOverloadWeaponState.CanShoot:
+            case OverloadWeaponState.CanShoot:
                 m_FillImg.color = m_ShootColor;
                 break;
 
-                case RangeOverloadWeaponState.DefaultCool:
+                case OverloadWeaponState.DefaultCool:
                 m_FillImg.color = m_ReloadColor;
                 break;
 
-                case RangeOverloadWeaponState.CoolBuffed:
+                case OverloadWeaponState.CoolBuffed:
                 m_FillImg.color = m_OverloadBuffColor;
                 break;
 
-                case RangeOverloadWeaponState.CoolNerfed:
+                case OverloadWeaponState.CoolNerfed:
                 m_FillImg.color = m_OverloadNerfColor;
                 break;
 
-                case RangeOverloadWeaponState.OverloadCool:
+                case OverloadWeaponState.OverloadCool:
                 m_FillImg.color = m_ReloadColor;
                 break;
         }
@@ -133,8 +130,8 @@ public class PlayerCombatStyleHUD : MonoBehaviour
 
     void SetReloadSkillsRect()
     {
-        Vector2 buffValues = m_OverloadStyle.RangeToBuff;
-        Vector2 resetValues = m_OverloadStyle.RangeToReset;
+        Vector2 buffValues = m_OverloadStyle.GetRangeToBuff();
+        Vector2 resetValues = m_OverloadStyle.GetRangeToReset();
         m_ParentWidth = m_ParentRect.rect.width;
 
         if (m_BuffZoneRct != null)
